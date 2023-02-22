@@ -1,0 +1,32 @@
+{
+  "$id": "site-entity",
+  "filter": {
+    "entityIds": ["global-data"] 
+  },
+  "source": "knowledgeGraph",
+  "fields": [
+  "name", 
+  "id",
+  "uid",
+  "meta",
+  "c_wellLogo",
+  "c_headerLinks",
+  "c_findAPharmacy",
+  "c_locatorBannerImage",
+  "c_locatorTitleH1",
+  "c_metaTitle",
+  "c_metaDescription",
+  "c_robotsTag",
+  "c_footerLogo",
+  "c_footerLinks",
+  "c_footerDescription",
+  "c_footerLogos",
+  "c_socialicon",
+  "c_cookieHeading",
+  "c_cookiePolicyDescription"
+  ],
+  "localization": {
+    "locales": ["en"],
+    "primary": false
+  }
+}
