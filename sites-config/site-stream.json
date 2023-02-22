@@ -23,7 +23,8 @@
   "c_footerLogos",
   "c_socialicon",
   "c_cookieHeading",
-  "c_cookiePolicyDescription"
+  "c_cookiePolicyDescription",
+  "c_aboutLocatorContent"
   ],
   "localization": {
     "locales": ["en"],

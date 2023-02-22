@@ -31,6 +31,7 @@ import favicon from "../images/favicon.png";
 import { BaseUrl } from "../config/globalConfig";
 import { JsonLd } from "react-schemaorg";
 import Footer from "../components/layouts/footer";
+import AboutLocator from "../components/locatorPage/aboutlocator";
 
 export const config: TemplateConfig = {
   stream: {
@@ -267,10 +268,12 @@ console.log(_site);
             findPharmacy={_site.c_findAPharmacy}
           />
           <LocatorBread />
+          
           <Banner
             locatorTitleH1={_site.c_locatorTitleH1}
             locatorBannerImage={_site.c_locatorBannerImage}
           />
+          <AboutLocator aboutlocatorcontent={_site.c_aboutLocatorContent}/>
           <SearchHeadlessProvider
             experienceKey={AnswerExperienceConfig.experienceKey}
             locale={AnswerExperienceConfig.locale}

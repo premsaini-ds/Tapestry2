@@ -276,11 +276,20 @@ const LocationInformation = (data: props) => {
               <></>
             )}
 
-            {data?.prop ? (
+       
+          </div>
+        </div>
+      </div>
+
+
+      <div className="location-detail-sec" style={{marginTop:"50px"}}>
+        <div className="container-lg">
+          <div className="boxes">
+      {data?.prop ? (
               <>
                 {Object.keys(data?.hours).length > 0 ? (
                   <>
-                    <div className="box map-info">
+                    <div className="box map-info" style={{width:"100%"}}>
                       <div className="inner-box">
                         <CustomMap prop={coordinates} />
                       </div>
@@ -288,7 +297,7 @@ const LocationInformation = (data: props) => {
                   </>
                 ) : (
                   <>
-                    <div className="box map-info without-hours">
+                    <div className="box map-info without-hours" style={{width:"100%"}}>
                       <div className="inner-box">
                         <CustomMap prop={coordinates} />
                       </div>
@@ -298,16 +307,18 @@ const LocationInformation = (data: props) => {
               </>
             ) : (
               <>
-                <div className="box map-info without-hours">
+                <div className="box map-info without-hours" style={{width:"100%"}}>
                   <div className="inner-box">
                     <CustomMap prop={coordinates} />
                   </div>
                 </div>
               </>
             )}
-          </div>
-        </div>
-      </div>
+</div>
+</div>
+</div>
+
+
     </>
   );
 };

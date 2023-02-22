@@ -126,7 +126,7 @@ const NearByLocation = (result: props) => {
             <h2 className="sec-title text-center">
               {result.nearByWellPharmaciesTitle
                 ? result.nearByWellPharmaciesTitle
-                : "Nearby Well Pharmacies"}
+                : "Nearby Locations"}
             </h2>
           </div>
           <Splide

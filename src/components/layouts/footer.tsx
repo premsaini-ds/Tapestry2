@@ -52,7 +52,7 @@ console.log(footerLogos);
 
             <div className="subfooter-links">
               <ul>
-                {footerLinks.slice(0, 6).map((e: any) => {
+                {footerLinks?.slice(0, 6).map((e: any) => {
                   return (
                     <li>
                       <Link href={e.link}>{e.label}</Link>
@@ -62,7 +62,7 @@ console.log(footerLogos);
               </ul>
 
               <ul>
-                {footerLinks.slice(6, 12).map((e: any, index: any) => {
+                {footerLinks?.slice(6, 12).map((e: any, index: any) => {
                   return (
                     <li key={index}>
                       <Link href={e.link}>{e.label}</Link>
@@ -72,7 +72,7 @@ console.log(footerLogos);
               </ul>
 
               <ul>
-                {footerLinks.slice(12, 18).map((e: any, index: any) => {
+                {footerLinks?.slice(12, 18).map((e: any, index: any) => {
                   return (
                     <li key={index}>
                       <Link href={e.link}>{e.label}</Link>
@@ -82,7 +82,7 @@ console.log(footerLogos);
               </ul>
 
               <ul className="social-links">
-                {c_socialicon.map((e: any) => {
+                {c_socialicon?.map((e: any) => {
                   return (
                     <li>
                       <Link href={e.socialCTA.link}>

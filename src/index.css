@@ -1363,3 +1363,54 @@ nhs_pre
  @apply mb-0.5;
 } */
 
+.locator_about {
+  padding: 2.25rem 1.25rem;
+  margin: 43px 0;
+  border: 5px solid #014c6b;
+  text-align: center;
+  border-radius: 10px;
+}
+.locator_about h2 {
+  font-size: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.locator_about p {
+  font-size: 19px;
+  margin: 15px auto;
+  width: 60%;
+}
+
+ul.splide__list.services_sec {
+  display: flex;
+  gap: 20px;
+}
+ul.splide__list.services_sec li {
+  width: 33.3%;
+  border: 1px solid #014c6b;
+  padding: 15px;
+  border-radius: 3px;
+}
+
+.services_section_main {
+  padding: 100px 0;
+}
+.services_section_main h2 {
+  font-size: larger;
+}
+
+ul.splide__list.guide_sec {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+.guide_sec h2 {
+  font-size: 35px;
+}
+.guide_sec p {
+  margin: 15px 0;
+  font-size: 20px;
+  line-height: 30px;
+}

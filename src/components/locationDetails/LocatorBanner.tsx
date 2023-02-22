@@ -17,11 +17,11 @@ const Banner = (props: any) => {
               ? locatorBannerImage?.url
               : hero
           }
-          alt="Well Pharmacy Banner"
+          alt="locator Banner"
         />
         <div className="hero-content">
           <h1>
-            {locatorTitleH1 ? locatorTitleH1 : " Your Nearest Well Pharmacy "}
+            {locatorTitleH1 ? locatorTitleH1 : " Your Nearest"}
           </h1>
         </div>
       </div>
