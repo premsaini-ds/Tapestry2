@@ -157,14 +157,23 @@ const NearByLocation = (result: props) => {
             {data &&
               data.map((e: any, index: any) => {
                 if (index > 0) {
+
+                  
                   var url = "";
-                  if (!e.slug) {
-                    let slugString = e?.id + " " + e?.name;
-                    let slug = slugify(slugString);
-                    url = `${slug}.html`;
-                  } else {
-                    url = `${e.slug.toString()}.html`;
-                  }
+                  // if (!e.slug) {
+                  //   let slugString = e?.id + " " + e?.name;
+                  //   let slug = slugify(slugString);
+                  //   url = `${slug}.html`;
+                  // } else {
+                  //   url = `${e.slug.toString()}.html`;
+                  // }
+
+
+                  let countrycode = `${e?.address?.countryCode.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')}`;
+                  let statecode = `${e?.address?.region.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')}`;
+                  let citycode = `${e?.address?.city.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')}`;
+                   url = `${countrycode+"/"+statecode+"/"+citycode+"/"+e.slug.toString()}`;
+                  
 
                   var origin: any = null;
                   if (e.address.city) {

@@ -290,9 +290,9 @@ const Country: Template<TemplateRenderProps> = ({
 
     if (typeof entity.dm_directoryChildren != "undefined") {
 
-      if (entity.meta.entityType.id !== 'ce_city') {        
-      
-        
+      if (entity.meta.entityType.id !== 'Tapestry_city') {        
+    
+
         if (entity.dm_directoryChildrenCount == 1) {
           entity.dm_directoryChildren.map((res: any) => {
 
@@ -305,7 +305,7 @@ const Country: Template<TemplateRenderProps> = ({
             } else {
               detlslug1 = `${res.slug.toString()}.html`;
             }
-            if (res.meta.entityType.id == 'ce_city') {
+            if (res.meta.entityType.id == 'Tapestry_city') {
               detlslug1 = "gb/" + detlslug1;
             } else {
               detlslug1 = detlslug1;
@@ -320,7 +320,7 @@ const Country: Template<TemplateRenderProps> = ({
                 let slug = slugify(slugString);
                 detlslug1 = `${slug}.html`;
               } else {
-                detlslug1 = `${detl.slug.toString()}.html`;
+                detlslug1 = `${slug + "/" + entity.slug +"/"+entity?.dm_directoryChildren[0]?.slug+"/"+detl.slug.toString()}`;
               }
 
               detlslug = detlslug1;
@@ -331,7 +331,7 @@ const Country: Template<TemplateRenderProps> = ({
           })
         }
         else {
-          detlslug = slug + "/" + entity.slug + ".html";
+          detlslug = "location/"+slug + "/" + entity.slug + ".html";
         }
 
         return (

@@ -277,17 +277,30 @@ const State: Template<TemplateRenderProps> = ({
       if (entity.dm_directoryChildrenCount == 1) {
         entity.dm_directoryChildren.map((res: any) => {
 
-          let detlslug1 = "";
 
-          if (!res.slug) {
-            let slugString = res.id + " " + res.name;
-            let slug = slugify(slugString);
-            detlslug1 = `${slug}.html`;
-          } else {
-            detlslug1 = `${res.slug.toString()}.html`;
-          }
+
+
+          // let detlslug1 = "";
+
+          // if (!res.slug) {
+          //   let slugString = res.id + " " + res.name;
+          //   let slug = slugify(slugString);
+          //   detlslug1 = `${slug}.html`;
+          // } else {
+          //   detlslug1 = `${res.slug.toString()}.html`;
+          // }
           
-          detlslug = detlslug1;
+          // detlslug = detlslug1;
+
+
+          let detlslug1: any = "";
+          detlslug1 = document?.slug?.toString();
+          let detlslug11: any = "";
+          detlslug11 = detlslug1.replace(/(\b\S.+\b)(?=.*\1)/g, "").trim();
+    
+          let country = document.dm_directoryParents[1].slug;
+          let state = slug;
+          detlslug = country+"/"+state+"/"+entity.slug;
 
         }) 
       } else {

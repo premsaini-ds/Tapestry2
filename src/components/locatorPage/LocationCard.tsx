@@ -123,14 +123,33 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
    Note-  Url returns Slug
    * If slug is available then url returns Slug otherwise it returns id-name
    */
-  var url = "";
-  if (!result.rawData.slug) {
-    let slugString = result.rawData?.id + " " + result.rawData?.name;
-    let slug = slugify(slugString);
-    url = `${slug}.html`;
-  } else {
-    url = `${result.rawData.slug.toString()}.html`;
-  }
+
+   var url = "";
+  // const { address } = result.rawData;
+  // var name: any = result.rawData.name?.toLowerCase();
+  var region: any = result.rawData.address.region?.toLowerCase();
+  var initialregion: any = region.toString();
+  var finalregion: any = initialregion.replaceAll(" ", "-");
+  var city: any = result.rawData.address.city?.toLowerCase();
+  var country =result.rawData.address.countryCode?.toLowerCase();
+  var initialrcity: any = city.toString();
+  var finalcity: any = initialrcity.replaceAll(" ", "-");
+  // var string: any = name.toString();
+  // let result1: any = string.replaceAll(" ", "-");
+  // console.log(result.rawData.dm_directoryParents,"sdf")
+ 
+
+    url = `${country}/${finalregion}/${finalcity}/${result.rawData.slug?.toString()}`
+
+
+  // var url = "";
+  // if (!result.rawData.slug) {
+  //   let slugString = result.rawData?.id + " " + result.rawData?.name;
+  //   let slug = slugify(slugString);
+  //   url = `${slug}.html`;
+  // } else {
+  //   url = `${result.rawData.slug.toString()}.html`;
+  // }
 
   /**
    * LocationCard component which returns the HTML of Locator Page Listing.

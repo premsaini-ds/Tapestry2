@@ -6,7 +6,7 @@ export const liveAPIKey = "87476fe6f6e0b32b52ec673472ec246e";
 export const googleMapsApiKey = "AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18";
 // export const savedFilterId = "54589289";
 export const entityTypes = "location";
-export const BaseUrl = "https://fondly-nutty-goose.pgsdemo.com";
+export const BaseUrl = "https://n7xmdxd5uc-134480-d.sbx.preview.pagescdn.com/";
 //export const BaseUrl = "https://staging-fondly--nutty--goose-pgsdemo-com.preview.pagescdn.com";
 export const googleMapsConfig =  {
     centerLatitude: 51.507351,
