@@ -169,15 +169,30 @@ export const config: TemplateConfig = {
 
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
   
-  let url = "";
-  if (!document?.slug) {
-    let slugString = document?.id + " " + document?.name;
-    let slug = slugify(slugString);
-    url = `${slug}.html`;
-  } else {
-    url = `${document?.slug.toString()}.html`;
-  }
+  // let url = "";
+  // if (!document?.slug) {
+  //   let slugString = document?.id + " " + document?.name;
+  //   let slug = slugify(slugString);
+  //   url = `${slug}.html`;
+  // } else {
+  //   url = `${document?.slug.toString()}.html`;
+  // }
+  // return url;
+
+  var url: any = ""
+  document.dm_directoryParents?.map((i: any) => {
+    if (i.meta.entityType.id == 'Tapestry_country') {
+      url = `${i.slug}`
+    }
+    else if (i.meta.entityType.id == 'Tapestry_region') {
+      url = `${url}/${i.slug}`
+    }
+    else if (i.meta.entityType.id == "Tapestry_city"){
+      url = `${url}/${i.slug}/${document.slug.toString()}`
+    }
+  })
   return url;
+
 
 
 };
@@ -195,20 +210,14 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
  document,
 }): HeadConfig => {
-
-  var url: any = ""
-  document.dm_directoryParents?.map((i: any) => {
-    if (i.meta.entityType.id == 'Tapestry_country') {
-      url = `${i.slug}`
-    }
-    else if (i.meta.entityType.id == 'Tapestry_region') {
-      url = `${url}/${i.slug}`
-    }
-    else if (i.meta.entityType.id == "Tapestry_city"){
-      url = `${url}/${i.slug}/${document.slug.toString()}`
-    }
-  })
-  return url;
+  let url = "";
+  if (!document?.slug) {
+    let slugString = document?.id + " " + document?.name;
+    let slug = slugify(slugString);
+    url = `${slug}.html`;
+  } else {
+    url = `${document.slug.toString()}.html`;
+  }
 
 //   let metaDescription =  document.c_metaDescription
 //   ? document.c_metaDescription
