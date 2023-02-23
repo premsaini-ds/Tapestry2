@@ -28,8 +28,10 @@ import About from "../components/locationDetails/AboutWell";
 import Hours from "../components/commons/hours";
 import Amenities from "../components/locationDetails/amenities";
 import MakeWellPharmacy from "../components/locationDetails/MakeWellYourPharmacy";
+
 import {
   AnswerExperienceConfig,
+  defaultTimeZone,
   googleMapsConfig,
   WellSocialMediaUrls,
 } from "../config/globalConfig";
@@ -59,6 +61,7 @@ import Service from "../components/locationDetails/Services";
 import { svgIcons } from "../svg icons/svgIcon";
 import ServicesSections from "../components/locationDetails/servicessection";
 import AboutGuide from "../components/locationDetails/aboutguide";
+import OpenCloseStatus from "../components/commons/OpenCloseStatus";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -139,6 +142,7 @@ export const config: TemplateConfig = {
       // "dm_directoryParents.c_addressRegionDisplayName",
       "c_servicesSection",
       "c_aboutGuide",
+      "c_aboutSection",
     ],
 
     // Defines the scope of entities that qualify for this stream.
@@ -405,6 +409,7 @@ const Location: Template<ExternalApiRenderData> = ({
     geocodedCoordinate,
     c_servicesSection,
     c_aboutGuide,
+    c_aboutSection,
   } = document;
   let templateData = { document: document, __meta: __meta };
   let hoursSchema = [];
@@ -562,12 +567,31 @@ console.log(c_aboutGuide);
         ></BreadCrumbs>
 
         <div className="hero">
-          <img
-            className="heroBanner"
-            src={c_bannerImage?.image?.url ? c_bannerImage?.image?.url : hero1}
-            alt="Banner Image"
-          />
-
+                    <div className="banner_image_h">
+                      <img
+                        className="heroBanner"
+                        src={c_bannerImage?.image?.url ? c_bannerImage?.image?.url : hero1}
+                        alt="Banner Image"
+                      />
+                  </div>
+                  <div className="open_hours">
+                   <h2>{name}</h2>
+                   {hours ? (
+                              <>
+                                  <>
+                                    <div className="icon-row single-line">
+                                      <div className="icon">{svgIcons.openclosestatus}</div>
+                                      <OpenCloseStatus
+                                        timezone={timezone ? timezone : defaultTimeZone}
+                                        hours={hours}
+                                      ></OpenCloseStatus>
+                                    </div>
+                                  </>
+                              </>
+                            ) : (
+                              <></>
+                       )}
+              </div>
           {/*<div className="hero-content location-dtl">
             <h1>{c_pageHeadingH1 ? c_pageHeadingH1 :name}</h1>
             <div className="ctaBtn">
@@ -612,18 +636,7 @@ console.log(c_aboutGuide);
           )}
         </div> */}
 
-        {/* <div className="mt-8 md:mt-10">
-          {c_storeDescriptionTitle ? (
-            <About
-              storeDescriptionTitle={c_storeDescriptionTitle}
-              storeDescriptionImage={c_storeDescriptionImage}
-              storeDescriptionText={c_storeDescriptionText}
-              storeDescriptionCTA={c_storeDescriptionCTA}
-            />
-          ) : (
-            <></>
-          )}
-        </div> */}
+      
         {/* <div className="mt-10">
           {c_amenitiesTitle && c_amenities ? (
             <Amenities title={c_amenitiesTitle} amenities={c_amenities} />
@@ -656,6 +669,16 @@ console.log(c_aboutGuide);
         ) : (
           <></>
         )} */}
+
+        <div className="mt-8 md:mt-10">
+                  {c_aboutSection ? (
+                  <About
+                      storeDescriptionTitle={c_aboutSection}
+                    />
+                  ) : (
+                    <></>
+                  )}
+                </div>
 
         <NearByLocation
           prop={externalApiData}

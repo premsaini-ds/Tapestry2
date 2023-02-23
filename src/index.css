@@ -1414,3 +1414,48 @@ ul.splide__list.guide_sec {
   font-size: 20px;
   line-height: 30px;
 }
+
+.box.store-timing {
+  width: 58%;
+}
+.box.store-info {
+  width: 40%;
+}
+.box.map-info {
+  margin: 0;
+}
+.box.map-info .inner-box {
+  padding: 0;
+}
+
+
+.open_hours {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  bottom: 0;
+  width: 20%;
+  padding: 10px;
+  height: 136px;
+  margin: 0 auto;
+  background: #ffffff42;
+  background-blend-mode: overlay;
+  border: 3px solid #ffffff;
+  border-radius: 6px;
+}
+
+.open_hours h2 {
+  font-size: 37px;
+  color: #ffffff;
+  margin: 10px 0;
+}
+.open_hours div {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.icon-row.single-line {
+  margin-top: 20px;
+}
