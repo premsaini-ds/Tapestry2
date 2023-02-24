@@ -70,16 +70,16 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
       document.dm_directoryParents?.map((e: any) => {       
         if (e.meta.entityType.id != "ce_root") {
           if(typeof e.slug == "undefined"){ 
-            slugStrings.push(slugify(e.name));
+                 slugStrings.push(slugify(e.name));
           }else{     
-            slugStrings.push(e.slug); 
+                // slugStrings.push(e.slug); 
           }
         }           
       });
     }
 
     if(slugStrings.length > 0){
-      url = `${slug}.html`;
+      url = `${slugStrings.join("/")}/${slug}.html`;
     }else{
       url = `${slug}.html`;
     }
@@ -92,14 +92,14 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
           if(typeof e.slug == "undefined"){ 
             slugStrings.push(slugify(e.name));
           }else{     
-            slugStrings.push(e.slug); 
+            // slugStrings.push(e.slug); 
           }
         }          
       });
     }
 
     if(slugStrings.length > 0){
-      url = `${document.slug.toString()}.html`;
+      url = `${slugStrings.join("/")}/${document.slug.toString()}.html`;
     }else{
       url = `${document.slug.toString()}.html`;
     }
