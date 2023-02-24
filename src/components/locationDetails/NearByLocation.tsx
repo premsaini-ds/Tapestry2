@@ -225,7 +225,7 @@ const NearByLocation = (result: props) => {
                       <div className="location near-location">
                         <div className="miles-with-title">
                           <h3 className="">
-                            <a href={`${url}`}>{e.name}</a>
+                            <a href={`/${url}`}>{e.name}</a>
                           </h3>
                           <p className="miles">
                             {metersToMiles(e.distance ?? 0)} miles
@@ -330,7 +330,7 @@ const NearByLocation = (result: props) => {
                           <div className="ctaBtn">
                             <Link
                               className="button before-icon"
-                              href={`${url}`}
+                              href={`/${url}`}
                             >
                               {svgIcons.viewdetails}
                               View Details
