@@ -70,9 +70,9 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
       document.dm_directoryParents?.map((e: any) => {       
         if (e.meta.entityType.id != "ce_root") {
           if(typeof e.slug == "undefined"){ 
-             slugStrings.push(slugify(e.name));
-          }else{     
             slugStrings.push(slugify(e.name));
+          }else{     
+            slugStrings.push(e.slug); 
           }
         }           
       });
@@ -92,26 +92,25 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
           if(typeof e.slug == "undefined"){ 
             slugStrings.push(slugify(e.name));
           }else{     
-            slugStrings.push(slugify(e.name));
+            slugStrings.push(e.slug); 
           }
         }          
       });
     }
-   
 
     if(slugStrings.length > 0){
       url = `${slugStrings.join("/")}/${document.slug.toString()}.html`;
     }else{
       url = `${document.slug.toString()}.html`;
     }
-     
-  }
 
+  }
 
   
   return url;
   
 };
+
 
 
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
@@ -270,7 +269,6 @@ const State: Template<TemplateRenderProps> = ({
   } = document;
   
 
-
   const childrenDivs = dm_directoryChildren ? dm_directoryChildren.map((entity: any) => {
     let detlslug;
 
@@ -303,7 +301,7 @@ const State: Template<TemplateRenderProps> = ({
     
           let country = document.dm_directoryParents[1].slug;
           let state = slug;
-          detlslug = country+"/"+state+"/"+entity.slug+ ".html";
+          detlslug = "location/"+country+"/"+state+"/"+entity.slug+ ".html";
 
         }) 
       } else {
