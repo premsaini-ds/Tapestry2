@@ -107,7 +107,7 @@ const BreadCrumbs = (props: data) => {
               {props.address && props.address.city ? (
                 <li className="inline-block">
                   {" "}
-                  <Link href={props.BaseUrl + props.address.city }
+                  <Link href={props.BaseUrl+ props.address.city }
                    data-ya-track="Breadcrumbs"
                    eventName={`Breadcrumbs`}
                    rel="noopener noreferrer"

@@ -151,7 +151,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
     : `Get the best health services, free prescription deliveries, and consultations in ${document.name}.`;
   let metaTitle = document.c_metaTitle
     ? document.c_metaTitle
-    : `Find all Well Pharmacy Stores in ${document.name}`;
+    : `Find all Pharmacy Stores in ${document.name}`;
 
 
 
