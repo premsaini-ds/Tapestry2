@@ -79,7 +79,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
     }
 
     if(slugStrings.length > 0){
-      url = `${slugStrings.join("/")}/${slug}.html`;
+      url = `${slug}.html`;
     }else{
       url = `${slug}.html`;
     }
@@ -99,7 +99,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
     }
 
     if(slugStrings.length > 0){
-      url = `${slugStrings.join("/")}/${document.slug.toString()}.html`;
+      url = `${document.slug.toString()}.html`;
     }else{
       url = `${document.slug.toString()}.html`;
     }
@@ -301,7 +301,7 @@ const State: Template<TemplateRenderProps> = ({
     
           let country = document.dm_directoryParents[1].slug;
           let state = slug;
-          detlslug = "location/"+country+"/"+state+"/"+entity.slug+ ".html";
+          detlslug = country+"/"+state+"/"+entity.slug+ ".html";
 
         }) 
       } else {

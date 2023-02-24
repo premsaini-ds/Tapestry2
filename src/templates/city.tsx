@@ -82,7 +82,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
     }
 
     if (slugStrings.length > 0) {
-      url = `${slugStrings.join("/")}/${slug}.html`;
+      url = `${slug}.html`;
     } else {
       url = `${slug}.html`;
     }
@@ -102,7 +102,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
     }
 
     if (slugStrings.length > 0) {
-      url = `${slugStrings.join("/")}/${document.slug.toString()}.html`;
+      url = `${document.slug.toString()}.html`;
     } else {
       url = `${document.slug.toString()}.html`;
     }
