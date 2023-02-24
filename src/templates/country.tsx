@@ -75,7 +75,6 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
 
   let slugString = document.id + " " + document.name;
   let slug = slugify(slugString);
-
   if (typeof document.slug == "undefined") {
 
     let slugStrings: any = [];
@@ -117,7 +116,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
     }
 
     if (slugStrings.length > 0) {
-      url = `${slugStrings.join("/")}/${document.slug.toString()}.html`;
+      url = `${document.slug.toString()}.html`;
     } else {
       url = `${document.slug.toString()}.html`;
     }
