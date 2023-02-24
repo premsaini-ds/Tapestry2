@@ -72,7 +72,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
           if(typeof e.slug == "undefined"){ 
              slugStrings.push(slugify(e.name));
           }else{     
-              slugStrings.push(e.name); 
+            slugStrings.push(slugify(e.name));
           }
         }           
       });
@@ -92,7 +92,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
           if(typeof e.slug == "undefined"){ 
             slugStrings.push(slugify(e.name));
           }else{     
-            slugStrings.push(e.name); 
+            slugStrings.push(slugify(e.name));
           }
         }          
       });
