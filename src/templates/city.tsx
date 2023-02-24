@@ -288,14 +288,54 @@ const City: Template<TemplateRenderProps> = ({
   const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
   const childrenDivs = dm_directoryChildren.map((entity: any) => {
     if (entity.meta.entityType.id == "location") {
-      let url = "";
-      if (!entity.slug) {
-        let slugString = entity.id + " " + entity.name;
-        let slug = slugify(slugString);
-        url = `${slug}.html`;
+
+
+      // let url = "";
+      // if (!entity.slug) {
+      //   let slugString = entity.id + " " + entity.name;
+      //   let slug = slugify(slugString);
+      //   url = `${slug}.html`;
+      // } else {
+      //   url = `${entity.slug.toString()}.html`;
+      // }
+
+      var origin: any = null;
+      if (entity?.address?.city) {
+        origin = entity?.address?.city;
+      } else if (entity?.address?.region) {
+        origin = entity?.address?.region;
       } else {
-        url = `${entity.slug.toString()}.html`;
+        origin = entity?.address?.country;
       }
+
+      let key: any = Object.keys(entity?.hours)[0];
+      let url = '';
+      let countrycode ='';
+      let statecode ='';
+      var name: any = entity?.name?.toLowerCase();
+      var string: any = name?.toString();
+      let removeSpecialCharacters = string?.replace(
+        /[&\/\\#^+()$~%.'":*?<>{}!@]/g,
+        "");
+      let result: any = removeSpecialCharacters?.replaceAll(" ", "-");
+      if(!entity?.slug || entity?.slug == "undefined"){
+        url = `${entity?.id}-${result}`
+       
+      }
+      else{
+            countrycode = `${entity?.address?.countryCode.toLowerCase()
+              .replace(/ /g, '-')
+              .replace(/[^\w-]+/g, '')}`;
+              statecode = `${entity?.address?.region.toLowerCase()
+                .replace(/ /g, '-')
+                .replace(/[^\w-]+/g, '')}`;
+              url = `${countrycode+"/"+statecode+"/"+document?.slug+"/"+entity?.slug.toString()}`;
+            // console.log(url);
+      }
+
+
+
+
       return (
         <li className="city-location">
           <div className="location">
@@ -359,12 +399,12 @@ const City: Template<TemplateRenderProps> = ({
         headerLinks={_site.c_headerLinks}
         findPharmacy={_site.c_findAPharmacy}
       />
-      <BreadCrumbs
-        name={name}
-        parents={dm_directoryParents}
-        baseUrl={relativePrefixToRoot}
-        address={address}
-      ></BreadCrumbs>
+       <BreadCrumbs
+          name={name}
+          parents={dm_directoryParents}
+          BaseUrl={relativePrefixToRoot}
+          address={address}
+        ></BreadCrumbs>
 
       <div className="hero">
         <img className="heroBanner" src={hero} alt="" />

@@ -263,6 +263,7 @@ const State: Template<TemplateRenderProps> = ({
     name,
     _site,
     dm_directoryParents,
+    address,
     dm_directoryChildren,
     slug
   } = document;
@@ -300,7 +301,7 @@ const State: Template<TemplateRenderProps> = ({
     
           let country = document.dm_directoryParents[1].slug;
           let state = slug;
-          detlslug = country+"/"+state+"/"+entity.slug;
+          detlslug = "location/"+country+"/"+state+"/"+entity.slug+ ".html";
 
         }) 
       } else {
@@ -313,7 +314,7 @@ const State: Template<TemplateRenderProps> = ({
       <li className=" storelocation-category">
         <a
           key={entity.slug}
-          href={BaseUrl+"/"+detlslug}
+          href={BaseUrl+detlslug}
         >
           {entity.name} ({entity.dm_directoryChildrenCount})
         </a>
@@ -330,10 +331,11 @@ const State: Template<TemplateRenderProps> = ({
         findPharmacy={_site.c_findAPharmacy}
       />
       <BreadCrumbs
-        name={name}
-        parents={dm_directoryParents}
-        address={{}}
-      ></BreadCrumbs>
+          name={name}
+          parents={dm_directoryParents}
+          BaseUrl={relativePrefixToRoot}
+          address={address}
+        ></BreadCrumbs>
 
       <div className="hero">
         <img className="heroBanner" src={hero} alt="" />

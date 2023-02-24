@@ -208,6 +208,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
 // };
 
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
+  relativePrefixToRoot,
  document,
 }): HeadConfig => {
   let url = "";
@@ -578,6 +579,7 @@ console.log(c_aboutGuide);
          <BreadCrumbs
           name={name}
           parents={dm_directoryParents}
+          BaseUrl={relativePrefixToRoot}
           address={address}
         ></BreadCrumbs>
 
@@ -589,7 +591,7 @@ console.log(c_aboutGuide);
                         alt="Banner Image"
                       />
                   </div>
-                  <div className="open_hours">
+                  <div className="open_hours" style={{backgroundImage:"initial"}}>
                    <h2>{name}</h2>
                    {hours ? (
                               <>

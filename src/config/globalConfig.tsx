@@ -21,7 +21,9 @@ export const WellSocialMediaUrls = {
     linkedin: "https://www.linkedin.com/company/wellpharmacy/",
     tiktok : "#",   
   };
-
+  export const breadcrumbhome = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20.002" viewBox="0 0 20 20.002">
+  <path d="M877,4760h5a1,1,0,0,0,1-1v-8.59l.293.3a1,1,0,1,0,1.414-1.42l-9-9a1,1,0,0,0-1.414,0l-9,9a1,1,0,0,0,1.414,1.42l.293-.3V4759a1,1,0,0,0,1,1h5a1,1,0,0,0,1-1v-5h2v5A1,1,0,0,0,877,4760Zm4-2h-3v-5a1,1,0,0,0-1-1h-4a1,1,0,0,0-1,1v5h-3v-9.59l6-6,6,6Z" transform="translate(-865 -4739.998)" fill="#02a6db" fill-rule="evenodd"/>
+  </svg>`;
 export function slugify(slugString:any){
     slugString.toLowerCase().toString();
     slugString = slugString.replace(/[&\/\\#^+()$~%.'":*?<>{}!@]/, "");
@@ -41,7 +43,10 @@ export function slugify1(slugString:any){
 export const defaultTimeZone = "Europe/London";
 export const AnalyticsEnableDebugging  = true;
 export const AnalyticsEnableTrackingCookie  = true;
-
+export const conversionDetailsDirection = {
+    cid: "",
+    cv: "1",
+  };
 export const AnswerExperienceConfig =  {
     experienceKey: "tapestry",
     locale:"en",
