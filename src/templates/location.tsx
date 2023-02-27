@@ -13,7 +13,7 @@ import NearByLocation from "../components/locationDetails/NearByLocation";
 import { nearByLocation } from "../types/nearByLocation";
 import { fetch } from "@yext/pages/util";
 import hero1 from "../images/LocationBanner.png";
-import favicon from "../images/favicon.png";
+import favicon from "../images/favicon1.png";
 import { JsonLd } from "react-schemaorg";
 import LocationInformation from "../components/locationDetails/LocationInformation";
 import {
@@ -220,17 +220,16 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
     url = `${document.slug.toString()}.html`;
   }
 
-//   let metaDescription =  document.c_metaDescription
-//   ? document.c_metaDescription
-//   : `${document.name} | Get best health services, free prescription deliveries, consultations in ${document.address.city} at Well Pharmacy.`;
-// let metaTitle = document.c_metaTitle
-// ? document.c_metaTitle
-// : `${document.name} | Online pharmacy, prescriptions and local chemists UK - Well Pharmacy`;
+  let metaDescription =  document.c_metaDescription
+  ? document.c_metaDescription
+  : `${document.name} | Get best health services, free prescription deliveries, consultations in ${document.address.city} at Well Pharmacy.`;
+let metaTitle = document.c_metaTitle
+? document.c_metaTitle
+: `${document.name} | Online pharmacy, prescriptions and local chemists UK - Well Pharmacy`;
 
 
   return {
-    // title: metaTitle,
-    title: "Test Title",
+    title: metaTitle,
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=0",
     tags: [

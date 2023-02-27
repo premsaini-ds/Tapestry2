@@ -1,6 +1,6 @@
 import * as React from "react";
 import BreadCrumbs from "../components/layouts/BreadCrumb";
-import favicon from "../images/favicon.png";
+import favicon from "../images/favicon1.png";
 import hero from "../images/hero.jpg";
 import Header from "../components/layouts/header";
 import Footer from "../components/layouts/footer";
@@ -315,7 +315,7 @@ const State: Template<TemplateRenderProps> = ({
     
           let country = document.dm_directoryParents[1].slug;
           let state = slug;
-          detlslug = "location/"+country+"/"+state+"/"+entity.slug+ ".html";
+          detlslug = country+"/"+state+"/"+entity.slug+ ".html";
 
         }) 
       } else {

@@ -27,7 +27,7 @@ import {
 } from "@yext/pages/components";
 import LocatorBread from "../components/locatorPage/LocatorBread";
 import Banner from "../components/locationDetails/LocatorBanner";
-import favicon from "../images/favicon.png";
+import favicon from "../images/favicon1.png";
 import { BaseUrl } from "../config/globalConfig";
 import { JsonLd } from "react-schemaorg";
 import Footer from "../components/layouts/footer";
@@ -87,10 +87,10 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
 }): HeadConfig => {
   let metaDescription = document._site.c_metaDescription
     ? document._site.c_metaDescription
-    : "Find your nearest Well Pharmacy and know more about Well's NHS prescription delivery service, store timings and services.";
+    : "Find your nearest Tapestry and know more about Well's NHS prescription delivery service, store timings and services.";
   let metaTitle = document._site.c_metaTitle
     ? document._site.c_metaTitle
-    : "Find your Nearest Well Pharmacy | NHS prescriptions online delivery";
+    : "Find your Nearest Tapestry | NHS prescriptions online delivery";
 
   return {
     title: metaTitle,
@@ -246,7 +246,7 @@ console.log(_site);
         item={{
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Well Pharmacy",
+          name: "Tapestry",
           url: "https://www.well.co.uk/",
           logo: `${
             document.logo
