@@ -33,8 +33,7 @@ const Footer = (props: any) => {
   if (cookiePolicyDescription) {
     var Description = RtfConverter.toHTML(cookiePolicyDescription);
   }
-console.log("prem");
-console.log(footerLogos); 
+; 
   
   return (
     <>

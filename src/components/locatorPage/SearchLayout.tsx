@@ -207,83 +207,83 @@ if(Search.length)
   return (
     <>
     {loader}
+    <div className="locator-full-width place-content-center" style={{height:"unset"}}>
+        
+        <div className="locator-container">
+                <div className="search-block" style={{width:"100%"}}>
+                    {allowlocation.length > 0 ?
+                    <div className="for-allow">{allowlocation}</div>
+                    : ''}
+                      <div className="location-with-filter">
+                        <h3 className="title">Enter a town or postcode</h3>
+                        {/* Use My Location button */}
+                        <button
+                          className="ghost-button before-icon"
+                          title="Search using your current location!"
+                          id="useLocation"
+                          onClick={onClick}
+                        >               
+                          {svgIcons.useMyLocation}
+                          Use My Location
+                        </button>
+                      </div>
+                      {/* Search Input by name,address  */}
+                      <div className="search-form">
+                        <FilterSearch
+                          customCssClasses={{
+                            filterSearchContainer: "mb-0",
+                            inputElement: "FilterSearchInput",
+                            optionsContainer: "options"
+                          }}
+                          inputvalue={inputvalue}
+                          searchOnSelect={false}
+                          searchFields={[
+                            {
+                              entityType: "location",
+                              fieldApiName: "name",
+                            },
+                            {
+                              entityType: "location",
+                              fieldApiName: "address.line1",
+                            },
+                            {
+                              entityType: "location",
+                              fieldApiName: "address.line2",
+                            },
+                            {
+                              entityType: "location",
+                              fieldApiName: "address.city",
+                            },
+                            {
+                              entityType: "location",
+                              fieldApiName: "address.postalCode",
+                            },
+                          ]}
+                          handleInputValue={handleInputValue}  
+                          handleSetUserShareLocation={handleSetUserShareLocation}
+                        />
+
+                        {/* Covid Filter  */}
+                        <StandardFacets
+                          customCssClasses={{container: "filter-items" }}
+                          defaultExpanded={true}
+                        ></StandardFacets>
+
+                    {/* Search icon Button  */}
+                        <button
+                          className="button"
+                          aria-label="Search bar icon"
+                          id="search-location-button"
+                          onClick={Findinput}
+                        >
+                          {svgIcons.Searchbaricon}
+                        </button>
+                      </div>
+                    </div>
+        </div>
+    </div>
       <div className="locator-full-width place-content-center">
         <div className="locator-container">
-          <div className="search-block">
-
-          {allowlocation.length > 0 ?
-          <div className="for-allow">{allowlocation}</div>
-          : ''}
-
-            <div className="location-with-filter">
-              <h3 className="title">Enter a town or postcode</h3>
-
-              {/* Use My Location button */}
-              <button
-                className="ghost-button before-icon"
-                title="Search using your current location!"
-                id="useLocation"
-                onClick={onClick}
-              >               
-                {svgIcons.useMyLocation}
-                Use My Location
-              </button>
-            </div>
-           
-            {/* Search Input by name,address  */}
-            <div className="search-form">
-              <FilterSearch
-                customCssClasses={{
-                  filterSearchContainer: "mb-0",
-                  inputElement: "FilterSearchInput",
-                  optionsContainer: "options"
-                }}
-                inputvalue={inputvalue}
-                searchOnSelect={false}
-                searchFields={[
-                  {
-                    entityType: "location",
-                    fieldApiName: "name",
-                  },
-                  {
-                    entityType: "location",
-                    fieldApiName: "address.line1",
-                  },
-                  {
-                    entityType: "location",
-                    fieldApiName: "address.line2",
-                  },
-                  {
-                    entityType: "location",
-                    fieldApiName: "address.city",
-                  },
-                  {
-                    entityType: "location",
-                    fieldApiName: "address.postalCode",
-                  },
-                ]}
-                handleInputValue={handleInputValue}  
-                 handleSetUserShareLocation={handleSetUserShareLocation}
-              />
-
-              {/* Covid Filter  */}
-              <StandardFacets
-                customCssClasses={{container: "filter-items" }}
-                defaultExpanded={true}
-              ></StandardFacets>
-        
-           {/* Search icon Button  */}
-              <button
-                className="button"
-                aria-label="Search bar icon"
-                id="search-location-button"
-                onClick={Findinput}
-              >
-                {svgIcons.Searchbaricon}
-              </button>
-            </div>
-          </div>
-
            {/* Map view and List View CTA in mobile responsive  */}
           <div className="mobile-btns">
             <a

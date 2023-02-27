@@ -70,29 +70,23 @@ export const config: TemplateConfig = {
 };
 
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
-
   let url = "";
-
   let slugString = document.id + " " + document.name;
   let slug = slugify(slugString);
-
   if (typeof document.slug == "undefined") {
-
     let slugStrings: any = [];
-    if (typeof document.dm_directoryParents != "undefined") {
-      document.dm_directoryParents?.map((e: any, index: number) => {
-
-        if (e.meta.entityType.id != "ce_root") {
-          if (typeof e.slug == "undefined") {
-            slugStrings.push(slugify(e.name));
-          } else {
-            slugStrings.push(e.slug);
-          }
-        }
-
-      });
-    }
-
+    // if (typeof document.dm_directoryParents != "undefined") {
+    //   document.dm_directoryParents?.map((e: any, index: number) => {
+    //     if (e.meta.entityType.id != "ce_root") {
+    //       if (typeof e.slug == "undefined") {
+    //         slugStrings.push(slugify(e.name));
+    //       } else {
+    //         slugStrings.push(e.slug);
+    //       }
+    //     }
+    //   });
+    // }
+    
     if (slugStrings.length > 0) {
       url = `${slugStrings.join("/")}${slug}.html`;
     } else {
@@ -102,22 +96,22 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
   } else {
     let slugStrings: any = [];
 
-    if (typeof document.dm_directoryParents != "undefined") {
-      document.dm_directoryParents?.map((e: any) => {
+    // if (typeof document.dm_directoryParents != "undefined") {
+    //   document.dm_directoryParents?.map((e: any) => {
 
-        if (e.meta.entityType.id != "ce_root") {
-          if (typeof e.slug == "undefined") {
-            slugStrings.push(slugify(e.name));
-          } else {
-            slugStrings.push(e.slug);
-          }
-        }
+    //     if (e.meta.entityType.id != "ce_root") {
+    //       if (typeof e.slug == "undefined") {
+    //         slugStrings.push(slugify(e.name));
+    //       } else {
+    //         slugStrings.push(e.slug);
+    //       }
+    //     }
 
-      });
-    }
+    //   });
+    // }
 
     if (slugStrings.length > 0) {
-      url = `${slugStrings.join("/")}/${document.slug.toString()}.html`;
+      url = `${document.slug.toString()}.html`;
     } else {
       url = `${document.slug.toString()}.html`;
     }
