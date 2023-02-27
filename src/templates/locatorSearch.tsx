@@ -174,8 +174,8 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           property: "og:image",
           content: `${
             document.logo
-              ? document.logo.image.url
-              : "https://a.mktgcdn.com/p/JS-wqqEJIMNa50_6p_3-320_haZmByRLBpMVMT9vXDE/115x41.png"
+              ? document.c_wellLogo.url
+              : favicon
           }`,
         },
       },
@@ -216,8 +216,8 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
           name: "twitter:image",
           content: `${
             document.logo
-              ? document.logo.image.url
-              : "https://a.mktgcdn.com/p/JS-wqqEJIMNa50_6p_3-320_haZmByRLBpMVMT9vXDE/115x41.png"
+              ? document.c_wellLogo.url
+              : favicon
           }`,
         },
       },
@@ -239,7 +239,9 @@ const locatorSearch: Template<TemplateRenderProps> = ({
   const providerOptions: google.maps.MapOptions = {
     disableDefaultUI: true,
   };
-console.log(_site);
+
+console.log("sainipk");
+console.log(document);
   return (
     <>
       <JsonLd<locator>
@@ -250,8 +252,8 @@ console.log(_site);
           url: "https://www.well.co.uk/",
           logo: `${
             document.logo
-              ? document.logo.image.url
-              : "https://a.mktgcdn.com/p/JS-wqqEJIMNa50_6p_3-320_haZmByRLBpMVMT9vXDE/115x41.png"
+              ? document.c_wellLogo.url
+              : favicon
           }`,
         }}
       />

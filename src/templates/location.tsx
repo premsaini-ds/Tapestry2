@@ -502,7 +502,7 @@ console.log(c_aboutGuide);
           "@context": "https://schema.org",
           "@type": "MedicalBusiness",
           name: document?.name,
-          image: `${document.logo ? document.logo.image.url : "https://a.mktgcdn.com/p/JS-wqqEJIMNa50_6p_3-320_haZmByRLBpMVMT9vXDE/115x41.png"}`,
+          image: `${document.c_wellLogo ? document.c_wellLogo.url : favicon}`,
           "@id": "",
           url: "https://www.well.co.uk/",
           telephone: mainPhone,
@@ -596,11 +596,14 @@ console.log(c_aboutGuide);
                               <>
                                   <>
                                     <div className="icon-row single-line">
-                                      <div className="icon">{svgIcons.openclosestatus}</div>
-                                      <OpenCloseStatus
+                                      <div className="icon" style={{width:"100%"}}>
+                                        {svgIcons.openclosestatus}
+                                        <OpenCloseStatus
                                         timezone={timezone ? timezone : defaultTimeZone}
                                         hours={hours}
                                       ></OpenCloseStatus>
+                                        </div>
+                                     
                                     </div>
                                   </>
                               </>
