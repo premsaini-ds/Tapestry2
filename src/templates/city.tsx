@@ -345,10 +345,11 @@ const City: Template<TemplateRenderProps> = ({
                 .replace(/ /g, '-')
                 .replace(/[^\w-]+/g, '')}`;
               url = `${countrycode+"/"+statecode+"/"+document?.slug+"/"+entity?.slug.toString()}`;
-            // console.log(url);
+            
       }
 
-
+      // console.log("pksaini");
+      // console.log(url);
 
 
       return (
@@ -356,7 +357,7 @@ const City: Template<TemplateRenderProps> = ({
           <div className="location">
             <div className="miles-with-title">
               <h3 className="">
-                <a key={entity.slug} href={`${BaseUrl + "/" + url}`}>
+                <a key={entity.slug} href={`${BaseUrl + url}`}>
                   {entity.name}
                 </a>
               </h3>
@@ -394,7 +395,7 @@ const City: Template<TemplateRenderProps> = ({
               <div className="ctaBtn">
                 <a
                   className="button before-icon"
-                  href={`${BaseUrl + "/" + url}`}
+                  href={`${BaseUrl + url}`}
                 >
                   {svgIcons.viewdetails}
                   View Details
