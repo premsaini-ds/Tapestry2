@@ -137,8 +137,8 @@ const NearByLocation = (result: props) => {
               perPage: 3,
               perMove: 1,
               arrows: false,
-              drag: false,
-              pagination: false,
+              drag: true,
+              pagination: true,
               lazyLoad: "nearby",
               breakpoints: {
                 1279: {
