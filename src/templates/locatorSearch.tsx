@@ -257,6 +257,7 @@ console.log(document);
           }`,
         }}
       />
+      &#8212;
       <AnalyticsProvider
         templateData={templateData}
         enableDebugging={AnalyticsEnableDebugging}

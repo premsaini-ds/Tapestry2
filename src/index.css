@@ -279,9 +279,9 @@ body .ps__rail-y:hover .ps__thumb-y {
 .search-form > div > div span {
   @apply font-normal;
 }
-.search-form button[aria-expanded] {
+/* .search-form button[aria-expanded] {
   @apply hidden;
-}
+} */
 .search-form button[aria-expanded] + div {
   @apply mt-[0.375rem];
 }
@@ -813,9 +813,9 @@ button.gm-ui-hover-effect span {
 .search-form #react-collapsed-panel-1 {
   @apply !block mt-1.5;
 }
-.search-form button#react-collapsed-toggle-1 {
+/* .search-form button#react-collapsed-toggle-1 {
   @apply hidden;
-}
+} */
 
 .filter-items > div {
   @apply relative;
@@ -1461,3 +1461,38 @@ ul.splide__list.guide_sec {
   margin-top: 20px;
 }
 
+button.w-full.flex.justify-between.items-center.mb-4 {
+  margin-top: 1rem;
+  border: 1px solid;
+  padding: 15px;
+  background: #014c6b;
+  color: #ffffff;
+  margin-bottom: 0;
+}
+
+.search-form .space-y-3 {
+  border: 0px solid;
+  margin: 15px !important;
+}
+
+.search_input{
+background-color: #014c6b1a !important;
+}
+
+button.w-full.flex.justify-between.items-center.mb-4 div {
+  font-size: 20px;
+}
+
+
+.locator-main {
+  position: absolute;
+  top: 304px;
+  bottom: 0;
+  width: 33.6875rem;
+  left: 0px;
+  background: #fff;
+  z-index: 99999999999999999999;
+}
+.search-bx {
+  background: #fff;
+} 
