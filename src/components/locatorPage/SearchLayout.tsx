@@ -267,7 +267,7 @@ if(Search.length)
                         <StandardFacets
                           customCssClasses={{container: "filter-items" }}
                           defaultExpanded={true}
-                        ></StandardFacets>
+                        ></StandardFacets> 
 
                     {/* Search icon Button  */}
                         <button
