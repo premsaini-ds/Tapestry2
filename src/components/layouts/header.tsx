@@ -1,4 +1,5 @@
 import * as React from "react";
+import { BaseUrl } from "../../config/globalConfig";
 import logo from "../../images/Logo.png";
 import { svgIcons } from "../../svg icons/svgIcon";
 
@@ -6,10 +7,11 @@ type props = {
   wellLogo: any;
   headerLinks: any;
   findPharmacy: any;
+  _sitedata:any;
 };
 
 const Header = (props: any) => {
-  const { wellLogo, headerLinks, findPharmacy } = props;
+  const { wellLogo, headerLinks, findPharmacy,_sitedata } = props;
 
   React.useEffect(() => {
     document.body.setAttribute("id", "body");
@@ -19,6 +21,7 @@ const Header = (props: any) => {
     document.getElementById("body").classList.toggle("menu-opened");
   };
 
+  
   return (
       <header className="site-header">
         <div className="container-lg">
@@ -51,12 +54,37 @@ const Header = (props: any) => {
                 );
               })}
             </div>
-            <div className="header-right-link">
-              <a href={findPharmacy?.link} className="">
+            <div className="sitenav">
+              <ul className="menu">
+            <li className="header-right-link menu-item-34 search-site menu-item-has-children">
+
+              {/* <a href={findPharmacy?.link} className="">
+                {svgIcons.searchicon}
+                <span>{findPharmacy?.label}</span>
+              </a> */}
+
+              <a href="javascript:;" className="">
                 {svgIcons.searchicon}
                 <span>{findPharmacy?.label}</span>
               </a>
-            </div>
+              
+              <div className="search-menu sub-menu" id="sp-search">
+                <ul className="wrap sub-mega-menu">
+                  <li>
+                    <h5>Search</h5>
+                      <form role="search" method="get" className="search-form" action={BaseUrl}>
+                        <label className="screen-reader-text">Search for:</label>
+                        <input type="search" id="search-form-1" className="search-field" placeholder="Enter keywords"  name="s"/>
+                        <input type="submit" className="search-submit" value="Go"/>
+                      </form>
+                  </li>
+                </ul>
+              </div>
+
+
+            </li>
+            </ul>
+          </div>
           </div>
         </div>
       </header>

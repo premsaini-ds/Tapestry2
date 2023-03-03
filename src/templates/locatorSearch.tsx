@@ -80,6 +80,9 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
   return url;
 };
 
+
+
+
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   relativePrefixToRoot,
   path,
@@ -241,7 +244,7 @@ const locatorSearch: Template<TemplateRenderProps> = ({
   };
 
 console.log("sainipk");
-console.log(document);
+console.log(document.slug);
   return (
     <>
       <JsonLd<locator>
@@ -257,18 +260,19 @@ console.log(document);
           }`,
         }}
       />
-      &#8212;
+
       <AnalyticsProvider
         templateData={templateData}
         enableDebugging={AnalyticsEnableDebugging}
         enableTrackingCookie={AnalyticsEnableTrackingCookie}
       >
-        {" "}
+        {/* {" "} */}
         <AnalyticsScopeProvider name={""}>
           <Header
             wellLogo={_site.c_wellLogo}
             headerLinks={_site.c_headerLinks}
             findPharmacy={_site.c_findAPharmacy}
+            _sitedata={_site}
           />
           <LocatorBread />
           
