@@ -1693,3 +1693,12 @@ button.w-full.flex.justify-between.items-center.mb-4 div {
   width: 1px;
   overflow: hidden;
 }
+
+button.holidayHoursButton {
+  background: #014c6b;
+  color: #ffffff;
+  width: 100%;
+  max-width: 24rem;
+  padding: 10px 0;
+  margin: 10px 0;
+}

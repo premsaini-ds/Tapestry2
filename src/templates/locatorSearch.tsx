@@ -43,6 +43,7 @@ export const config: TemplateConfig = {
       "id",
       "uid",
       "meta",
+      "slug",
       "c_wellLogo",
       "c_headerLinks",
       "c_findAPharmacy",
@@ -233,6 +234,7 @@ const locatorSearch: Template<TemplateRenderProps> = ({
   path,
   __meta,
   document,
+  
 }) => {
   const { _site } = document;
   let templateData = { document: document, __meta: __meta };
@@ -243,8 +245,7 @@ const locatorSearch: Template<TemplateRenderProps> = ({
     disableDefaultUI: true,
   };
 
-console.log("sainipk");
-console.log(document.slug);
+
   return (
     <>
       <JsonLd<locator>

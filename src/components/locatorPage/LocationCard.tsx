@@ -17,6 +17,7 @@ import Phone from "../commons/phone";
 import { svgIcons } from "../../svg icons/svgIcon";
 import { Data } from "@react-google-maps/api";
 import { slugify, defaultTimeZone  } from "../../config/globalConfig";
+import Holidayhour from "../locationDetails/holidayHours";
 
 /**
  * 
@@ -45,11 +46,30 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
   const [withoutHourClass, setWithoutHourClass] = React.useState("");
   const formattedPhone = formatPhoneNumber(mainPhone);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [isShow, setIsShow] = React.useState(false);
   React.useEffect(() => {
     setTime(result.rawData);
     setTimeZone(result.rawData.timezone);
     if (!result.rawData) {
       setWithoutHourClass("withoutHours");
+    }
+    var array: any = [];
+    const date = new Date();
+    let Day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${year}-${month}-${Day}`;
+    result.rawData?.hours?.holidayHours &&
+    result.rawData?.hours?.holidayHours.map((i: any) => {
+      let d1 = new Date(`${currentDate}`);
+      let d2 = new Date(`${i.date}`);
+      if (d2.getTime() >= d1.getTime()) {
+        array.push(i);
+      }
+    });
+
+    if (array.length > 0) {
+      setIsShow(true);
     }
     // getCurrentLocationLatLng();
   });
@@ -154,6 +174,9 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
   /**
    * LocationCard component which returns the HTML of Locator Page Listing.
    */
+
+console.log("premsaini",hours);
+
   return (
     <div
       className={`location result-list-inner-${result.index} result onhighLight`}
@@ -196,6 +219,60 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
           </a>}
 
                 <div className={timeStatus + " daylist"}>
+
+
+                {hours?.holidayHours && isShow && !hours?.reopenDate && (
+                              <>
+                                <button
+                                  className="current-location hide-mob link-line-text holidayHoursButton"
+                                  onClick={openModal}
+                                >
+                                  Holiday Hours
+                                </button>
+                              </>
+                            )}
+                            <Modal
+                              onRequestClose={handleCloseModal}
+                              shouldCloseOnOverlayClick={true}
+                              isOpen={modalIsOpen}
+                              style={customStyles}
+                            >
+                              <a
+                                onClick={closeModal}
+                                type="button"
+                                id="closeButton"
+                                data-modal-toggle="allergens-pdf"
+                                className="closeButton bg-closeIcon bg-no-repeat bg-center w-7 h-7 bg-[length:48px]"
+                              >
+                                <svg
+                                  xmlns="http:www.w3.org/2000/svg"
+                                  width="20.953"
+                                  height="20.953"
+                                  viewBox="0 0 20.953 20.953"
+                                >
+                                  <path
+                                    id="Icon_ionic-md-close"
+                                    data-name="Icon ionic-md-close"
+                                    d="M28.477,9.619l-2.1-2.1L18,15.9,9.619,7.523l-2.1,2.1L15.9,18,7.523,26.381l2.1,2.1L18,20.1l8.381,8.381,2.1-2.1L20.1,18Z"
+                                    transform="translate(-7.523 -7.523)"
+                                    fill="#B1B1B1"
+                                  />
+                                </svg>
+                              </a>
+
+                              <h3 className="holiday-title">
+                                Holiday Hours Calendar
+                              </h3>
+                              <div className="pop-up-holyhrs heading">
+                                <div>Date</div>
+
+                                <div>Day</div>
+                                <div> Opening Hours</div>
+                              </div>
+
+                              <Holidayhour hours={hours?.holidayHours} />
+                            </Modal>
+
                   <Hours hours={hours ? hours : {}} 
                    timezone={timezone ? timezone : {}}/>
                 </div>
@@ -236,7 +313,7 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
 
       <div className="pharmacy-serv onhighLight">
         <a onClick={closeModal}></a>
-        <Modal
+        {/* <Modal
           onRequestClose={handleCloseModal}
           shouldCloseOnOverlayClick={true}
           isOpen={modalIsOpen}
@@ -256,7 +333,7 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
             pharmacyServices={c_pharmacyServicesTitle}
             service={c_pharmacyServices}
           />
-        </Modal>
+        </Modal> */}
       </div>
 
       <div className="buttons">

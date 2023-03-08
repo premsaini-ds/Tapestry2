@@ -56,7 +56,7 @@ type UnwrappedGoogleMapsProps = Omit<GoogleMapsProps, "apiKey" | "locale">;
 let mapMarkerClusterer: { clearMarkers: () => void } | null = null;
 
 const builtInCssClasses: Readonly<GoogleMapsCssClasses> = {
-  googleMapsContainer: "w-full  h-[80vh] md:h-[calc(100vh_-_0px)] top-0 z-[99]",
+  googleMapsContainer: "w-full  h-[80vh] md:h-[calc(85vh_-_0px)] top-0 z-[99]",
 };
 
 /**
@@ -298,7 +298,7 @@ function UnwrappedGoogleMaps({
       );
     } else if (markerPins.current.length > 0 && map && check && hover) {
       // console.log('enter')
-      if(markerPins.current.length > 50){
+      if(markerPins.current.length > 4){
         bounds.extend(location);
         setZoomLevel(6);
       }
