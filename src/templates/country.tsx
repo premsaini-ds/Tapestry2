@@ -60,7 +60,7 @@ export const config: TemplateConfig = {
       "dm_directoryParents.name",
       "dm_directoryParents.slug",
       "dm_directoryParents.meta.entityType",
-      "c_topHeading",
+      // "c_topHeading",
     ],
     localization: {
       locales: ["en"],
@@ -415,7 +415,7 @@ const Country: Template<TemplateRenderProps> = ({
         ></BreadCrumbs>
 
       <div className="hero">
-        <img className="heroBanner" src={hero} alt="" />
+        <img className="heroBanner" src={_site?.c_dMPagesBanner?.url ? _site?.c_dMPagesBanner?.url : hero} alt="" />
         <div className="hero-content">
           <h1 className="small-heading"><strong> All Regions of {name}{" "}</strong></h1>
         </div>
@@ -426,7 +426,7 @@ const Country: Template<TemplateRenderProps> = ({
           <ul className="region-list">
             {childrenDivs}
           </ul>
-          {ce_cities.length > 0 ? (<><h2 className="sec-title text-center mt-5">{c_topHeading ? c_topHeading : "Well Pharmacy in the cities of "+name}</h2><ul className="city-list region-list"> {citiesList}</ul></>) : ""}
+          {/* {ce_cities.length > 0 ? (<><h2 className="sec-title text-center mt-5">{c_topHeading ? c_topHeading : "Well Pharmacy in the cities of "+name}</h2><ul className="city-list region-list"> {citiesList}</ul></>) : ""} */}
         </div>
       </div>
 

@@ -37,7 +37,7 @@ export const config: TemplateConfig = {
       "uid",
       "meta",
       "name",
-      "c_addressRegionDisplayName",
+      // "c_addressRegionDisplayName",
       "slug",
       "dm_directoryParents.id",
       "dm_directoryParents.name",
@@ -286,7 +286,7 @@ const City: Template<TemplateRenderProps> = ({
     name,
     _site,
     description,
-    c_addressRegionDisplayName,
+    // c_addressRegionDisplayName,
     dm_directoryParents,
     dm_directoryChildren,
     yextDisplayCoordinate,
@@ -423,7 +423,7 @@ const City: Template<TemplateRenderProps> = ({
         ></BreadCrumbs>
 
       <div className="hero">
-        <img className="heroBanner" src={hero} alt="" />
+        <img className="heroBanner" src={_site?.c_dMPagesBanner?.url ? _site?.c_dMPagesBanner?.url : hero} alt="" />
         <div className="hero-content">
           <h1 className="small-heading">
             <strong>

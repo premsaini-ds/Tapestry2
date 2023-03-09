@@ -250,6 +250,7 @@ export interface ComplexVideo {
 }
 
 export interface Location {
+  prop: any;
 	accessHours?: Hours,
 	blackOwnedBusiness?: boolean,
 	brunchHours?: Hours,

@@ -352,7 +352,7 @@ const State: Template<TemplateRenderProps> = ({
         ></BreadCrumbs>
 
       <div className="hero">
-        <img className="heroBanner" src={hero} alt="" />
+        <img className="heroBanner" src={_site?.c_dMPagesBanner?.url ? _site?.c_dMPagesBanner?.url : hero} alt="" />
         <div className="hero-content">
           <h1 className="small-heading"><strong> Cities in {name} , {document.dm_directoryParents[1].name} {" "}</strong></h1>
         </div>
