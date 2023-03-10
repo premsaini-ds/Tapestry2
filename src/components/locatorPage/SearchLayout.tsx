@@ -64,7 +64,8 @@ const SearchLayout = (props:any): JSX.Element => {
     }, 3100);
   };
 
-  let userMyLocationBlockMessage = props.userMyLocationBlockMessage;
+  // let userMyLocationBlockMessage = props.userMyLocationBlockMessage;
+  let userMyLocationBlockMessage = "Please Allow Your Location";
   let NoLocationsAvailable= props.NoLocationsAvailable;
 
 

@@ -1530,7 +1530,7 @@ button.w-full.flex.justify-between.items-center.mb-4 div {
   margin-top: 0px;
   height: auto;
   z-index: 99999;
-  visibility: visible;
+  visibility: visible !important;
  
 }
 }
@@ -1664,10 +1664,9 @@ button.w-full.flex.justify-between.items-center.mb-4 div {
   position: absolute;
   left: 0;
   right: 0;
-  margin-top: 0;
-  height: 0;
-  visibility: hidden;
-  z-index: -1;
+  margin-top: 0px;
+  height: auto;
+  z-index: 99999;
 }
 .sitenav #sp-search li h5 {
   width: 25%;

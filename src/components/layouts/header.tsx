@@ -21,7 +21,21 @@ const Header = (props: any) => {
     document.getElementById("body").classList.toggle("menu-opened");
   };
 
+
+  const myFunction = (x: any) => {               // function to hide and show search section after click on search icon on header
+    x = document.getElementById("sp-search");
+    if (x.style.visibility === "visible") {
+      x.style.visibility = "hidden";
+     
+    } else {
+       x.style.visibility = "visible";
+     
+    }
+  }
+
   
+
+
   return (
       <header className="site-header">
         <div className="container-lg">
@@ -63,7 +77,7 @@ const Header = (props: any) => {
                 <span>{findPharmacy?.label}</span>
               </a> */}
 
-              <a href="javascript:;" className="">
+              <a href="javascript:;" className="" onClick={myFunction} >
                 {svgIcons.searchicon}
                 <span>{findPharmacy?.label}</span>
               </a>
