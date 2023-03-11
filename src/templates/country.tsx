@@ -17,6 +17,7 @@ import {
   GetHeadConfig,
   HeadConfig,
 } from "@yext/pages";
+import PhotoGallery from "../components/commons/PhotoGallery";
 var currentUrl = "";
 export const config: TemplateConfig = {
   stream: {
@@ -429,7 +430,7 @@ const Country: Template<TemplateRenderProps> = ({
           {/* {ce_cities.length > 0 ? (<><h2 className="sec-title text-center mt-5">{c_topHeading ? c_topHeading : "Well Pharmacy in the cities of "+name}</h2><ul className="city-list region-list"> {citiesList}</ul></>) : ""} */}
         </div>
       </div>
-
+      <PhotoGallery GalleryPhoto={_site?.c_dMLocatorGallery}/>
       <Footer
         footerLogo={_site.c_footerLogo}
         footerLinks={_site.c_footerLinks}

@@ -25,7 +25,8 @@
   "c_cookieHeading",
   "c_cookiePolicyDescription",
   "c_aboutLocatorContent",
-  "c_dMPagesBanner"
+  "c_dMPagesBanner",
+  "c_dMLocatorGallery"
   ],
   "localization": {
     "locales": ["en"],

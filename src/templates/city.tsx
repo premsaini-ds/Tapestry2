@@ -24,6 +24,7 @@ import {
 } from "@yext/pages";
 import { svgIcons } from "../svg icons/svgIcon";
 import Phone from "../components/commons/phone";
+import PhotoGallery from "../components/commons/PhotoGallery";
 
 export const config: TemplateConfig = {
   stream: {
@@ -442,7 +443,7 @@ const City: Template<TemplateRenderProps> = ({
           <ul className="city-list region-list">{childrenDivs}</ul>
         </div>
       </div>
-
+      <PhotoGallery GalleryPhoto={_site?.c_dMLocatorGallery}/>
       <Footer
         footerLogo={_site.c_footerLogo}
         footerLinks={_site.c_footerLinks}

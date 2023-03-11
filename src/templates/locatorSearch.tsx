@@ -32,6 +32,7 @@ import { BaseUrl } from "../config/globalConfig";
 import { JsonLd } from "react-schemaorg";
 import Footer from "../components/layouts/footer";
 import AboutLocator from "../components/locatorPage/aboutlocator";
+import PhotoGallery from "../components/commons/PhotoGallery";
 
 export const config: TemplateConfig = {
   stream: {
@@ -245,6 +246,8 @@ const locatorSearch: Template<TemplateRenderProps> = ({
     disableDefaultUI: true,
   };
 
+console.log("testconsole",_site);
+
 
   return (
     <>
@@ -298,6 +301,7 @@ const locatorSearch: Template<TemplateRenderProps> = ({
               NoLocationsAvailable={undefined}
             />
           </SearchHeadlessProvider>
+          <PhotoGallery GalleryPhoto={_site?.c_dMLocatorGallery}/>
           <Footer
             footerLogo={_site.c_footerLogo}
             footerLinks={_site.c_footerLinks}

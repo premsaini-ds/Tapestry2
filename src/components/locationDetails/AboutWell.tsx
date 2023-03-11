@@ -9,7 +9,31 @@ const About = (props: AboutSection) => {
            storeDescriptionTitle,
   } = props;
 
-console.log(storeDescriptionTitle);
+
+
+
+  var buttonText = "Show More";
+  const myFunction = (x: any , y: any) => {         // function to hide and show search section after click on search icon on header
+
+    x = document.getElementById("hide-show");
+    y = document.getElementById("hide");
+  
+    if (x.style.height === "140px") {
+      x.style.height = "57px";
+      buttonText = "Show More";
+      x.style.transitionDuration = "0.6s";
+    } else {
+      x.style.height = "140px";
+      buttonText = "Hide";
+      x.style.transitionDuration = "0.6s";
+    }
+    // document.getElementById("hide-show").classList.toggle('open');
+
+    y.innerText = '';
+    y.innerHTML += buttonText;
+ }
+
+
 
   return (
     <>
@@ -22,7 +46,8 @@ console.log(storeDescriptionTitle);
                   {storeDescriptionTitle.title}
                 </h2>     
                   <div className="leading-7 text-base text-gray-700 about-content" >
-                      {storeDescriptionTitle.description}
+                     <p id="hide-show">{storeDescriptionTitle.description}</p>
+                      <a href="javascript:;" id="hide" style={{color:"green"}} onClick={myFunction}>Show More</a>
                   </div>
               </div>
             </div>

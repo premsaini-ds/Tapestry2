@@ -175,7 +175,6 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
    * LocationCard component which returns the HTML of Locator Page Listing.
    */
 
-console.log("premsaini",hours);
 
   return (
     <div

@@ -16,6 +16,7 @@ import {
   GetHeadConfig,
   HeadConfig,
 } from "@yext/pages";
+import PhotoGallery from "../components/commons/PhotoGallery";
 
 var currentUrl = "";
 
@@ -365,6 +366,7 @@ const State: Template<TemplateRenderProps> = ({
 
         </div>
       </div>
+      <PhotoGallery GalleryPhoto={_site?.c_dMLocatorGallery}/>
       <Footer
        footerLogo={_site.c_footerLogo}
        footerLinks={_site.c_footerLinks}
