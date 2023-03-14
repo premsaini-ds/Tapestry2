@@ -180,11 +180,30 @@ export default function InputDropdown({
 
   function handleDocumentKeyUp(evt: KeyboardEvent<HTMLInputElement>) {         
     if(evt.key=="Enter" && latestUserInput !=""){
-      searchActions.setOffset(0);    
-       dispatch({ type: 'HideSections' });  
-      // document.querySelector('.z-10').reclassList.add('hidden');
-      getCoordinates(latestUserInput)
-      handleInputValue();  
+
+      searchActions.setOffset(0);  
+      dispatch({ type: 'HideSections' });  
+    // document.querySelector('.z-10').reclassList.add('hidden');
+    getCoordinates(latestUserInput)
+    handleInputValue();  
+    // alert(childrenWithProps);
+
+        let changeval ="";
+      if(children[0].props.options[0].value !=""){
+              changeval = children[0].props.options[0].value;
+              onInputChange(changeval);
+              searchActions.setOffset(0);  
+              dispatch({ type: 'HideSections' });  
+            // document.querySelector('.z-10').reclassList.add('hidden');
+            getCoordinates(changeval);
+            handleInputValue();  
+      }
+      
+
+       
+
+     
+      
     }
 
   //  / document.querySelector('.z-10').classList.add('hidden');
@@ -252,6 +271,7 @@ export default function InputDropdown({
       && !onlyAllowDropdownOptionSubmissions
     ) {
       setLatestUserInput(inputValue);
+   
      //  onSubmit(inputValue);
      //dispatch({ type: 'HideSections' });
     }
