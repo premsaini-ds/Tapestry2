@@ -140,6 +140,7 @@ if(Search.length)
     getCoordinates(Search);
 }
   }
+
   const handleInputValue = () => {
     setInputValue('');
   }
@@ -161,6 +162,13 @@ if(Search.length)
     if (isLoading) {
       $('body').addClass("overflow-hidden")
     }
+
+    if(localStorage.getItem('headersearch')){
+      setInputValue('');
+      getCoordinates(localStorage.getItem('headersearch')); 
+      localStorage.removeItem('headersearch');
+  }
+
   }, []);
 
 
@@ -230,13 +238,15 @@ if(Search.length)
                       </div>
                       {/* Search Input by name,address  */}
                       <div className="search-form">
+                        <button>click here</button>
                         <FilterSearch
                           customCssClasses={{
                             filterSearchContainer: "mb-0",
                             inputElement: "FilterSearchInput",
                             optionsContainer: "options"
                           }}
-                          inputvalue={inputvalue}
+                          
+                          inputvalue = { inputvalue ? inputvalue : inputvalue}
                           searchOnSelect={false}
                           searchFields={[
                             {
@@ -276,6 +286,7 @@ if(Search.length)
                           aria-label="Search bar icon"
                           id="search-location-button"
                           onClick={Findinput}
+
                         >
                           {svgIcons.Searchbaricon}
                         </button>
@@ -369,4 +380,6 @@ if(Search.length)
     </>
   );
 };
+
+
 export default SearchLayout;

@@ -2,6 +2,7 @@ import * as React from "react";
 import { BaseUrl } from "../../config/globalConfig";
 import logo from "../../images/Logo.png";
 import { svgIcons } from "../../svg icons/svgIcon";
+import { useRef, useState,useEffect } from "react";
 
 type props = {
   wellLogo: any;
@@ -20,6 +21,17 @@ const Header = (props: any) => {
   const toggle = () => {
     document.getElementById("body").classList.toggle("menu-opened");
   };
+
+  const inputRef = useRef(null);
+  const [updated, setUpdated] = useState('');
+  const handleClick = () => {
+    // setUpdated(inputRef.current.value);
+
+    localStorage.setItem('headersearch', inputRef.current.value);
+  };
+
+
+
 
 
   const myFunction = (x: any) => {               // function to hide and show search section after click on search icon on header
@@ -88,8 +100,8 @@ const Header = (props: any) => {
                     <h5>Search</h5>
                       <form role="search" method="get" className="search-form" action={BaseUrl}>
                         <label className="screen-reader-text">Search for:</label>
-                        <input type="search" id="search-form-1" className="search-field" placeholder="Enter keywords"  name="s"/>
-                        <input type="submit" className="search-submit" value="Go"/>
+                        <input ref={inputRef} type="search" id="search-form-1"  className="search-field" placeholder="Enter keywords" name="message" />
+                        <input type="submit" onClick={handleClick} className="search-submit" value="Go"/>
                       </form>
                   </li>
                 </ul>

@@ -61,7 +61,16 @@ export default function FilterSearch ({
   });
  
   useEffect(()=>{
-    setInput(inputvalue); 
+    
+if(localStorage.getItem('headersearch')){
+      setInput(localStorage.getItem('headersearch')); 
+    
+}else{
+      setInput(inputvalue); 
+}
+handleInputValue();
+
+    
    // console.log(params);    
   },[inputvalue]);
 
