@@ -62,13 +62,25 @@ export default function FilterSearch ({
  
   useEffect(()=>{
     
-if(localStorage.getItem('headersearch')){
-      setInput(localStorage.getItem('headersearch')); 
+    let params = (new URL(window.location.href)).searchParams;
+    let addresssearch = params.get("s");
+    if(addresssearch){
+            setInput(addresssearch); 
+          
+      }else{
+            setInput(addresssearch); 
+      }
+
+
+
     
-}else{
-      setInput(inputvalue); 
-}
-handleInputValue();
+// if(localStorage.getItem('headersearch')){
+//       setInput(localStorage.getItem('headersearch')); 
+    
+// }else{
+//       setInput(inputvalue); 
+// }
+
 
     
    // console.log(params);    

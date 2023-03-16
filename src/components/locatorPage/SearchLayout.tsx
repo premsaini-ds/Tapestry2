@@ -163,11 +163,19 @@ if(Search.length)
       $('body').addClass("overflow-hidden")
     }
 
-    if(localStorage.getItem('headersearch')){
-      setInputValue('');
-      getCoordinates(localStorage.getItem('headersearch')); 
-      localStorage.removeItem('headersearch');
-  }
+
+    let params = (new URL(window.location.href)).searchParams;
+    let addresssearch = params.get("s");
+    setInputValue('');
+    getCoordinates(addresssearch); 
+
+    console.log("pkkkkks",addresssearch);
+
+  //   if(localStorage.getItem('headersearch')){
+  //     setInputValue('');
+  //     getCoordinates(localStorage.getItem('headersearch')); 
+  //     localStorage.removeItem('headersearch');
+  // }
 
   }, []);
 
@@ -238,7 +246,6 @@ if(Search.length)
                       </div>
                       {/* Search Input by name,address  */}
                       <div className="search-form">
-                        <button>click here</button>
                         <FilterSearch
                           customCssClasses={{
                             filterSearchContainer: "mb-0",

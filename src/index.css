@@ -137,7 +137,7 @@ button:focus-visible {
   @apply hidden md:block;
 }
 .mid-nav {
-  @apply flex justify-between  lg:w-[65.375rem];
+  @apply flex justify-between ;
 }
 .mid-nav .menu-item a {
   @apply font-bold text-xl relative after:content-[''] after:absolute after:bottom-0.5 after:border-b after:border-b-primary-btn-bg-color after:transition-all after:duration-500 after:left-0 after:right-full hover:after:right-0;
@@ -1666,7 +1666,7 @@ button.w-full.flex.justify-between.items-center.mb-4 div {
   right: 0;
   margin-top: 0px;
   height: auto;
-  z-index: 99999;
+  z-index: 9;
 }
 .sitenav #sp-search li h5 {
   width: 25%;
@@ -1720,4 +1720,87 @@ button.holidayHoursButton {
 p#hide-show {
   height: 57px;
   overflow: hidden;
+}
+
+.sitenav .sub-menu {
+  display: block!important;
+  padding: 50px 0 30px;
+  background: #fff;
+  border-top: 1px solid #d0d0d1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+}
+
+.sitenav .menu-item:hover > .sub-menu, .sitenav .menu-item:active>.sub-menu, .sitenav .menu-item:focus>.sub-menu {
+  margin-top: 0;
+  height: auto;
+  visibility: visible;
+  z-index: 99999;
+  transition: all .35s ease-in-out;
+  transition-delay: .2s;
+}
+
+
+.sitenav>ul>li>.sub-menu>ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mid-nav.sitenav .sub-menu ul.wrap.sub-mega-menu {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  /* max-width: 1170px; */
+  margin: 0 auto;
+  gap: 16px;
+}
+
+.sitenav .sub-menu li.widget_text {
+  width: 40%;
+  border-right: 1px solid #f0f0f0;
+}
+
+.sitenav .sub-menu li.widget_nav_menu {
+  width: 29%;
+}
+
+
+li.widget.widget_nav_menu ul.menu {
+  line-height: 2;
+}
+
+.mid-nav {
+  gap: 20px;
+}
+/* .menu-item.headerMenumain:hover {
+  background: #014c6b;
+  color: #fff;
+  padding: 10px 15px;
+} */
+
+.sitenav .menu-item:hover>.headerMenu {
+  color: #fff;
+  background: #014c6b;
+  text-decoration: none;
+  transition: color .2s ease-in-out,background .2s ease-in-out;
+    padding: 20px 17px;
+    display: block;
+}
+.sitenav .menu-item .headerMenu {
+    padding: 20px 17px;
+    display: block;
+}
+
+
+.sitenav .menu-item:hover>.headerMenu:before {
+  position: absolute;
+  top: 68px;
+  z-index: 999999999999999;
+  display: inline-block;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #014c6b;
+  /* border-left: 15px solid transparent; */
+  content: '';
 }
