@@ -573,6 +573,7 @@ console.log(c_aboutGuide);
           wellLogo={_site.c_wellLogo}
           headerLinks={_site.c_headerLinks}
           findPharmacy={_site.c_findAPharmacy}
+          _sitedata={_site}
         />
 
          <BreadCrumbs

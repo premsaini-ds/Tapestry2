@@ -169,7 +169,6 @@ if(Search.length)
     setInputValue('');
     getCoordinates(addresssearch); 
 
-    console.log("pkkkkks",addresssearch);
 
   //   if(localStorage.getItem('headersearch')){
   //     setInputValue('');
