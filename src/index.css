@@ -1740,6 +1740,7 @@ p#hide-show {
   z-index: 99999;
   transition: all .35s ease-in-out;
   transition-delay: .2s;
+  box-shadow: 0px 2px 17px #014c6b;
 }
 
 
@@ -1763,12 +1764,12 @@ p#hide-show {
 }
 
 .sitenav .sub-menu li.widget_nav_menu {
-  width: 29%;
+  width: 24%;
 }
 
 
 li.widget.widget_nav_menu ul.menu {
-  line-height: 2;
+  line-height: 2.3;
 }
 
 .mid-nav {
@@ -1787,6 +1788,7 @@ li.widget.widget_nav_menu ul.menu {
   transition: color .2s ease-in-out,background .2s ease-in-out;
     padding: 20px 17px;
     display: block;
+    margin-bottom: 15px;
 }
 .sitenav .menu-item .headerMenu {
     padding: 20px 17px;
@@ -1796,7 +1798,7 @@ li.widget.widget_nav_menu ul.menu {
 
 .sitenav .menu-item:hover>.headerMenu:before {
   position: absolute;
-  top: 68px;
+  top: 60px;
   z-index: 999999999999999;
   display: inline-block;
   border-right: 15px solid transparent;
