@@ -1793,16 +1793,16 @@ li.widget.widget_nav_menu ul.menu {
 .sitenav .menu-item .headerMenu {
     padding: 20px 17px;
     display: block;
+    margin-bottom: 15px;
 }
 
 
 .sitenav .menu-item:hover>.headerMenu:before {
   position: absolute;
-  top: 60px;
+    top: 68px;
   z-index: 999999999999999;
   display: inline-block;
-  border-right: 15px solid transparent;
+  border-right: 16px solid transparent;
   border-top: 15px solid #014c6b;
-  /* border-left: 15px solid transparent; */
-  content: '';
+  content: "";
 }

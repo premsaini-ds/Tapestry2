@@ -61,7 +61,6 @@ export default function FilterSearch ({
   });
  
   useEffect(()=>{
-    
     let params = (new URL(window.location.href)).searchParams;
     let addresssearch = params.get("s");
     if(addresssearch){
@@ -70,22 +69,11 @@ export default function FilterSearch ({
       }else{
             setInput(addresssearch); 
       }
+       
+      // var alteredURL = removeParam("color_id", params);
+console.log("params",params);
 
-
-
-    
-// if(localStorage.getItem('headersearch')){
-//       setInput(localStorage.getItem('headersearch')); 
-    
-// }else{
-//       setInput(inputvalue); 
-// }
-
-
-    
-   // console.log(params);    
-  },[inputvalue]);
-
+   },[inputvalue]);
  
 
   const cssClasses = useComposedCssClasses(builtInCssClasses, customCssClasses, cssCompositionMethod);
