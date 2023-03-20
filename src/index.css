@@ -1799,7 +1799,7 @@ li.widget.widget_nav_menu ul.menu {
 
 .sitenav .menu-item:hover>.headerMenu:before {
   position: absolute;
-    top: 70px; 
+    top: 60px; 
   z-index: 999999999999999;
   display: inline-block;
   border-right: 16px solid transparent;
