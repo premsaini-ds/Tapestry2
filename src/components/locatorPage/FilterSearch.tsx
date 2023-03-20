@@ -135,7 +135,7 @@ export default function FilterSearch ({
       <InputDropdown
         inputValue={input}
         params={params}
-        placeholder='Eg. EC2A 1RS'
+        placeholder='Eg. EC2A 1RSssss'
         //screenReaderInstructionsId={SCREENREADER_INSTRUCTIONS}
         screenReaderText={screenReaderText}
         onlyAllowDropdownOptionSubmissions={true}
