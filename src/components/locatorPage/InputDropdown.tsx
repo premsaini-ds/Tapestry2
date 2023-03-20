@@ -198,12 +198,6 @@ export default function InputDropdown({
             getCoordinates(changeval);
             handleInputValue();  
       }
-      
-
-       
-
-     
-      
     }
 
   //  / document.querySelector('.z-10').classList.add('hidden');

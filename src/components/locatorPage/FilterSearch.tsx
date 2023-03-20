@@ -66,12 +66,10 @@ export default function FilterSearch ({
     if(addresssearch){
             setInput(addresssearch); 
           
-      }else{
-            setInput(addresssearch); 
       }
        
       // var alteredURL = removeParam("color_id", params);
-console.log("params",params);
+// console.log("params",params);
 
    },[inputvalue]);
  

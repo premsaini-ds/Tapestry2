@@ -168,7 +168,7 @@ if(Search.length)
     let addresssearch = params.get("s");
     setInputValue('');
     getCoordinates(addresssearch); 
-
+ 
 
   //   if(localStorage.getItem('headersearch')){
   //     setInputValue('');
