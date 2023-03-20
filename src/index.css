@@ -1799,10 +1799,12 @@ li.widget.widget_nav_menu ul.menu {
 
 .sitenav .menu-item:hover>.headerMenu:before {
   position: absolute;
-    top: 60px; 
+  top: 43px;
   z-index: 999999999999999;
   display: inline-block;
-  border-right: 16px solid transparent;
-  border-top: 15px solid #014c6b;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #014c6b;
   content: "";
+  transform: rotate(225deg) translateY(-50%);
+  left: 50%;
 }

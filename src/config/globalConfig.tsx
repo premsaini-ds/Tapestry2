@@ -6,7 +6,7 @@ export const liveAPIKey = "d86264da730b7b8ea931a8414014f8cc";
 export const googleMapsApiKey = "AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18";
 // export const savedFilterId = "54589289";
 export const entityTypes = "location";
-export const BaseUrl = "https://main-foolishly--combative--urchin-sbx-pgsdemo-com.sbx.preview.pagescdn.com/";
+export const BaseUrl = "https://main-right--sacred--sponge-sbx-pgsdemo-com.sbx.preview.pagescdn.com/";
 //export const BaseUrl = "https://staging-fondly--nutty--goose-pgsdemo-com.preview.pagescdn.com";
 export const googleMapsConfig =  {
     centerLatitude: 51.507351,
