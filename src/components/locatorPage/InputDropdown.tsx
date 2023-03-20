@@ -198,6 +198,12 @@ export default function InputDropdown({
             getCoordinates(changeval);
             handleInputValue();  
       }
+      
+
+       
+
+     
+      
     }
 
   //  / document.querySelector('.z-10').classList.add('hidden');
@@ -321,10 +327,10 @@ export default function InputDropdown({
       
       {shouldDisplayDropdown && Children.count(children) !== 0 &&
         <>
-          <div className={cssClasses.divider}></div>
-          <div className={cssClasses.dropdownContainer} ref={dropdownRef}>
-            {childrenWithProps}
-          </div>
+            <div className={cssClasses.divider}></div>
+            <div className={cssClasses.dropdownContainer} ref={dropdownRef}>
+                {childrenWithProps}
+            </div>
         </>
       }
     </div>

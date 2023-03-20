@@ -72,7 +72,6 @@ const SearchLayout = (props:any): JSX.Element => {
   const onClick = () => {
   setZoomlevel(3)
     setInputValue('');
-  
     if (navigator.geolocation) {
       const error = (error: any) => {
         if (error.code == 1) {
@@ -88,7 +87,7 @@ const SearchLayout = (props:any): JSX.Element => {
         (response:any) => {
           if (response.results[0]) {           
             setInputValue(response.results[0].formatted_address);      
-            document.getElementsByClassName('FilterSearchInput')[0].setAttribute("value", response.results[0].formatted_address);            
+    document.getElementsByClassName('FilterSearchInput')[0].setAttribute("value", response.results[0].formatted_address);            
             setallowLocation('');             
             searchActions.setUserLocation({
               latitude: position.coords.latitude,
@@ -163,19 +162,11 @@ if(Search.length)
       $('body').addClass("overflow-hidden")
     }
 
-
     let params = (new URL(window.location.href)).searchParams;
     let addresssearch = params.get("s");
     setInputValue('');
     getCoordinates(addresssearch); 
- 
-
-  //   if(localStorage.getItem('headersearch')){
-  //     setInputValue('');
-  //     getCoordinates(localStorage.getItem('headersearch')); 
-  //     localStorage.removeItem('headersearch');
-  // }
-
+    
   }, []);
 
 

@@ -2,7 +2,7 @@ export const limit = 5;
 export const radius = 500;
 export const defaultQuery = "";
 export const baseApiUrl = "https://liveapi-sandbox.yext.com/v2/accounts/me";
-export const liveAPIKey = "87476fe6f6e0b32b52ec673472ec246e";
+export const liveAPIKey = "d86264da730b7b8ea931a8414014f8cc";
 export const googleMapsApiKey = "AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18";
 // export const savedFilterId = "54589289";
 export const entityTypes = "location";
@@ -50,7 +50,7 @@ export const conversionDetailsDirection = {
 export const AnswerExperienceConfig =  {
     experienceKey: "tapestry",
     locale:"en",
-    apiKey: "2d7c79f7c0257eb1d29f626786f4a2c1",
+    apiKey: "3f528a6804af2198452d66b60475e62f",
     verticalKey: "locations",
     experienceVersion: "STAGING",
     sessionTrackingEnabled: true,

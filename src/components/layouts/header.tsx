@@ -22,17 +22,6 @@ const Header = (props: any) => {
     document.getElementById("body").classList.toggle("menu-opened");
   };
 
-  // const inputRef = useRef(null);
-  // const [updated, setUpdated] = useState("");
-  // const handleClick = () => {
-  //   // setUpdated(inputRef.current.value);
-
-  //   localStorage.setItem("headersearch", inputRef.current.value);
-
-  // };
-
-  // c_headerMenus
-
   const myFunction = (x: any) => {
     // function to hide and show search section after click on search icon on header
     x = document.getElementById("sp-search");

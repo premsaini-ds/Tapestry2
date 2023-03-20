@@ -59,18 +59,17 @@ export default function FilterSearch ({
   const searchParamFields = searchFields.map((searchField) => {
     return { ...searchField, fetchEntities: false }
   });
+
  
   useEffect(()=>{
     let params = (new URL(window.location.href)).searchParams;
     let addresssearch = params.get("s");
     if(addresssearch){
             setInput(addresssearch); 
-          
-      }
-       
-      // var alteredURL = removeParam("color_id", params);
-// console.log("params",params);
 
+      }else{
+               setInput(inputvalue); 
+      }
    },[inputvalue]);
  
 
