@@ -243,29 +243,29 @@ if(Search.length)
                             optionsContainer: "options"
                           }}
                           
-                          inputvalue = { inputvalue ? inputvalue : inputvalue}
+                          inputvalue = { inputvalue}
                           searchOnSelect={false}
                           searchFields={[
                             {
                               entityType: "location",
                               fieldApiName: "name",
                             },
-                            // {
-                            //   entityType: "location",
-                            //   fieldApiName: "address.line1",
-                            // },
-                            // {
-                            //   entityType: "location",
-                            //   fieldApiName: "address.line2",
-                            // },
-                            // {
-                            //   entityType: "location",
-                            //   fieldApiName: "address.city",
-                            // },
-                            // {
-                            //   entityType: "location",
-                            //   fieldApiName: "address.region",
-                            // },
+                            {
+                              entityType: "location",
+                              fieldApiName: "address.line1",
+                            },
+                            {
+                              entityType: "location",
+                              fieldApiName: "address.line2",
+                            },
+                            {
+                              entityType: "location",
+                              fieldApiName : "address.city",
+                            },
+                            {
+                              entityType: "location",
+                              fieldApiName: "address.region",
+                            },
                           ]}
                           handleInputValue={handleInputValue}  
                           handleSetUserShareLocation={handleSetUserShareLocation}
