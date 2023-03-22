@@ -1811,28 +1811,18 @@ li.widget.widget_nav_menu ul.menu {
 
 
 
+/*Light box gallery css*/
 
-
-
-
-
-
-
-
-
-
-
-
-.column {
+.columnlightbox {
   float: left;
   width: 25%;
 }
 
 /* The Modal (background) */
-.modal {
+.modallightbox {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 99;
   padding-top: 100px;
   left: 0;
   top: 0;
@@ -1843,7 +1833,7 @@ li.widget.widget_nav_menu ul.menu {
 }
 
 /* Modal Content */
-.modal-content {
+.modal-content-box {
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -1853,7 +1843,7 @@ li.widget.widget_nav_menu ul.menu {
 }
 
 /* The Close Button */
-.close {
+.closelightbox {
   color: white;
   position: absolute;
   top: 10px;
@@ -1862,24 +1852,25 @@ li.widget.widget_nav_menu ul.menu {
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.closelightbox:hover,
+.closelightbox:focus {
   color: #999;
   text-decoration: none;
   cursor: pointer;
 }
 
-.mySlides {
+.mySlidesbox {
   display: none;
+  background-color: black;
 }
 
-.cursor {
+.cursorlightbimg {
   cursor: pointer;
 }
 
 /* Next & previous buttons */
-.prev,
-.next {
+.prevbox,
+.nextbox {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -1896,19 +1887,19 @@ li.widget.widget_nav_menu ul.menu {
 }
 
 /* Position the "next button" to the right */
-.next {
+.nextbox {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
+.prevbox:hover,
+.nextbox:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Number text (1/3 etc) */
-.numbertext {
+.numbertextlightbox {
   color: #f2f2f2;
   font-size: 12px;
   padding: 8px 12px;
@@ -1916,30 +1907,50 @@ li.widget.widget_nav_menu ul.menu {
   top: 0;
 }
 
-img {
+.lightboximg {
   margin-bottom: -4px;
+  margin: 1px auto;
 }
 
-.caption-container {
+.caption-container-light {
   text-align: center;
   background-color: black;
   padding: 2px 16px;
   color: white;
 }
 
-.demo {
+.demolightbox {
   opacity: 0.6;
 }
 
-.active,
-.demo:hover {
+.activebox,
+.demolightbox:hover {
   opacity: 1;
 }
 
-img.hover-shadow {
+.lightboximg.hover-shadowbox {
   transition: 0.3s;
 }
 
-.hover-shadow:hover {
+.hover-shadowbox:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.mySlidesbox .lightboximg {
+  height: 500px;
+}
+
+.columnlightbox {
+  width: 15.9%;
+}
+.lightboxbottom {
+  display: flex;
+  gap: 11px;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: black;
+}
+img.demolightbox.cursorlightbimg.lightboximg {
+  height: 120px;
 }
