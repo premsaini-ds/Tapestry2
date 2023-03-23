@@ -14,6 +14,8 @@ type props = {
 const Header = (props: any) => {
   const { wellLogo, headerLinks, findPharmacy, _sitedata ,languagetr} = props;
 
+  console.log("transll",languagetr);
+
   React.useEffect(() => {
     document.body.setAttribute("id", "body");
   });
@@ -202,7 +204,7 @@ const Header = (props: any) => {
               );
             })}
           </div>
-          {languagetr? 
+                     {languagetr? 
                                 <div className="lg-filter">
                                          <select onChange={submitlg}>
                                             {languagetr == "fr" ?
