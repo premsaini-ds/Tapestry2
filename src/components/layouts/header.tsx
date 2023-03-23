@@ -12,7 +12,7 @@ type props = {
 };
 
 const Header = (props: any) => {
-  const { wellLogo, headerLinks, findPharmacy, _sitedata } = props;
+  const { wellLogo, headerLinks, findPharmacy, _sitedata ,languagetr} = props;
 
   React.useEffect(() => {
     document.body.setAttribute("id", "body");
@@ -31,6 +31,22 @@ const Header = (props: any) => {
       x.style.visibility = "visible";
     }
   };
+
+
+  const [query, setQuery] = useState('')
+  const submitlg =(e:any) => {
+          setQuery(e.target.value)
+          // console.log("premconsole",e.target.value);
+          // let params = new URL(window.location.href);
+          // let addresssearch = params.get("s");
+        //  let repurl = params.searchParams.set('locale', e.target.value);
+        //   alert(params);
+          const urlParams = new URLSearchParams(window.location.search);
+          urlParams.set('locale', e.target.value);
+          window.location.search = urlParams;
+  }
+
+
 
   return (
     <header className="site-header">
@@ -52,6 +68,7 @@ const Header = (props: any) => {
             </a>
           </div>
           <div className="mid-nav sitenav">
+
             {_sitedata?.c_headerMenus?.map((e: any) => {
               return (
                 <>
@@ -181,14 +198,29 @@ const Header = (props: any) => {
                     </div>
                       :""}
                   </div>
-                
                 </>
-                
               );
             })}
           </div>
+          {languagetr? 
+                                <div className="lg-filter">
+                                         <select onChange={submitlg}>
+                                            {languagetr == "fr" ?
+                                              <option selected value="fr">fr</option>
+                                            :
+                                              <option value="fr">fr</option>
+                                            }
+                                          {languagetr == "en" ?
+                                              <option selected value="en">en</option>
+                                            :
+                                              <option value="en">en</option>
+                                            }
+                                          </select>
+                                </div>
+                        :""}
           <div className="sitenav">
             <ul className="menu">
+              
               <li className="header-right-link menu-item-34 search-site menu-item-has-children">
                 {/* <a href={findPharmacy?.link} className="">
                 {svgIcons.searchicon}

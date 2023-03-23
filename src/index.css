@@ -1954,3 +1954,14 @@ li.widget.widget_nav_menu ul.menu {
 img.demolightbox.cursorlightbimg.lightboximg {
   height: 120px;
 }
+
+
+.lg-filter select {
+  height: 28px;
+  width: 52px;
+  border: 1px solid;
+  font-size: 16px;
+  background: #014c6b;
+  color: #fff;
+  padding: 2px;
+}

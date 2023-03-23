@@ -246,7 +246,7 @@ const locatorSearch: Template<TemplateRenderProps> = ({
     disableDefaultUI: true,
   };
 
-console.log("testconsole",_site);
+
 
 
   return (

@@ -153,7 +153,8 @@ export const config: TemplateConfig = {
     
     // The entity language profiles that documents will be generated for.
     localization: {
-      locales: [AnswerExperienceConfig.locale],
+      // locales: [AnswerExperienceConfig.locale],
+      locales: ["en", "fr"],
       primary: false,
     },
   },
@@ -188,7 +189,7 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
       url = `${url}/${i.slug}`
     }
     else if (i.meta.entityType.id == "Tapestry_city"){
-      url = `${url}/${i.slug}/${document.slug.toString()}`
+      url = `${url}/${i.slug}/${document?.slug?.toString()}`
     }
   })
   return url;
@@ -217,7 +218,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
     let slug = slugify(slugString);
     url = `${slug}.html`;
   } else {
-    url = `${document.slug.toString()}.html`;
+    url = `${document?.slug?.toString()}.html`;
   }
 
   let metaDescription =  document.c_metaDescription
@@ -484,7 +485,7 @@ const Location: Template<ExternalApiRenderData> = ({
     let slug = slugify(slugString);
     url = `${slug}.html`;
   } else {
-    url = `${document.slug.toString()}.html`;
+    url = `${document?.slug?.toString()}.html`;
   }
   breadcrumbScheme.push({
     "@type": "ListItem",
@@ -494,7 +495,7 @@ const Location: Template<ExternalApiRenderData> = ({
       name: document.name,
     },
   });
-console.log(c_aboutGuide);
+console.log("translate",document.locale);
   return (
     <>
       <JsonLd<Location>
@@ -502,7 +503,7 @@ console.log(c_aboutGuide);
           "@context": "https://schema.org",
           "@type": "MedicalBusiness",
           name: document?.name,
-          image: `${document.c_wellLogo ? document.c_wellLogo.url : favicon}`,
+          image: `${document?.c_wellLogo ? document?.c_wellLogo?.url : favicon}`,
           "@id": "",
           url: "https://www.well.co.uk/",
           telephone: mainPhone,
@@ -570,10 +571,11 @@ console.log(c_aboutGuide);
         enableTrackingCookie={AnalyticsEnableTrackingCookie}
       >
         <Header
-          wellLogo={_site.c_wellLogo}
-          headerLinks={_site.c_headerLinks}
-          findPharmacy={_site.c_findAPharmacy}
+          wellLogo={_site?.c_wellLogo}
+          headerLinks={_site?.c_headerLinks}
+          findPharmacy={_site?.c_findAPharmacy}
           _sitedata={_site}
+          languagetr={document.locale}
         />
 
          <BreadCrumbs
@@ -719,18 +721,18 @@ console.log(c_aboutGuide);
           </a>
         </div>
         <Footer
-          footerLogo={_site.c_footerLogo}
-          footerLinks={_site.c_footerLinks}
-          footerDescription={_site.c_footerDescription}
-          facebookPageUrl={_site.facebookPageUrl}
-          twitterHandle={_site.twitterHandle}
-          instagramHandle={_site.instagramHandle}
-          linkedInUrl={_site.linkedInUrl}
-          copyrightText={_site.c_copyrightText}
-          footerLogos={_site.c_footerLogos}
-          socialicon={_site.c_socialIcons}
-          cookieHeading={_site.c_cookieHeading}
-          cookiePolicyDescription={_site.c_cookiePolicyDescription}
+          footerLogo={_site?.c_footerLogo}
+          footerLinks={_site?.c_footerLinks}
+          footerDescription={_site?.c_footerDescription}
+          facebookPageUrl={_site?.facebookPageUrl}
+          twitterHandle={_site?.twitterHandle}
+          instagramHandle={_site?.instagramHandle}
+          linkedInUrl={_site?.linkedInUrl}
+          copyrightText={_site?.c_copyrightText}
+          footerLogos={_site?.c_footerLogos}
+          socialicon={_site?.c_socialIcons}
+          cookieHeading={_site?.c_cookieHeading}
+          cookiePolicyDescription={_site?.c_cookiePolicyDescription}
         />
       </AnalyticsProvider>
     </>

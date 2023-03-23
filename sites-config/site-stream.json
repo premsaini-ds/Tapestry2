@@ -30,7 +30,7 @@
   "c_headerMenus"
   ],
   "localization": {
-    "locales": ["en"],
+    "locales": ["en","fr"],
     "primary": false
   }
 }
