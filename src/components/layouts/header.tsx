@@ -38,14 +38,26 @@ const Header = (props: any) => {
   const [query, setQuery] = useState('')
   const submitlg =(e:any) => {
           setQuery(e.target.value)
+          alert(e.target.value);
+          
           // console.log("premconsole",e.target.value);
-          // let params = new URL(window.location.href);
+          let params = new URL(window.location.href);
           // let addresssearch = params.get("s");
         //  let repurl = params.searchParams.set('locale', e.target.value);
         //   alert(params);
           const urlParams = new URLSearchParams(window.location.search);
-          urlParams.set('locale', e.target.value);
-          window.location.search = urlParams;
+          // alert(urlParams);
+          // alert(params);
+
+          // let text = "http://localhost:8000/us/ca/montebello/en/3558406324250383023";
+          //  const myArray = text.split("/", 7);
+
+        document.getElementById("demo").innerHTML = myArray; 
+
+
+          // urlParams.set('locale', e.target.value);
+
+          // window.location.search = urlParams;
   }
 
 
