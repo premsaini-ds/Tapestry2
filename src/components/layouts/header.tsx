@@ -38,7 +38,7 @@ const Header = (props: any) => {
   const [query, setQuery] = useState('')
   const submitlg =(e:any) => {
           setQuery(e.target.value)
-          alert(e.target.value);
+          // alert(e.target.value);
           
           // console.log("premconsole",e.target.value);
           let params = new URL(window.location.href);
@@ -48,18 +48,32 @@ const Header = (props: any) => {
           const urlParams = new URLSearchParams(window.location.search);
           // alert(urlParams);
           // alert(params);
+          let text = "http://localhost:8000/us/ca/montebello/en/3558406324250383023";
 
-          // let text = "http://localhost:8000/us/ca/montebello/en/3558406324250383023";
-          //  const myArray = text.split("/", 7);
 
-        document.getElementById("demo").innerHTML = myArray; 
+     
+
+        var textcode = params.toString();
+        const myArraydd = textcode.split("/");
+
+        // alert();
+
+        const myArray = textcode.split("/", 6);
+        var string = myArray.toString();
+        const myarray2 = string.replace(/,/g, '/');
+
+        // alert(myarray2);
+
+        // document.getElementById("demo").innerHTML = myarray2;
+
+        // document.getElementById("demo").innerHTML = myArray; 
 
 
           // urlParams.set('locale', e.target.value);
 
-          // window.location.search = urlParams;
+          window.location.href = myarray2+'/'+e.target.value+'/'+myArraydd[7];
   }
-
+  
 
 
   return (
