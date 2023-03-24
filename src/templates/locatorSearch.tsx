@@ -70,18 +70,30 @@ export const config: TemplateConfig = {
   },
 };
 
+// var url = "";
+// export const getPath: GetPath<TemplateProps> = ({ document }) => {
+//   if (!document.slug) {
+//     let slugString = document.id + " " + document.name;
+//     let slug = slugify(slugString);
+//     url = `index.html`;
+//   } else {
+//     url = `${document.slug.toString()}.html`;
+//   }
+//   return url;
+// };
+
+
 var url = "";
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
   if (!document.slug) {
     let slugString = document.id + " " + document.name;
     let slug = slugify(slugString);
-    url = `index.html`;
+    url = `${document.meta.locale}/index.html`;
   } else {
-    url = `${document.slug.toString()}.html`;
+    url = `${document.meta.locale}/${document.slug.toString()}.html`;
   }
   return url;
 };
-
 
 
 
