@@ -64,36 +64,24 @@ export const config: TemplateConfig = {
       "c_cookiePolicyDescription"
     ],
     localization: {
-      locales: ["en","fr"],
+      locales: ["en"],
       primary: false,
     },
   },
 };
-
-// var url = "";
-// export const getPath: GetPath<TemplateProps> = ({ document }) => {
-//   if (!document.slug) {
-//     let slugString = document.id + " " + document.name;
-//     let slug = slugify(slugString);
-//     url = `index.html`;
-//   } else {
-//     url = `${document.slug.toString()}.html`;
-//   }
-//   return url;
-// };
-
 
 var url = "";
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
   if (!document.slug) {
     let slugString = document.id + " " + document.name;
     let slug = slugify(slugString);
-    url = `${document.meta.locale}/index.html`;
+    url = `index.html`;
   } else {
-    url = `${document.meta.locale}/${document.slug.toString()}.html`;
+    url = `${document.slug.toString()}.html`;
   }
   return url;
 };
+
 
 
 
@@ -289,7 +277,6 @@ const locatorSearch: Template<TemplateRenderProps> = ({
             headerLinks={_site.c_headerLinks}
             findPharmacy={_site.c_findAPharmacy}
             _sitedata={_site}
-            languagetr={document.locale}
           />
           <LocatorBread />
           
