@@ -416,6 +416,7 @@ const City: Template<TemplateRenderProps> = ({
         headerLinks={_site.c_headerLinks}
         findPharmacy={_site.c_findAPharmacy}
         _sitedata={_site}
+        languagetr={document.locale}
       />
        <BreadCrumbs
           name={name}

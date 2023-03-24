@@ -64,7 +64,7 @@ export const config: TemplateConfig = {
       "c_cookiePolicyDescription"
     ],
     localization: {
-      locales: ["en"],
+      locales: ["en","fr"],
       primary: false,
     },
   },
@@ -277,6 +277,7 @@ const locatorSearch: Template<TemplateRenderProps> = ({
             headerLinks={_site.c_headerLinks}
             findPharmacy={_site.c_findAPharmacy}
             _sitedata={_site}
+            languagetr={document.locale}
           />
           <LocatorBread />
           
