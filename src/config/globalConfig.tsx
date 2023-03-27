@@ -9,8 +9,8 @@ export const entityTypes = "location";
 export const BaseUrl = "https://main-right--sacred--sponge-sbx-pgsdemo-com.sbx.preview.pagescdn.com/";
 //export const BaseUrl = "https://staging-fondly--nutty--goose-pgsdemo-com.preview.pagescdn.com";
 export const googleMapsConfig =  {
-    centerLatitude: 51.507351,
-    centerLongitude:-0.127758,
+    centerLatitude: 38.047989,
+    centerLongitude:-84.501640,
     googleMapsApiKey: "AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18"  
 };  
 export const regionNames = new Intl.DisplayNames(['en'], { type: 'region' })

@@ -286,41 +286,41 @@ const State: Template<TemplateRenderProps> = ({
 
   const childrenDivs = dm_directoryChildren ? dm_directoryChildren.map((entity: any) => {
     let detlslug;
-
+    console.log("testurl",entity);
     
     if (typeof entity.dm_directoryChildren != "undefined") {
+
+//start code of Get contry,state,city and location slue 
+
+      let detlslug1: any = "";
+      detlslug1 = document?.slug?.toString();
+      let detlslug11: any = "";
+      detlslug11 = detlslug1.replace(/(\b\S.+\b)(?=.*\1)/g, "").trim();
+
+      let country = document.dm_directoryParents[1].slug;
+      let state = slug;
+
+// End code of get country state, city, location slug 
+
 
       if (entity.dm_directoryChildrenCount == 1) {
         entity.dm_directoryChildren.map((res: any) => {
 
-
-
-
-          // let detlslug1 = "";
-
-          // if (!res.slug) {
-          //   let slugString = res.id + " " + res.name;
-          //   let slug = slugify(slugString);
-          //   detlslug1 = `${slug}.html`;
-          // } else {
-          //   detlslug1 = `${res.slug.toString()}.html`;
-          // }
-          
-          // detlslug = detlslug1;
-
-
-          let detlslug1: any = "";
-          detlslug1 = document?.slug?.toString();
-          let detlslug11: any = "";
-          detlslug11 = detlslug1.replace(/(\b\S.+\b)(?=.*\1)/g, "").trim();
-    
-          let country = document.dm_directoryParents[1].slug;
-          let state = slug;
-          detlslug = country+"/"+state+"/"+entity.slug+ ".html";
+          let detlslug1 = "";
+          if (!res.slug) {
+            let slugString = res.id + " " + res.name;
+            let slug = slugify(slugString);
+            detlslug1 = `${slug}.html`;
+          } else {
+            detlslug1 = `${country+"/"+state+"/"+entity.slug+"/"+res.slug.toString()}`;
+          }
+          detlslug = detlslug1;
 
         }) 
       } else {
-        detlslug = "gb/" + slug + "/" + entity.slug + ".html";
+                detlslug = country+"/"+state+"/"+entity.slug+ ".html";
+
+                // detlslug = "gb/" + slug + "/" + entity.slug + ".html";
       }
 
     }
