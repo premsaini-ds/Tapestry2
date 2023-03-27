@@ -129,6 +129,34 @@ export default function FilterSearch ({
     screenReaderText = screenReaderPhrases.join(' ');
   }
 
+
+
+
+
+
+
+  // const center = { lat: 50.064192, lng: -130.605469 };
+  // // Create a bounding box with sides ~10km away from the center point
+  // const defaultBounds = {
+  //   north: center.lat + 0.1,
+  //   south: center.lat - 0.1,
+  //   east: center.lng + 0.1,
+  //   west: center.lng - 0.1,
+  // };
+  // const input1 = document.getElementById("pac-input") as HTMLInputElement;
+  // const options = {
+  //   bounds: defaultBounds,
+  //   componentRestrictions: { country: "us" },
+  //   fields: ["address_components", "geometry", "icon", "name"],
+  //   strictBounds: false,
+  //   types: ["establishment"],
+  // };
+  
+  // const autocomplete = new google.maps.places.Autocomplete(input1, options);
+
+
+
+
   return (
     <div className={cssClasses.container}>
       {/* <h1 className={cssClasses.label}>{label}</h1> */}
@@ -169,6 +197,8 @@ export default function FilterSearch ({
           );
         })}
       </InputDropdown>
+
+      <script async  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeUUmHToTNZMbPa5CceOxwo37VPvNLN0Q&libraries=places&callback=initMap"></script>
     </div>
   );
 }
