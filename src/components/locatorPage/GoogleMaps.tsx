@@ -521,14 +521,35 @@ function UnwrappedGoogleMaps({
 
   /** Function InfowindowContents returns Html*/
   function InfowindowContents(i: Number, result: any): void {    
-    var url = "";
+    // var url = "";
+    // if (!result.rawData.slug) {
+    //   let slugString = result?.id + " " + result?.name;
+    //   let slug = slugify(slugString);
+    //   url = `${slug}.html`;
+    // } else {
+    //   url = `${result.rawData.slug.toString()}.html`;
+    // }
+
+
+
+    let url = "";
+
+    const name: any = result.rawData.name?.toLowerCase();
+    const region: any = result.rawData.address.region?.toLowerCase();
+    const initialregion: any = region.toString();
+    const finalregion: any = initialregion.replaceAll(" ", "-");
+    const city: any = result.rawData.address.city?.toLowerCase();
+    const country =result.rawData.address.countryCode?.toLowerCase();
+    const initialrcity: any = city.toString();
+    const finalcity: any = initialrcity.replaceAll(" ", "-");
+    const string1: any = name.toString();
+    const result1: any = string1.replaceAll(" ", "-");
     if (!result.rawData.slug) {
-      let slugString = result?.id + " " + result?.name;
-      let slug = slugify(slugString);
-      url = `${slug}.html`;
+      url = `${result.rawData.id}-${result1}.html`;
     } else {
       url = `${result.rawData.slug.toString()}.html`;
     }
+    url = `${country}/${finalregion}/${finalcity}/${result.rawData.slug?.toString()}`
 
     const MarkerContent = (
       <div className="markerContent">
