@@ -170,20 +170,24 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
   // } else {
   //   url = `${result.rawData.slug.toString()}.html`;
   // }
-
+ 
   /**
    * LocationCard component which returns the HTML of Locator Page Listing.
    */
 
 
-  return (
+var head = result;
+var countt = head.index;
+
+  return ( 
+   
     <div
       className={`location result-list-inner-${result.index} result onhighLight`}
        //data-id={`result-${result.id || result.index}`}
     >
       <div className="miles-with-title">
         <h3 className="onhighLight">
-          <Link href={`${url}`}>{result.rawData.name} </Link>
+         <span className="countresultver">{countt}</span> <Link href={`${url}`}>{result.rawData.name} </Link>
         </h3>
         <p className="miles">{metersToMiles(result.distance ?? 0)} miles</p>
       </div>
@@ -374,6 +378,7 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
       </div>
     </div>
   );
+
 };
 
-export default LocationCard;
+export default LocationCard; 

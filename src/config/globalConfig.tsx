@@ -11,7 +11,8 @@ export const BaseUrl = "https://main-right--sacred--sponge-sbx-pgsdemo-com.sbx.p
 export const googleMapsConfig =  {
     centerLatitude: 38.047989,
     centerLongitude:-84.501640,
-    googleMapsApiKey: "AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18"  
+    // googleMapsApiKey: "AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18"  
+    googleMapsApiKey: "AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18" 
 };  
 export const regionNames = new Intl.DisplayNames(['en'], { type: 'region' })
 export const WellSocialMediaUrls = {

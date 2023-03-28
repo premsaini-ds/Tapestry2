@@ -300,6 +300,7 @@ export default function InputDropdown({
         <input
           className={cssClasses.inputElement}
           placeholder={placeholder}
+          id='pac-input'
           onChange={evt => {
             const value = evt.target.value;
             setLatestUserInput(value);

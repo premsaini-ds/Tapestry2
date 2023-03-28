@@ -1965,3 +1965,20 @@ img.demolightbox.cursorlightbimg.lightboximg {
   color: #fff;
   padding: 2px;
 }
+
+
+.countresultver{
+  background: #014c6b;
+  padding: 5px 10px;
+    margin: 10px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: #fff;
+}
+
+
+.result-listing .scrollbar-container.ps--active-y {
+  padding-right: 1.25rem;
+  overflow: overlay !important;
+}
