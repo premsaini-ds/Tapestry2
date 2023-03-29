@@ -29,7 +29,9 @@ const metersToMiles = (meters: number) => {
   return miles.toFixed(2);
 };
 
-const LocationCard: CardComponent<Location> = ({ result }) => {
+
+const LocationCard: CardComponent<Location> = ({ result}) => {
+
   const {
     address,
     id,
@@ -175,10 +177,6 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
    * LocationCard component which returns the HTML of Locator Page Listing.
    */
 
-
-var head = result;
-var countt = head.index;
-
   return ( 
    
     <div
@@ -187,7 +185,7 @@ var countt = head.index;
     >
       <div className="miles-with-title">
         <h3 className="onhighLight">
-         <span className="countresultver">{countt}</span> <Link href={`${url}`}>{result.rawData.name} </Link>
+         <span className="countresultver">{result.index}</span> <Link href={`${url}`}>{result.rawData.name} </Link>
         </h3>
         <p className="miles">{metersToMiles(result.distance ?? 0)} miles</p>
       </div>
@@ -378,6 +376,7 @@ var countt = head.index;
       </div>
     </div>
   );
+
 
 };
 

@@ -79,7 +79,7 @@ export default function VerticalResults(props: VerticalResultsProps): JSX.Elemen
  
   return (
     <>
-      <VerticalResultsDisplay results={results} isLoading={isLoading} {...otherProps}/>      
+       <VerticalResultsDisplay results={results} isLoading={isLoading} {...otherProps}/>      
     </>
   );
 }

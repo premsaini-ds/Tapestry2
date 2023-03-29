@@ -71,9 +71,9 @@ let location:any;
 export function GoogleMaps(props: GoogleMapsProps) {
   return (
     <div>
-      <Wrapper apiKey={props.apiKey}>
+      {/* <Wrapper apiKey={props.apiKey}> */}
         <UnwrappedGoogleMaps {...props} />
-      </Wrapper>
+      {/* </Wrapper> */}
     </div>
   );
 }

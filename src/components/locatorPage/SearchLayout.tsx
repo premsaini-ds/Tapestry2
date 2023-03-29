@@ -129,7 +129,7 @@ const SearchLayout = (props:any): JSX.Element => {
           searchActions.executeVerticalQuery();
         },
         error,
-        {
+        {                         
           timeout: 10000,
         }
       );
@@ -149,73 +149,66 @@ const SearchLayout = (props:any): JSX.Element => {
   };
 
 
-  let mapView = props.mapView;
-  let listView = props.listView;
-  let noResultsFoundMessage = props.noResultsFoundMessage;
-  let loadMore = props.loadMore;
-  let useMyLocation = props.useMyLocation;
-  let findABranch = props.findABranch;
-  let typeOfVehicles = props.typeOfVehicles;
-  let _site = props._site;
-  const onClick = () => {
-    setZoomlevel(4);
-    if (navigator.geolocation) {
-      const error = (error: any) => {
-        if (error.code == 1) {
-          setallowLocation(props.allowYourLocationMessage);
-          setModelOpen(true);
-        }
-        setUserShareLocation(false);
-      };
-      navigator.geolocation.getCurrentPosition(
-        function (position) {
-          setIsUserLocation(true);
-          Geocode.setApiKey(googleMapsConfig.googleMapsApiKey);
-          Geocode.fromLatLng(
-            position.coords.latitude,
-            position.coords.longitude
-          ).then(
-            (response: any) => {
-              if (response.results[0]) {
-                if (inputRef.current) {
-                  inputRef.current.value =
-                    response.results[0].formatted_address;
-                }
 
-                let pacInput: any = document?.getElementById("pac-input");
-                if (pacInput) {
-                  pacInput.value = response.results[0].formatted_address;
-                  pacInput.focus();
-                }
+  // const onClick = () => {
+  //   setZoomlevel(4);
+  //   if (navigator.geolocation) {
+  //     const error = (error: any) => {
+  //       if (error.code == 1) {
+  //         setallowLocation(props.allowYourLocationMessage);
+  //         setModelOpen(true);
+  //       }
+  //       setUserShareLocation(false);
+  //     };
+  //     navigator.geolocation.getCurrentPosition(
+  //       function (position) {
+  //         setIsUserLocation(true);
+  //         Geocode.setApiKey(googleMapsConfig.googleMapsApiKey);
+  //         Geocode.fromLatLng(
+  //           position.coords.latitude,
+  //           position.coords.longitude
+  //         ).then(
+  //           (response: any) => {
+  //             if (response.results[0]) {
+  //               if (inputRef.current) {
+  //                 inputRef.current.value =
+  //                   response.results[0].formatted_address;
+  //               }
 
-                setallowLocation("");
-                searchActions.setUserLocation({
-                  latitude: position.coords.latitude,
-                  longitude: position.coords.longitude,
-                });
-              }
-            },
-            (error: any) => {
-              console.error(error);
-              setCheck(false);
-            }
-          );
-          searchActions.setUserLocation({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          });
-          searchActions.setVertical(AnswerExperienceConfig.verticalKey);
-          searchActions.setOffset(0);
-          searchActions.setVerticalLimit(limit);
-          searchActions.executeVerticalQuery();
-        },
-        error,
-        {
-          timeout: 10000,
-        }
-      );
-    }
-  };
+  //               let pacInput: any = document?.getElementById("pac-input");
+  //               if (pacInput) {
+  //                 pacInput.value = response.results[0].formatted_address;
+  //                 pacInput.focus();
+  //               }
+
+  //               setallowLocation("");
+  //               searchActions.setUserLocation({
+  //                 latitude: position.coords.latitude,
+  //                 longitude: position.coords.longitude,
+  //               });
+  //             }
+  //           },
+  //           (error: any) => {
+  //             console.error(error);
+  //             setCheck(false);
+  //           }
+  //         );
+  //         searchActions.setUserLocation({
+  //           latitude: position.coords.latitude,
+  //           longitude: position.coords.longitude,
+  //         });
+  //         searchActions.setVertical(AnswerExperienceConfig.verticalKey);
+  //         searchActions.setOffset(0);
+  //         searchActions.setVerticalLimit(limit);
+  //         searchActions.executeVerticalQuery();
+  //       },
+  //       error,
+  //       {
+  //         timeout: 10000,
+  //       }
+  //     );
+  //   }
+  // };
 
 
   const Findinput = () => {
@@ -223,7 +216,7 @@ const SearchLayout = (props:any): JSX.Element => {
     let searchKey = document.getElementsByClassName('FilterSearchInput');
     let Search = (searchKey[0].value);
     searchActions.setOffset(0);
-if(Search.length)
+if(Search?.length)
 {
    setInputValue('');
     getCoordinates(Search);
@@ -233,7 +226,7 @@ if(Search.length)
   const Findinput2 = () => {
     let Search = inputRef.current?.value || "";
     let locationHub :any =[]
-    if (Search.length == 0) {
+    if (Search?.length == 0) {
       const bounds = new google.maps.LatLngBounds();
       bounds.extend({
         lat: googleMapsConfig.centerLatitude,
@@ -242,7 +235,7 @@ if(Search.length)
       searchActions.setVertical("locations");
       searchActions.setQuery("");
 
- if (filterValue.length > 0) {
+ if (filterValue?.length > 0) {
       // setShowFilterEmptyMsg(true);
         let location: SelectableFilter = {
           selected: true,
@@ -304,7 +297,6 @@ if(Search.length)
 
   useEffect(() => {
     
-   
     let locationHub: any = [];
     if (filterValue.length > 0) {
       // setShowFilterEmptyMsg(true);
@@ -316,7 +308,7 @@ if(Search.length)
         };
         locationHub.push(location);
        
-        if(filterValue.length > 1){
+        if(filterValue?.length > 1){
           let location2: SelectableFilter = {
             selected: true,
             fieldId: "c_glassdriveAdvantages",
@@ -342,7 +334,7 @@ if(Search.length)
     } else {
       setShowFilterEmptyMsg(false);
     }
-    if (filterValue.length == 0) {
+    if (filterValue?.length == 0) {
       searchActions.setStaticFilters([]);
       setFacetData("");
       searchActions.setOffset(0);
@@ -352,41 +344,41 @@ if(Search.length)
 
 
 
-  function getCoordinates(address: string) {
-    // var str = address;
-    // var lastIndex = str.indexOf(",");
-    // str = str.substring(0, lastIndex)
-    setActiveIndex(null);
-    document.querySelectorAll(".scrollbar-container")[0].scrollTop = 0;
-    fetch(
-      "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-        address +
-        "&key=AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status == "OK") {
-          data.results.map((res: any) => {
-            const userlatitude = res.geometry.location.lat;
-            const userlongitude = res.geometry.location.lng;
-            let params = { latitude: userlatitude, longitude: userlongitude };
-            searchActions.setQuery(address);
-            searchActions.setUserLocation({
-              latitude: userlatitude,
-              longitude: userlongitude,
-            });
-            searchActions.executeVerticalQuery();
-          });
-        } else {
-          searchActions.setUserLocation({
-            latitude: centerLatitude,
-            longitude: centerLongitude,
-          });
-          searchActions.setQuery(address);
-          searchActions.executeVerticalQuery();
-        }
-      });
-  }
+  // function getCoordinates(address: string) {
+  //   // var str = address;
+  //   // var lastIndex = str.indexOf(",");
+  //   // str = str.substring(0, lastIndex)
+  //   setActiveIndex(null);
+  //   document.querySelectorAll(".scrollbar-container")[0].scrollTop = 0;
+  //   fetch(
+  //     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+  //       address +
+  //       "&key=AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18"
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.status == "OK") {
+  //         data.results.map((res: any) => {
+  //           const userlatitude = res.geometry.location.lat;
+  //           const userlongitude = res.geometry.location.lng;
+  //           let params = { latitude: userlatitude, longitude: userlongitude };
+  //           searchActions.setQuery(address);
+  //           searchActions.setUserLocation({
+  //             latitude: userlatitude,
+  //             longitude: userlongitude,
+  //           });
+  //           searchActions.executeVerticalQuery();
+  //         });
+  //       } else {
+  //         searchActions.setUserLocation({
+  //           latitude: centerLatitude,
+  //           longitude: centerLongitude,
+  //         });
+  //         searchActions.setQuery(address);
+  //         searchActions.executeVerticalQuery();
+  //       }
+  //     });
+  // }
 
   const addClass = () => {
     document.body.setAttribute("class", "mapView");
@@ -401,7 +393,7 @@ if(Search.length)
       let options: any = {
         options: {
           types: ["geocode"],
-          componentRestrictions: { country: "it" },
+          componentRestrictions: { country: {centerLatitude,centerLongitude} },
           strictBounds: false,
           fields: ["address_components", "geometry", "icon", "name"],
         },
@@ -419,7 +411,7 @@ if(Search.length)
               var orig_listener = listener;
 
               listener = function (event: { which: number }) {
-                var suggestion_selected = $(".pac-item-selected").length > 0;
+                var suggestion_selected = $(".pac-item-selected")?.length > 0;
 
                 if (
                   (event.which == 13 || event.which == 9) &&
@@ -492,51 +484,51 @@ if(Search.length)
   let NoLocationsAvailable= props.NoLocationsAvailable;
 
 
-  // const onClick = () => {
-  // setZoomlevel(3)
-  //   setInputValue('');
-  //   if (navigator.geolocation) {
-  //     const error = (error: any) => {
-  //       if (error.code == 1) {
-  //         setallowLocation(userMyLocationBlockMessage);
-  //       } else {
-  //         setallowLocation(userMyLocationBlockMessage);
-  //       }
-  //       setUserShareLocation(false);
-  //     }
-  //     navigator.geolocation.getCurrentPosition(function (position) {
-  //     Geocode.setApiKey(googleMapsConfig.googleMapsApiKey);
-  //     Geocode.fromLatLng(position.coords.latitude,position.coords.longitude).then(
-  //       (response:any) => {
-  //         if (response.results[0]) {           
-  //           setInputValue(response.results[0].formatted_address);      
-  //   document.getElementsByClassName('FilterSearchInput')[0].setAttribute("value", response.results[0].formatted_address);            
-  //           setallowLocation('');             
-  //           searchActions.setUserLocation({
-  //             latitude: position.coords.latitude,
-  //             longitude: position.coords.longitude,
-  //           });
-  //         }   
-  //       },
-  //       (error: any) => {
-  //         console.error(error);
-  //         setCheck(false);
-  //       }
-  //     );
-  //           setCenterLatitude(position.coords.latitude);
-  //           setCenterLongitude(position.coords.longitude);
+  const onClick = () => {
+  setZoomlevel(3)
+    setInputValue('');
+    if (navigator.geolocation) {
+      const error = (error: any) => {
+        if (error.code == 1) {
+          setallowLocation(userMyLocationBlockMessage);
+        } else {
+          setallowLocation(userMyLocationBlockMessage);
+        }
+        setUserShareLocation(false);
+      }
+      navigator.geolocation.getCurrentPosition(function (position) {
+      Geocode.setApiKey(googleMapsConfig.googleMapsApiKey);
+      Geocode.fromLatLng(position.coords.latitude,position.coords.longitude).then(
+        (response:any) => {
+          if (response.results[0]) {           
+            setInputValue(response.results[0].formatted_address);      
+    document.getElementsByClassName('FilterSearchInput')[0].setAttribute("value", response.results[0].formatted_address);            
+            setallowLocation('');             
+            searchActions.setUserLocation({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+            });
+          }   
+        },
+        (error: any) => {
+          console.error(error);
+          setCheck(false);
+        }
+      );
+            setCenterLatitude(position.coords.latitude);
+            setCenterLongitude(position.coords.longitude);
       
-  //           searchActions.setUserLocation({latitude: position.coords.latitude,longitude: position.coords.longitude });
-  //           searchActions.setVertical(AnswerExperienceConfig.verticalKey);
-  //          // searchActions.setQuery(response.results[0].formatted_address);
-  //           searchActions.setOffset(0);
-  //           searchActions.setVerticalLimit(limit);
-  //           searchActions.executeVerticalQuery();      
-  //     }, error, {
-  //       timeout: 10000,
-  //     });
-  //   }
-  // }
+            searchActions.setUserLocation({latitude: position.coords.latitude,longitude: position.coords.longitude });
+            searchActions.setVertical(AnswerExperienceConfig.verticalKey);
+           // searchActions.setQuery(response.results[0].formatted_address);
+            searchActions.setOffset(0);
+            searchActions.setVerticalLimit(limit);
+            searchActions.executeVerticalQuery();      
+      }, error, {
+        timeout: 10000,
+      });
+    }
+  }
 
 
 
@@ -570,52 +562,55 @@ if(Search.length)
   
 
 
-  // function getCoordinates(address: String) {
-  //   fetch(
-  //     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-  //       address +
-  //       "london &key=AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18"
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.status == "OK") {
-  //         data.results.map((res: any) => {
-  //           const userlatitude = res.geometry.location.lat;
-  //           const userlongitude = res.geometry.location.lng;
-  //           let params = { latitude: userlatitude, longitude: userlongitude };
-  //           setCenterLatitude(userlatitude);
-  //           setCenterLongitude(userlongitude);
-  //        //   searchActions.setUserLocation(params);
-  //           searchActions.setQuery(address);
-  //           searchActions.executeVerticalQuery();
-  //         });
-  //       } else {
-  //         searchActions.setUserLocation({
-  //           latitude: centerLatitude,
-  //           longitude: centerLongitude,
-  //         });
-  //         searchActions.setQuery(address);
-  //         searchActions.executeVerticalQuery();
-  //       }
-  //     });
-  // }
-  // const noresult =() =>{
-  //   noresultmessage=("No Location Found")
-  //   searchActions.setQuery('');
-  //   searchActions.executeVerticalQuery();
-  // }
+  function getCoordinates(address: String) {
+    fetch(
+      "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+        address +
+        "london &key=AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status == "OK") {
+          data.results.map((res: any) => {
+            const userlatitude = res.geometry.location.lat;
+            const userlongitude = res.geometry.location.lng;
+            let params = { latitude: userlatitude, longitude: userlongitude };
+            setCenterLatitude(userlatitude);
+            setCenterLongitude(userlongitude);
+         //   searchActions.setUserLocation(params);
+            searchActions.setQuery(address);
+            searchActions.executeVerticalQuery();
+          });
+        } else {
+          searchActions.setUserLocation({
+            latitude: centerLatitude,
+            longitude: centerLongitude,
+          });
+          searchActions.setQuery(address);
+          searchActions.executeVerticalQuery();
+        }
+      });
+  }
+  const noresult =() =>{
+    noresultmessage=("No Location Found")
+    searchActions.setQuery('');
+    searchActions.executeVerticalQuery();
+  }
 
 
   const loader = isLoading ? <LoadingSpinner /> : '';
   return (
     <>
-
+ <Wrapper
+      apiKey={googleMapsConfig.googleMapsApiKey}
+      libraries={["places", "geometry"]}
+    >
     {loader}
     <div className="locator-full-width place-content-center" style={{height:"unset"}}>
         
         <div className="locator-container">
                 <div className="search-block" style={{width:"100%"}}>
-                    {allowlocation.length > 0 ?
+                    {allowlocation?.length > 0 ?
                     <div className="for-allow">{allowlocation}</div>
                     : ''}
                       <div className="location-with-filter">
@@ -633,7 +628,8 @@ if(Search.length)
                       </div>
                       {/* Search Input by name,address  */}
                       <div className="search-form">
-                        <FilterSearch
+                        
+                        {/* <FilterSearch
                           customCssClasses={{
                             filterSearchContainer: "mb-0",
                             inputElement: "FilterSearchInput",
@@ -643,32 +639,48 @@ if(Search.length)
                           inputvalue = { inputvalue}
                           searchOnSelect={false}
                           searchFields={[]}
-                          // searchFields={[
-                          //   {
-                          //     entityType: "location",
-                          //     fieldApiName: "name",
-                          //   },
-                          //   {
-                          //     entityType: "location",
-                          //     fieldApiName: "address.line1",
-                          //   },
-                          //   {
-                          //     entityType: "location",
-                          //     fieldApiName: "address.line2",
-                          //   },
-                          //   {
-                          //     entityType: "location",
-                          //     fieldApiName : "address.city",
-                          //   },
-                          //   {
-                          //     entityType: "location",
-                          //     fieldApiName: "address.region",
-                          //   },
-                          // ]}
+                          searchFields={[
+                            {
+                              entityType: "location",
+                              fieldApiName: "name",
+                            },
+                            {
+                              entityType: "location",
+                              fieldApiName: "address.line1",
+                            },
+                            {
+                              entityType: "location",
+                              fieldApiName: "address.line2",
+                            },
+                            {
+                              entityType: "location",
+                              fieldApiName : "address.city",
+                            },
+                            {
+                              entityType: "location",
+                              fieldApiName: "address.region",
+                            },
+                          ]}
                           handleInputValue={handleInputValue}  
                           handleSetUserShareLocation={handleSetUserShareLocation}
-                        />
-
+                        /> */}
+                  <input
+                  id="pac-input"
+                  type="text"
+                  ref={inputRef}
+                  placeholder="Inserisci codice postale, città ..."
+                  className="text-sm bg-white outline-none h-9 w-full p-2 rounded-md border border-gray-300 focus:border-blue-600 FilterSearchInput"
+                  onChange={() => Findinput2()}
+                  onKeyDown={(evt) => {
+                    if (
+                      evt.key === "Backspace" ||
+                      evt.key === "x" ||
+                      evt.key === "Delete"
+                    ) {
+                      Findinput2();
+                    }
+                  }}
+                />
                         {/* Covid Filter  */}
                         <StandardFacets
                           customCssClasses={{container: "filter-items" }}
@@ -731,7 +743,7 @@ if(Search.length)
                 
               />
           </div>
-          {alternateResult && alternateResult.length > 0 ? (
+          {alternateResult && alternateResult?.length > 0 ? (
           <p className="pt-2 pb-3 text-lg text-center no-lc-err-msg">{NoLocationsAvailable}</p>
           ):(
          <></>
@@ -743,7 +755,7 @@ if(Search.length)
               //customCssClasses={{ resultsCountContainer: "result-count" }}
             />
             <PerfectScrollbar className="result-list">
-              {locationResults && locationResults.length > 0 ? (
+              {locationResults && locationResults?.length > 0 ? (
                 <div className="scrollbar-custom">
                   <VerticalResults
                     displayAllOnNoResults={false}
@@ -763,7 +775,7 @@ if(Search.length)
                   </div>
                
               )}
-                {locationResults && locationResults.length > 0 ?
+                {locationResults && locationResults?.length > 0 ?
             <ViewMore className={"button view-more before-icon"} idName={"listing-view-more-button"} buttonLabel={"Load More"} setZoomLevel={setZoomlevel}/>
             :
             <Alternateviewmore className={"button view-more before-icon"} idName={"alternate-view-more-button"} buttonLabel={"Load More"}/>
@@ -772,8 +784,8 @@ if(Search.length)
           </div>
         </div>
       </div>
-      <script async  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18&libraries=places&callback=initMap"></script>
-
+      {/* <script async  src={"https://maps.googleapis.com/maps/api/js?key="+googleMapsConfig.googleMapsApiKey+"&libraries=places&callback=initMap"}></script> */}
+      </Wrapper>
     </>
   );
 };
