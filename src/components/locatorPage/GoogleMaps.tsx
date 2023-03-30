@@ -283,7 +283,7 @@ function UnwrappedGoogleMaps({
                   color:"#40E0D0",
                 },
               ],
-            },
+            }, 
             {
               featureType: "poi",
               elementType: "all",
