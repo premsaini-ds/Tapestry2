@@ -271,6 +271,16 @@ function UnwrappedGoogleMaps({
               stylers: [
                 {
                   visibility: "on",
+                  color:"#40E0D0",
+                },
+              ],
+            },
+            {
+              featureType: "landscape",
+              elementType: "gecometry.fill",
+              stylers: [
+                {
+                  color:"#40E0D0",
                 },
               ],
             },

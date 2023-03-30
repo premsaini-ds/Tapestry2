@@ -280,9 +280,15 @@ const Country: Template<TemplateRenderProps> = ({
   const { name, _site, slug } = document;
 
   let ce_cities: any = [];
+
+
+console.log("premsaini",dm_directoryChildren);
+
   const childrenDivs = dm_directoryChildren ? dm_directoryChildren.map((entity: any) => {
     let detlslug;
 
+
+    
     if (typeof entity.dm_directoryChildren != "undefined") {
 
       if (entity.meta.entityType.id !== 'Tapestry_city') {        
@@ -328,12 +334,13 @@ const Country: Template<TemplateRenderProps> = ({
         else {
           detlslug = "location/"+slug + "/" + entity.slug + ".html";
         }
-
+console.log("hereiamokay",detlslug);
         return (
           <li className=" storelocation-category">
             <a
               key={entity.slug}
-              href={slug +"/"+ entity.slug + ".html"}
+              // href={slug +"/"+ entity.slug + ".html"}
+              href={detlslug}
             >
               {entity.name} ({entity.dm_directoryChildrenCount})
             </a>
