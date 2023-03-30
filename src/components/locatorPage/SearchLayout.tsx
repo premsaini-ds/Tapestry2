@@ -75,73 +75,115 @@ const SearchLayout = (props:any): JSX.Element => {
   const [optionclick, setOptionClick] = useState(true);
   var searchKey: any;
   var firstTimeRunners = true;
+  const [newparam, SetNewparam] = React.useState({
+    latitude: 0,
+    longitude: 0
+  });
+  var params1: any = { latitude: centerLatitude, longitude: centerLongitude }
+  // const FirstLoad = () => {
+  //   setCheck(true);
+  //   if (navigator.geolocation) {
+  //     const error = (error: any) => {
+  //       if (error.code == 1) {
+  //         setallowLocation(props.allowYourLocationMessage);
+  //         setModelOpen(false);
+  //       }
+  //       setUserShareLocation(false);
+  //     };
+  //     navigator.geolocation.getCurrentPosition(
+  //       function (position) {
+  //         setIsUserLocation(true);
+  //         Geocode.setApiKey(googleMapsConfig.googleMapsApiKey);
+  //         Geocode.fromLatLng(
+  //           position.coords.latitude,
+  //           position.coords.longitude
+  //         ).then(
+  //           (response: any) => {
+  //             if (response.results[0]) {
+  //               if (inputRef.current) {
+  //                 inputRef.current.value =
+  //                   response.results[0].formatted_address;
+  //               }
+
+  //               let pacInput: any = document?.getElementById("pac-input");
+  //               if (pacInput) {
+  //                 pacInput.value = response.results[0].formatted_address;
+  //                 pacInput.focus();
+  //               }
+
+  //               setallowLocation("");
+  //               searchActions.setUserLocation({
+  //                 latitude: position.coords.latitude,
+  //                 longitude: position.coords.longitude,
+  //               });
+  //             }
+  //           },
+  //           (error: any) => {
+  //             console.error(error);
+  //             setCheck(false);
+  //           }
+  //         );
+  //         searchActions.setUserLocation({
+  //           latitude: position.coords.latitude,
+  //           longitude: position.coords.longitude,
+  //         });
+  //         searchActions.setVertical(AnswerExperienceConfig.verticalKey);
+  //         searchActions.setOffset(0);
+  //         searchActions.setVerticalLimit(limit);
+  //         searchActions.executeVerticalQuery();
+  //       },
+  //       error,
+  //       {                         
+  //         timeout: 10000,
+  //       }
+  //     );
+  //   }
+  //   searchActions.setUserLocation({
+  //     latitude: googleMapsConfig.centerLatitude,
+  //     longitude: googleMapsConfig.centerLongitude,
+  //   });
+  //   searchActions.setVerticalLimit(limit);
+  //   searchActions.setOffset(0);
+  //   searchActions.executeVerticalQuery();
+  //   mapzoom = 6;
+  //   setTimeout(() => {
+  //     setIsloading(false);
+  //     $("body").removeClass("overflow-hidden");
+  //   }, 3100);
+  // };
+
 
   const FirstLoad = () => {
     setCheck(true);
     if (navigator.geolocation) {
-      const error = (error: any) => {
-        if (error.code == 1) {
-          setallowLocation(props.allowYourLocationMessage);
-          setModelOpen(false);
-        }
-        setUserShareLocation(false);
-      };
       navigator.geolocation.getCurrentPosition(
         function (position) {
-          setIsUserLocation(true);
-          Geocode.setApiKey(googleMapsConfig.googleMapsApiKey);
-          Geocode.fromLatLng(
-            position.coords.latitude,
-            position.coords.longitude
-          ).then(
-            (response: any) => {
-              if (response.results[0]) {
-                if (inputRef.current) {
-                  inputRef.current.value =
-                    response.results[0].formatted_address;
-                }
-
-                let pacInput: any = document?.getElementById("pac-input");
-                if (pacInput) {
-                  pacInput.value = response.results[0].formatted_address;
-                  pacInput.focus();
-                }
-
-                setallowLocation("");
-                searchActions.setUserLocation({
-                  latitude: position.coords.latitude,
-                  longitude: position.coords.longitude,
-                });
-              }
-            },
-            (error: any) => {
-              console.error(error);
-              setCheck(false);
-            }
-          );
-          searchActions.setUserLocation({
+          const params: any = {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
-          });
-          searchActions.setVertical(AnswerExperienceConfig.verticalKey);
-          searchActions.setOffset(0);
+          };
+          params1 = params;
+          SetNewparam(params1);
+          mapzoom = 3;
+          searchActions.setUserLocation(params1);
           searchActions.setVerticalLimit(limit);
           searchActions.executeVerticalQuery();
         },
-        error,
-        {                         
-          timeout: 10000,
+        function (error) {
+          if (error.code == error.PERMISSION_DENIED) {
+          }
         }
       );
     }
-    searchActions.setUserLocation({
-      latitude: googleMapsConfig.centerLatitude,
-      longitude: googleMapsConfig.centerLongitude,
-    });
+    params1 = {
+      latitude: 38.573936,
+      longitude:-92.603760,
+    };
+    SetNewparam(params1);
+    // mapzoom=8;
+    searchActions.setUserLocation(params1);
     searchActions.setVerticalLimit(limit);
-    searchActions.setOffset(0);
     searchActions.executeVerticalQuery();
-    mapzoom = 6;
     setTimeout(() => {
       setIsloading(false);
       $("body").removeClass("overflow-hidden");
@@ -484,52 +526,115 @@ if(Search?.length)
   let NoLocationsAvailable= props.NoLocationsAvailable;
 
 
-  const onClick = () => {
-  setZoomlevel(3)
-    setInputValue('');
-    if (navigator.geolocation) {
-      const error = (error: any) => {
-        if (error.code == 1) {
-          setallowLocation(userMyLocationBlockMessage);
-        } else {
-          setallowLocation(userMyLocationBlockMessage);
-        }
-        setUserShareLocation(false);
-      }
-      navigator.geolocation.getCurrentPosition(function (position) {
-      Geocode.setApiKey(googleMapsConfig.googleMapsApiKey);
-      Geocode.fromLatLng(position.coords.latitude,position.coords.longitude).then(
-        (response:any) => {
-          if (response.results[0]) {           
-            setInputValue(response.results[0].formatted_address);      
-    document.getElementsByClassName('FilterSearchInput')[0].setAttribute("value", response.results[0].formatted_address);            
-            setallowLocation('');             
-            searchActions.setUserLocation({
-              latitude: position.coords.latitude,
-              longitude: position.coords.longitude,
-            });
-          }   
-        },
-        (error: any) => {
-          console.error(error);
-          setCheck(false);
-        }
-      );
-            setCenterLatitude(position.coords.latitude);
-            setCenterLongitude(position.coords.longitude);
-      
-            searchActions.setUserLocation({latitude: position.coords.latitude,longitude: position.coords.longitude });
-            searchActions.setVertical(AnswerExperienceConfig.verticalKey);
-           // searchActions.setQuery(response.results[0].formatted_address);
-            searchActions.setOffset(0);
-            searchActions.setVerticalLimit(limit);
-            searchActions.executeVerticalQuery();      
-      }, error, {
-        timeout: 10000,
-      });
-    }
-  }
+  // const onClick = () => {
 
+  // setZoomlevel(3)
+  //   setInputValue('');
+  //   if (navigator.geolocation) {
+  //     const error = (error: any) => {
+  //       if (error.code == 1) {
+  //         setallowLocation(userMyLocationBlockMessage);
+  //       } else {
+  //         setallowLocation(userMyLocationBlockMessage);
+  //       }
+  //       setUserShareLocation(false);
+  //     }
+  //     navigator.geolocation.getCurrentPosition(function (position) {
+  //     Geocode.setApiKey(googleMapsConfig.googleMapsApiKey);
+  //     Geocode.fromLatLng(position.coords.latitude,position.coords.longitude).then(
+  //       (response:any) => {
+  //         if (response.results[0]) {           
+  //           setInputValue(response.results[0].formatted_address);   
+          
+            
+  //   document.getElementsByClassName('FilterSearchInput')[0].setAttribute("value", response.results[0].formatted_address);            
+  //           setallowLocation('');             
+  //           searchActions.setUserLocation({
+  //             latitude: position.coords.latitude,
+  //             longitude: position.coords.longitude,
+  //           });
+  //         }   
+  //       },
+  //       (error: any) => {
+  //         console.error(error);
+  //         setCheck(false);
+  //       }
+  //     );
+  //           setCenterLatitude(position.coords.latitude);
+  //           setCenterLongitude(position.coords.longitude);
+      
+  //           searchActions.setUserLocation({latitude: position.coords.latitude,longitude: position.coords.longitude });
+  //           searchActions.setVertical(AnswerExperienceConfig.verticalKey);
+  //          // searchActions.setQuery(response.results[0].formatted_address);
+  //           searchActions.setOffset(0);
+  //           searchActions.setVerticalLimit(limit);
+  //           searchActions.executeVerticalQuery();      
+  //     }, error, {
+  //       timeout: 10000,
+  //     });
+  //   }
+  // }
+
+
+  const onClick = () => {
+    setZoomlevel(4);
+    if (navigator.geolocation) {
+        const error = (error: any) => {
+            if (error.code == 1) {
+                setallowLocation(props.allowYourLocationMessage);
+                setModelOpen(true);
+            }
+            setUserShareLocation(false);
+        };
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                setIsUserLocation(true);
+                Geocode.setApiKey(googleMapsConfig.googleMapsApiKey);
+                Geocode.fromLatLng(
+                    position.coords.latitude,
+                    position.coords.longitude
+                ).then(
+                    (response: any) => {
+                        if (response.results[0]) {
+                            if (inputRef.current) {
+                                inputRef.current.value =
+                                    response.results[0].formatted_address;
+                            }
+
+                            let pacInput: any = document?.getElementById("pac-input");
+                            if (pacInput) {
+                                pacInput.value = response.results[0].formatted_address;
+                                pacInput.focus();
+                            }
+
+                            setallowLocation("");
+                            searchActions.setUserLocation({
+                                latitude: position.coords.latitude,
+                                longitude: position.coords.longitude,
+                            });
+                        }
+                    },
+                    (error: any) => {
+                        console.error(error);
+                        setCheck(false);
+                    }
+                );
+                searchActions.setUserLocation({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                });
+                searchActions.setVertical(AnswerExperienceConfig.verticalKey);
+                searchActions.setOffset(0);
+                searchActions.setVerticalLimit(limit);
+                searchActions.executeVerticalQuery();
+            },
+            error,
+            {
+                timeout: 10000,
+            }
+        );
+    }
+};
 
 
   
@@ -636,9 +741,8 @@ if(Search?.length)
                             optionsContainer: "options"
                           }}
                           
-                          inputvalue = { inputvalue}
+                          inputvalue = {inputvalue}
                           searchOnSelect={false}
-                          searchFields={[]}
                           searchFields={[
                             {
                               entityType: "location",
@@ -664,23 +768,24 @@ if(Search?.length)
                           handleInputValue={handleInputValue}  
                           handleSetUserShareLocation={handleSetUserShareLocation}
                         /> */}
-                  <input
-                  id="pac-input"
-                  type="text"
-                  ref={inputRef}
-                  placeholder="Inserisci codice postale, città ..."
-                  className="text-sm bg-white outline-none h-9 w-full p-2 rounded-md border border-gray-300 focus:border-blue-600 FilterSearchInput"
-                  onChange={() => Findinput2()}
-                  onKeyDown={(evt) => {
-                    if (
-                      evt.key === "Backspace" ||
-                      evt.key === "x" ||
-                      evt.key === "Delete"
-                    ) {
-                      Findinput2();
-                    }
-                  }}
-                />
+                        <input
+                        id="pac-input"
+                        type="text"
+                        ref={inputRef}
+                        placeholder="Enter postal code, city ..."
+                        className="text-sm outline-none h-9 w-full p-2 rounded-md border border-gray-300 focus:border-blue-600 search_input FilterSearchInput pac-target-input"
+                        onChange={() => Findinput2()}
+                        onKeyDown={(evt) => {
+                          if (
+                            evt.key === "Backspace" ||
+                            evt.key === "x" ||
+                            evt.key === "Delete"
+                          ) {
+                            Findinput2();
+                          }
+                        }}
+                      />
+                
                         {/* Covid Filter  */}
                         <StandardFacets
                           customCssClasses={{container: "filter-items" }}
