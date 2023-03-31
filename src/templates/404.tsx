@@ -28,7 +28,7 @@ export const config: TemplateConfig = {
       "name" 
     ],
     localization: {
-      locales: ["en_GB"],
+      locales: ["en"],
       primary: false
     },
   },
@@ -36,7 +36,7 @@ export const config: TemplateConfig = {
 
 // The path must be exactly 404.html
 export const getPath: GetPath<TemplateProps> = () => {
-  return "/404.html";
+  return "404.html";
 };
 
 // Add a title to the page
@@ -83,11 +83,13 @@ const FourOhFour: Template<TemplateRenderProps> = ({
           logo: "https://images.prismic.io/wellpharmacy-test/ad06d0dc-d97a-4148-a2ab-2570adc639c3_Well.svg?auto=compress,format",
         }}
       />
-  {/* <Header
-        wellLogo={_site.c_wellLogo}
-        headerLinks={_site.c_headerLinks}
-        findPharmacy={_site.c_findAPharmacy}
-      /> */}
+      <Header
+          wellLogo={_site?.c_wellLogo}
+          headerLinks={_site?.c_headerLinks}
+          findPharmacy={_site?.c_findAPharmacy}
+          _sitedata={_site}
+          languagetr={document.locale}
+        />
 
       <div className="hero">
         <img className="heroBanner" src={hero} alt="" />
@@ -106,24 +108,26 @@ const FourOhFour: Template<TemplateRenderProps> = ({
             You can also browse from our homepage to find the information you
             need.
           </p>
-          <a className="button mt-5 mb-7" href="https://www.well.co.uk/">
+          <a className="button mt-5 mb-7" href="/">
             Go to our Homepage
           </a>
         </div>
       </div>
 
-      {/* <Footer
-        footerLogo={_site.c_footerLogo}
-        footerLinks={_site.c_footerLinks}
-        footerDescription={_site.c_footerDescription}
-        facebookPageUrl={_site.facebookPageUrl}
-        twitterHandle={_site.twitterHandle}
-        instagramHandle={_site.instagramHandle}
-        linkedInUrl={_site.linkedInUrl}
-        copyrightText={_site.c_copyrightText}
-        footerLogos={_site.c_footerLogos}
-        socialicon={_site.c_socialIcons}
-      /> */}
+      <Footer
+          footerLogo={_site?.c_footerLogo}
+          footerLinks={_site?.c_footerLinks}
+          footerDescription={_site?.c_footerDescription}
+          facebookPageUrl={_site?.facebookPageUrl}
+          twitterHandle={_site?.twitterHandle}
+          instagramHandle={_site?.instagramHandle}
+          linkedInUrl={_site?.linkedInUrl}
+          copyrightText={_site?.c_copyrightText}
+          footerLogos={_site?.c_footerLogos}
+          socialicon={_site?.c_socialIcons}
+          cookieHeading={_site?.c_cookieHeading}
+          cookiePolicyDescription={_site?.c_cookiePolicyDescription}
+        />
     </>
   );
 };

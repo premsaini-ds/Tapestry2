@@ -271,7 +271,7 @@ function UnwrappedGoogleMaps({
               stylers: [
                 {
                   visibility: "on",
-                  color:"#40E0D0",
+                  color:"#960000",
                 },
               ],
             },
@@ -280,10 +280,10 @@ function UnwrappedGoogleMaps({
               elementType: "gecometry.fill",
               stylers: [
                 {
-                  color:"#40E0D0",
+                  color:"#e3e6bf",
                 },
               ],
-            }, 
+            },
             {
               featureType: "poi",
               elementType: "all",

@@ -50,6 +50,16 @@ function CustomMap(coords: props) {
               stylers: [
                 {
                   visibility: "on",
+                  color:"#e0c465",
+                },
+              ],
+            },
+            {
+              featureType: "landscape",
+              elementType: "gecometry.fill",
+              stylers: [
+                {
+                  color:"#e3e6bf",
                 },
               ],
             },
