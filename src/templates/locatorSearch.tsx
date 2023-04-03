@@ -18,10 +18,10 @@ import SearchLayout from "../components/locatorPage/SearchLayout";
 import {
   AnswerExperienceConfig,
   slugify,
-  AnalyticsEnableDebugging,
+  AnalyticsEnableDebugging,   
   AnalyticsEnableTrackingCookie
 } from "../config/globalConfig";
-import {
+import { 
   AnalyticsProvider,
   AnalyticsScopeProvider,
 } from "@yext/pages/components";

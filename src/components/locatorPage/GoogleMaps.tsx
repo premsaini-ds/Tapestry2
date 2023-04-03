@@ -280,7 +280,7 @@ function UnwrappedGoogleMaps({
               elementType: "gecometry.fill",
               stylers: [
                 {
-                  color:"#e3e6bf",
+                  color:"#f2f2f2",
                 },
               ],
             },
@@ -289,7 +289,16 @@ function UnwrappedGoogleMaps({
               elementType: "all",
               stylers: [
                 {
-                  visibility: "off",
+                  visibility: "off", 
+                },
+              ],
+            },
+            {
+              featureType: "water",
+              elementType: "geometry.fill",
+              stylers: [
+                {
+                  color: "#1e96d8",
                 },
               ],
             },
