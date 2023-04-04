@@ -50,6 +50,7 @@ export const config: TemplateConfig = {
       "dm_directoryChildren.address",
       "dm_directoryChildren.hours",
       "dm_directoryChildren.mainPhone",
+      "dm_directoryChildren.timezone",
       "dm_directoryChildren.yextDisplayCoordinate",
       "dm_directoryChildren.id",
       "dm_directoryChildren.meta.entityType",
