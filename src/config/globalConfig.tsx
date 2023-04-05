@@ -45,7 +45,7 @@ export const defaultTimeZone = "Europe/London";
 export const AnalyticsEnableDebugging  = true;
 export const AnalyticsEnableTrackingCookie  = true;
 export const conversionDetailsDirection = {
-    cid: "",
+    cid: "", 
     cv: "1",
   };
 export const AnswerExperienceConfig =  {
