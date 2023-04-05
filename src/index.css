@@ -178,7 +178,7 @@ button:focus-visible {
   @apply relative before:content-[''] before:bg-black before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 z-0 before:z-10 before:bg-opacity-0 mb-10;
 }
 .hero .heroBanner {
-  @apply w-full h-[13.75rem] md:h-[18.75rem] object-cover object-[-410px_center] md:object-[center];
+  @apply w-full h-[13.75rem] md:h-[18.75rem] object-cover object-[0px_center] md:object-[center];
 }
 
 .hero .hero-content {
