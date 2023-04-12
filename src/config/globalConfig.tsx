@@ -1,4 +1,4 @@
-export const limit = 5; 
+export const limit = 2; 
 export const radius = 500;
 export const defaultQuery = "";
 export const baseApiUrl = "https://liveapi-sandbox.yext.com/v2/accounts/me";

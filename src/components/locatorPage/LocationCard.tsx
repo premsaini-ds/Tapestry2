@@ -18,7 +18,9 @@ import { svgIcons } from "../../svg icons/svgIcon";
 import { Data } from "@react-google-maps/api";
 import { slugify, defaultTimeZone  } from "../../config/globalConfig";
 import Holidayhour from "../locationDetails/holidayHours";
-
+import { useSearchState } from "@yext/search-headless-react";
+import { workerCount } from "mapbox-gl";
+import { isYandex } from "mobile-device-detect";
 /**
  * 
  * @param meters 
@@ -29,9 +31,11 @@ const metersToMiles = (meters: number) => {
   return miles.toFixed(2);
 };
 
+var cou =0;
 
+let itemList=[];
 const LocationCard: CardComponent<Location> = ({ result}) => {
-
+  
   const {
     address,
     id,
@@ -43,12 +47,50 @@ const LocationCard: CardComponent<Location> = ({ result}) => {
     c_bookAnAppointment,
     c_facilities,
   } = result.rawData;
+
+  
   const [time, setTime] = React.useState({});
   const [timezone, setTimeZone] = React.useState("");
   const [withoutHourClass, setWithoutHourClass] = React.useState("");
   const formattedPhone = formatPhoneNumber(mainPhone);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [isShow, setIsShow] = React.useState(false);
+  const [nummber, setNum] = React.useState(1);
+
+const offset = useSearchState((state) => state.vertical.offset) || 0;
+  const limit = useSearchState((state) => state.vertical.limit) || 10;
+  const numResults = useSearchState((state) => state.vertical.resultsCount) || 0;
+  // const numResultss = useSearchState((state) => state.index+ 1) || 0;
+
+
+ 
+
+  
+
+
+  const maxPageCount = Math.ceil(numResults / limit);
+  if (maxPageCount <= 1) {
+    return null;
+  }
+  const pageNumber = offset / limit + 1;
+   
+  if(pageNumber !== maxPageCount ){
+      // console.log("veri",pageNumber);  
+  }
+
+// var indents;
+// for (var i = 1; i <= resultsCount; i++) {
+//   indents= i;
+//   console.log("dsfdsfsdfsdfds",indents);
+// }
+
+
+
+// console.log("iamhere",resultsCount[index]); 
+// console.log("iamhere1111",resultsLength);
+ 
+
+
   React.useEffect(() => {
     setTime(result.rawData);
     setTimeZone(result.rawData.timezone);
@@ -74,7 +116,34 @@ const LocationCard: CardComponent<Location> = ({ result}) => {
       setIsShow(true);
     }
     // getCurrentLocationLatLng();
+
+    
+       
+    var els = document.querySelectorAll('.countresultver');
+
+    for(var i=0; i < els.length; i++) {
+      
+      els[i].index = i;
+
+      // console.log("testconsole",els); 
+
+      els[i].innerHTML = i+1;
+
+      // els[i].addEventListener('mouseover', function(e) {
+
+      //   console.log("dfdsfdsfdsfds");
+      
+      //   e.target.innerHTML = e.target.index;
+    
+      // }, false);
+
+
+    }
+
+
+
   });
+
 
 
   /**
@@ -139,8 +208,6 @@ const LocationCard: CardComponent<Location> = ({ result}) => {
 
 
 
-
-
   /**
    Note-  Url returns Slug
    * If slug is available then url returns Slug otherwise it returns id-name
@@ -177,6 +244,31 @@ const LocationCard: CardComponent<Location> = ({ result}) => {
    * LocationCard component which returns the HTML of Locator Page Listing.
    */
 
+  // console.log("sdfdsfds",resultsCount);
+
+  // resultsCount.map((index: number) => {
+  //         console.log("sdfdsfds",index);   
+  // })  
+
+
+
+
+  cou++;
+   
+
+//   if( nummber <= numResults){
+//     setNum (nummber+1);  
+//  }
+//  console.log("testing",nummber);
+
+
+// var countdiv = document.getElementsByClassName("markerEventBinded").length;
+
+
+
+// alert(countdiv);
+
+
   return ( 
    
     <div
@@ -185,7 +277,7 @@ const LocationCard: CardComponent<Location> = ({ result}) => {
     >
       <div className="miles-with-title">
         <h3 className="onhighLight">
-         <span className="countresultver">{result.index}</span> <Link href={`${url}`}>{result.rawData.name} </Link>
+            <span className="countresultver">{cou}</span> <Link href={`${url}`}>{result.rawData.name} </Link>
         </h3>
         <p className="miles">{metersToMiles(result.distance ?? 0)} miles</p>
       </div>
@@ -376,8 +468,7 @@ const LocationCard: CardComponent<Location> = ({ result}) => {
       </div>
     </div>
   );
-
-
+        
 };
 
 export default LocationCard; 

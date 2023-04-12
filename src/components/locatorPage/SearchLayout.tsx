@@ -34,7 +34,7 @@ import Usemymodel from "./Usemymodel";
 import { StandardFacets } from "@yext/search-ui-react";
 import CustomRadioButton from "./CustomRadioButton";
 import { Wrapper } from "@googlemaps/react-wrapper";
-import AlternateResultsCount from "./AlternateResultCount";
+import AlternateResultsCount from "./AlternateResultCount"; 
 
 var mapzoom = 8;
 const SearchLayout = (props:any): JSX.Element => {
@@ -789,7 +789,7 @@ if(Search?.length)
                         {/* Covid Filter  */}
                         <StandardFacets
                           customCssClasses={{container: "filter-items" }}
-                          defaultExpanded={true}
+                          defaultExpanded={false}
                         ></StandardFacets> 
 
                     {/* Search icon Button  */}

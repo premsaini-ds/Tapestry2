@@ -114,7 +114,7 @@ export default function FilterSearch ({
     phrase: `0 autocomplete option found.`,
     pluralForm: `0 autocomplete options found.`,
     count: 0
-  });
+  }); 
   if (sections.length > 0) {
     const screenReaderPhrases = sections.map(section => {
       const optionInfo = section.results.length
