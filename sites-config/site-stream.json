@@ -1,0 +1,36 @@
+{
+  "$id": "site-entity",
+  "filter": {
+    "entityIds": ["global-data"] 
+  },
+  "source": "knowledgeGraph",
+  "fields": [
+  "name", 
+  "id",
+  "uid",
+  "meta",
+  "c_wellLogo",
+  "c_headerLinks", 
+  "c_findAPharmacy",
+  "c_locatorBannerImage",
+  "c_locatorTitleH1",
+  "c_metaTitle",
+  "c_metaDescription",
+  "c_robotsTag",
+  "c_footerLogo",
+  "c_footerLinks",
+  "c_footerDescription",
+  "c_footerLogos",
+  "c_socialicon",
+  "c_cookieHeading",
+  "c_cookiePolicyDescription",
+  "c_aboutLocatorContent",
+  "c_dMPagesBanner",
+  "c_dMLocatorGallery",
+  "c_headerMenus"
+  ],
+  "localization": {
+    "locales": ["en","fr"],
+    "primary": false
+  }
+}
