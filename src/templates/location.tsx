@@ -79,7 +79,6 @@ export const config: TemplateConfig = {
       "name",
       "address",
       "hours",
-      "builtin.location",
       // "c_hoursHeading",
       "mainPhone",
       "description",

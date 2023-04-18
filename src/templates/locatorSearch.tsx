@@ -34,41 +34,41 @@ import Footer from "../components/layouts/footer";
 import AboutLocator from "../components/locatorPage/aboutlocator";
 import PhotoGallery from "../components/commons/PhotoGallery";
 
-// export const config: TemplateConfig = {
-//   stream: {
-//     $id: "locatorSearch",
-//     filter: {
-//       entityIds: ["global-data"],
-//     },
-//     fields: [
-//       "id",
-//       "uid",
-//       "meta",
-//       "slug",
-//       "c_wellLogo",
-//       "c_headerLinks",
-//       "c_findAPharmacy",
-//       "c_locatorBannerImage",
-//       "c_locatorTitleH1",
-//       "c_metaTitle",
-//       "c_metaDescription",
-//       // "c_canonicalURL",
-//       "c_robotsTag",
-//       "c_footerLogo",
-//       "c_footerLinks",
-//       // "c_copyrightText",
-//       "c_footerDescription",
-//       "c_footerLogos",
-//       "c_socialicon",
-//       "c_cookieHeading",
-//       "c_cookiePolicyDescription"
-//     ],
-//     localization: {
-//       locales: ["en"],
-//       primary: false,
-//     },
-//   },
-// };
+export const config: TemplateConfig = {
+  stream: {
+    $id: "locatorSearch",
+    filter: {
+      entityIds: ["global-data"],
+    },
+    fields: [
+      "id",
+      "uid",
+      "meta",
+      "slug",
+      "c_wellLogo",
+      "c_headerLinks",
+      "c_findAPharmacy",
+      "c_locatorBannerImage",
+      "c_locatorTitleH1",
+      "c_metaTitle",
+      "c_metaDescription",
+      // "c_canonicalURL",
+      "c_robotsTag",
+      "c_footerLogo",
+      "c_footerLinks",
+      // "c_copyrightText",
+      "c_footerDescription",
+      "c_footerLogos",
+      "c_socialicon",
+      "c_cookieHeading",
+      "c_cookiePolicyDescription"
+    ],
+    localization: {
+      locales: ["en"],
+      primary: false,
+    },
+  },
+};
 
 var url = "";
 export const getPath: GetPath<TemplateProps> = ({ document }) => {

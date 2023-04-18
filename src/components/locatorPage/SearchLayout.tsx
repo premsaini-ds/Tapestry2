@@ -165,6 +165,20 @@ const SearchLayout = (props:any): JSX.Element => {
           params1 = params;
           SetNewparam(params1);
           mapzoom = 3;
+          const locationFilter: SelectableFilter = {
+            selected: true,
+            fieldId: "builtin.location",
+            value: {
+              lat: params.latitude,
+              lng: params.longitude,
+              radius: 100000000000000,
+            },
+  
+            matcher: Matcher.Near,
+          };
+  
+          searchActions.setOffset(0)
+          searchActions.setStaticFilters([locationFilter]);
           searchActions.setUserLocation(params1);
           searchActions.setVerticalLimit(limit);
           searchActions.executeVerticalQuery();
@@ -177,12 +191,22 @@ const SearchLayout = (props:any): JSX.Element => {
     }
     params1 = {
       latitude: 38.573936,
-      longitude:-92.603760,
+       longitude:-92.603760,
     };
     SetNewparam(params1);
     // mapzoom=8;
-    
-    
+    const locationFilter: SelectableFilter = {
+      selected: true,
+      fieldId: "builtin.location",
+      value: {
+        lat: params1.latitude,
+        lng: params1.longitude,
+        radius: 10000000000000,
+      },
+
+      matcher: Matcher.Near,
+    };
+    searchActions.setStaticFilters([locationFilter]);
     searchActions.setUserLocation(params1);
     searchActions.setVerticalLimit(limit);
     searchActions.executeVerticalQuery();
@@ -191,6 +215,47 @@ const SearchLayout = (props:any): JSX.Element => {
       $("body").removeClass("overflow-hidden");
     }, 3100);
   };
+
+
+
+  // const FirstLoad = () => {
+  //   setCheck(true);
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       function (position) {
+  //         const params: any = {
+  //           latitude: position.coords.latitude,
+  //           longitude: position.coords.longitude,
+  //         };
+  //         params1 = params;
+  //         SetNewparam(params1);
+  //         mapzoom = 3;
+  //         searchActions.setUserLocation(params1);
+  //         searchActions.setVerticalLimit(limit);
+  //         searchActions.executeVerticalQuery();
+  //       },
+  //       function (error) {
+  //         if (error.code == error.PERMISSION_DENIED) {
+  //         }
+  //       }
+  //     );
+  //   }
+  //   params1 = {
+  //     latitude: 38.573936,
+  //     longitude:-92.603760,
+  //   };
+  //   SetNewparam(params1);
+  //   // mapzoom=8;
+    
+    
+  //   searchActions.setUserLocation(params1);
+  //   searchActions.setVerticalLimit(limit);
+  //   searchActions.executeVerticalQuery();
+  //   setTimeout(() => {
+  //     setIsloading(false);
+  //     $("body").removeClass("overflow-hidden");
+  //   }, 3100);
+  // };
 
 
 
@@ -371,6 +436,7 @@ if(Search?.length)
         };
         locationHub.push(facet_core);
       }
+      
       searchActions.setStaticFilters(locationHub);
       searchActions.setOffset(0);
       searchActions.executeVerticalQuery();
@@ -379,10 +445,11 @@ if(Search?.length)
       setShowFilterEmptyMsg(false);
     }
     if (filterValue?.length == 0) {
-      searchActions.setStaticFilters([]);
-      setFacetData("");
-      searchActions.setOffset(0);
-      searchActions.executeVerticalQuery();
+
+      // searchActions.setStaticFilters([]);
+      // setFacetData("");
+      // searchActions.setOffset(0);
+      // searchActions.executeVerticalQuery();
     }
   }, [checkeddata, filterValue]);
 
@@ -875,15 +942,15 @@ if(Search?.length)
                   />
                   
                 </div>
-              ) : (
+              ) : ( ""
                
-                  <div className="scrollbar-custom no-data-list">
-                    <VerticalResults
-                      displayAllOnNoResults={false}
-                      CardComponent={LocationCard}
-                      locationResults={alternateResult}      
-                    />
-                  </div>
+                  // <div className="scrollbar-custom no-data-list">
+                  //   <VerticalResults
+                  //     displayAllOnNoResults={false}
+                  //     CardComponent={LocationCard}
+                  //     locationResults={alternateResult}      
+                  //   />
+                  // </div>
                
               )}
                 {locationResults && locationResults?.length > 0 ?
