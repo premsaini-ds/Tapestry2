@@ -35,6 +35,7 @@ import { StandardFacets } from "@yext/search-ui-react";
 import CustomRadioButton from "./CustomRadioButton";
 import { Wrapper } from "@googlemaps/react-wrapper";
 import AlternateResultsCount from "./AlternateResultCount";
+import { clearStorage } from "mapbox-gl";
 
 var mapzoom = 8;
 const SearchLayout = (props: any): JSX.Element => {
@@ -205,7 +206,7 @@ const SearchLayout = (props: any): JSX.Element => {
       value: {
         lat: params1.latitude,
         lng: params1.longitude,
-        radius: 1000,
+        radius: 1000000000,
       },
 
       matcher: Matcher.Near,
@@ -295,6 +296,7 @@ const SearchLayout = (props: any): JSX.Element => {
   const Findinput2 = () => {
     let Search = inputRef.current?.value || "";
     let locationHub: any = [];
+
     if (Search?.length == 0) {
       const bounds = new google.maps.LatLngBounds();
       bounds.extend({
@@ -880,7 +882,10 @@ const SearchLayout = (props: any): JSX.Element => {
                       locationResults={locationResults}
                     />
                   </div>
-                ) : (""
+                ) : (
+                  <div>
+                    <h4 className="font-bold text-center text-lg bg-[#014c6b] text-white pt-5 pb-5">Sorry No result found</h4>
+                  </div>
                   // <div className="scrollbar-custom no-data-list">
                   //   <VerticalResults
                   //     displayAllOnNoResults={false}
@@ -897,11 +902,7 @@ const SearchLayout = (props: any): JSX.Element => {
                     setZoomLevel={setZoomlevel}
                   />
                 ) : (
-                  <Alternateviewmore
-                    className={"button view-more before-icon"}
-                    idName={"alternate-view-more-button"}
-                    buttonLabel={"Load More"}
-                  />
+                  ""
                 )}
               </PerfectScrollbar>
             </div>

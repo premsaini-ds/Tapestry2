@@ -3,7 +3,7 @@ import React, { useReducer, KeyboardEvent, useRef, useEffect, useState, useMemo,
 import DropdownSection, { DropdownSectionProps } from "./DropdownSection";
 import recursivelyMapChildren from './utils/recursivelyMapChildren';
 import { v4 as uuid } from 'uuid';
-import { useSearchActions } from "@yext/search-headless-react";
+import { useSearchActions, useSearchState } from "@yext/search-headless-react";
 import {googleMapsConfig, limit } from "..//../config/globalConfig";
 
 export interface InputDropdownCssClasses {
@@ -74,6 +74,7 @@ export default function InputDropdown({
   cssClasses = {},
   handleInputValue,
   params,
+  displaymsg,
 }: React.PropsWithChildren<Props>): JSX.Element | null {
   const [{
     focusedSectionIndex,
@@ -94,6 +95,15 @@ export default function InputDropdown({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const inputDropdownRef = useRef<HTMLDivElement>(null);
   const searchActions = useSearchActions();
+
+  const locationResults = useSearchState((s) => s.vertical.results) || [];
+  const loading = useSearchState((s) => s.searchStatus.isLoading);
+  const allResultsForVertical = useSearchState(state => state.vertical?.noResults?.allResultsForVertical.results?.length) ||0;
+
+
+
+
+
   let numSections = 0;
   const childrenWithProps = recursivelyMapChildren(children, child => {
     if (!(React.isValidElement(child) && child.type === DropdownSection)) {
@@ -291,6 +301,9 @@ export default function InputDropdown({
     [cssClasses.inputDropdownContainer___active ?? '']: shouldDisplayDropdown
   });
 
+
+console.log("premsaini",locationResults.length);
+
   return (
     <div className={inputDropdownContainerCssClasses} ref={inputDropdownRef} onBlur={handleBlur}>
       <div className={cssClasses?.inputContainer}>
@@ -325,7 +338,13 @@ export default function InputDropdown({
           {renderSearchButton()}
         </div>
       </div>
-      
+      {(locationResults.length === 0 && allResultsForVertical>0) || (locationResults.length === 0 && !loading) ? (
+        <h4 className="font-bold">
+          Sorry No result found
+        </h4>
+      ) : (
+        ""
+      )}
       {shouldDisplayDropdown && Children.count(children) !== 0 &&
         <>
             <div className={cssClasses.divider}></div>
