@@ -332,7 +332,7 @@ console.log("premsaini",dm_directoryChildren);
           })
         }
         else {
-          detlslug = "location/"+slug + "/" + entity.slug + ".html";
+          detlslug = slug + "/" + entity.slug + ".html";
         }
 console.log("hereiamokay",detlslug);
         return (
