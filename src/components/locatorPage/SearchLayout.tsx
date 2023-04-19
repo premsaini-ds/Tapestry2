@@ -19,7 +19,7 @@ import LocationCard from "./LocationCard";
 import VerticalResults from "../VerticalResults";
 import ResultsCount from "./ResultsCount";
 import ViewMore from "./ViewMore";
-import { GoogleMaps, scrollToRow  } from "./GoogleMaps";
+import { GoogleMaps, scrollToRow } from "./GoogleMaps";
 import Geocode from "react-geocode";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
@@ -37,9 +37,9 @@ import { Wrapper } from "@googlemaps/react-wrapper";
 import AlternateResultsCount from "./AlternateResultCount";
 
 var mapzoom = 8;
-const SearchLayout = (props:any): JSX.Element => {
+const SearchLayout = (props: any): JSX.Element => {
   const [isLoading, setIsloading] = React.useState(true);
-  const [zoomlevel , setZoomlevel] = React.useState(8);
+  const [zoomlevel, setZoomlevel] = React.useState(8);
   const [centerLatitude, setCenterLatitude] = useState(
     googleMapsConfig.centerLatitude
   );
@@ -48,18 +48,22 @@ const SearchLayout = (props:any): JSX.Element => {
   );
   const locationResults = useFetchResults() || [];
   var newArray: any = [];
-  const alternateResult = useSearchState(s => s.vertical.noResults?.allResultsForVertical.results) || [];
+  const alternateResult =
+    useSearchState(
+      (s) => s.vertical.noResults?.allResultsForVertical.results
+    ) || [];
   const [check, setCheck] = useState(false);
   const [inputvalue, setInputValue] = React.useState("");
-  const [allowlocation, setallowLocation]=React.useState("");
+  const [allowlocation, setallowLocation] = React.useState("");
   const [modelopen, setModelOpen] = useState(false);
-  const[userShareLocation,setUserShareLocation]=useState(false);  
+  const [userShareLocation, setUserShareLocation] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const searchActions = useSearchActions();
   const [callVerticals, setCallVerticals] = useState(false);
   const [filterValue, setFilterValue] = useState([]);
   const [checkeddata, setcheckeddata] = useState(false);
-  const resultCount = useSearchState((state) => state.vertical.resultsCount) || 0;
+  const resultCount =
+    useSearchState((state) => state.vertical.resultsCount) || 0;
   const [useLocationTrigger, setUseLocationTrigger] = useState(true);
   const [facetData, setFacetData] = useState("");
   const isLoadingApi = useAnswersState((state) => state.searchStatus.isLoading);
@@ -77,9 +81,9 @@ const SearchLayout = (props:any): JSX.Element => {
   var firstTimeRunners = true;
   const [newparam, SetNewparam] = React.useState({
     latitude: 0,
-    longitude: 0
+    longitude: 0,
   });
-  var params1: any = { latitude: centerLatitude, longitude: centerLongitude }
+  var params1: any = { latitude: centerLatitude, longitude: centerLongitude };
   // const FirstLoad = () => {
   //   setCheck(true);
   //   if (navigator.geolocation) {
@@ -133,7 +137,7 @@ const SearchLayout = (props:any): JSX.Element => {
   //         searchActions.executeVerticalQuery();
   //       },
   //       error,
-  //       {                         
+  //       {
   //         timeout: 10000,
   //       }
   //     );
@@ -151,7 +155,6 @@ const SearchLayout = (props:any): JSX.Element => {
   //     $("body").removeClass("overflow-hidden");
   //   }, 3100);
   // };
-
 
   const FirstLoad = () => {
     setCheck(true);
@@ -171,14 +174,15 @@ const SearchLayout = (props:any): JSX.Element => {
             value: {
               lat: params.latitude,
               lng: params.longitude,
-              radius: 100000000000000,
+              radius: 50000000000,
             },
-  
+
             matcher: Matcher.Near,
           };
-  
-          searchActions.setOffset(0)
+
+          searchActions.setOffset(0);
           searchActions.setStaticFilters([locationFilter]);
+
           searchActions.setUserLocation(params1);
           searchActions.setVerticalLimit(limit);
           searchActions.executeVerticalQuery();
@@ -191,7 +195,7 @@ const SearchLayout = (props:any): JSX.Element => {
     }
     params1 = {
       latitude: 38.573936,
-       longitude:-92.603760,
+      longitude: -92.60376,
     };
     SetNewparam(params1);
     // mapzoom=8;
@@ -201,11 +205,13 @@ const SearchLayout = (props:any): JSX.Element => {
       value: {
         lat: params1.latitude,
         lng: params1.longitude,
-        radius: 10000000000000,
+        radius: 1000,
       },
 
       matcher: Matcher.Near,
     };
+
+    // searchActions.setOffset(0);
     searchActions.setStaticFilters([locationFilter]);
     searchActions.setUserLocation(params1);
     searchActions.setVerticalLimit(limit);
@@ -215,49 +221,6 @@ const SearchLayout = (props:any): JSX.Element => {
       $("body").removeClass("overflow-hidden");
     }, 3100);
   };
-
-
-
-  // const FirstLoad = () => {
-  //   setCheck(true);
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       function (position) {
-  //         const params: any = {
-  //           latitude: position.coords.latitude,
-  //           longitude: position.coords.longitude,
-  //         };
-  //         params1 = params;
-  //         SetNewparam(params1);
-  //         mapzoom = 3;
-  //         searchActions.setUserLocation(params1);
-  //         searchActions.setVerticalLimit(limit);
-  //         searchActions.executeVerticalQuery();
-  //       },
-  //       function (error) {
-  //         if (error.code == error.PERMISSION_DENIED) {
-  //         }
-  //       }
-  //     );
-  //   }
-  //   params1 = {
-  //     latitude: 38.573936,
-  //     longitude:-92.603760,
-  //   };
-  //   SetNewparam(params1);
-  //   // mapzoom=8;
-    
-    
-  //   searchActions.setUserLocation(params1);
-  //   searchActions.setVerticalLimit(limit);
-  //   searchActions.executeVerticalQuery();
-  //   setTimeout(() => {
-  //     setIsloading(false);
-  //     $("body").removeClass("overflow-hidden");
-  //   }, 3100);
-  // };
-
-
 
   // const onClick = () => {
   //   setZoomlevel(4);
@@ -319,22 +282,19 @@ const SearchLayout = (props:any): JSX.Element => {
   //   }
   // };
 
-
   const Findinput = () => {
-   
-    let searchKey = document.getElementsByClassName('FilterSearchInput');
-    let Search = (searchKey[0].value);
+    let searchKey = document.getElementsByClassName("FilterSearchInput");
+    let Search = searchKey[0].value;
     searchActions.setOffset(0);
-if(Search?.length)
-{
-   setInputValue('');
-    getCoordinates(Search);
-}
-  }
+    if (Search?.length) {
+      setInputValue("");
+      getCoordinates(Search);
+    }
+  };
 
   const Findinput2 = () => {
     let Search = inputRef.current?.value || "";
-    let locationHub :any =[]
+    let locationHub: any = [];
     if (Search?.length == 0) {
       const bounds = new google.maps.LatLngBounds();
       bounds.extend({
@@ -344,8 +304,8 @@ if(Search?.length)
       searchActions.setVertical("locations");
       searchActions.setQuery("");
 
- if (filterValue?.length > 0) {
-      // setShowFilterEmptyMsg(true);
+      if (filterValue?.length > 0) {
+        // setShowFilterEmptyMsg(true);
         let location: SelectableFilter = {
           selected: true,
           fieldId: "c_relatedAdvantages.name",
@@ -353,8 +313,8 @@ if(Search?.length)
           matcher: Matcher.Equals,
         };
         locationHub.push(location);
-       
-        if(filterValue.length > 1){
+
+        if (filterValue.length > 1) {
           let location2: SelectableFilter = {
             selected: true,
             fieldId: "c_glassdriveAdvantages",
@@ -364,19 +324,19 @@ if(Search?.length)
           locationHub.push(location2);
         }
 
-      if (facetData != "") {
-        let facet_core: SelectableFilter = {
-          selected: false,
-          fieldId: "c_typesDeVéhicules",
-          value: facetData,
-          matcher: Matcher.Equals,
-        };
-        locationHub.push(facet_core);
+        if (facetData != "") {
+          let facet_core: SelectableFilter = {
+            selected: false,
+            fieldId: "c_typesDeVéhicules",
+            value: facetData,
+            matcher: Matcher.Equals,
+          };
+          locationHub.push(facet_core);
+        }
+      } else {
+        locationHub = [];
       }
-    }else{
-      locationHub = []
-    }
-     searchActions.setStaticFilters(locationHub);
+      searchActions.setStaticFilters(locationHub);
 
       searchActions.setOffset(0);
       searchActions.setVerticalLimit(limit);
@@ -385,47 +345,43 @@ if(Search?.length)
     }
   };
 
-
   useEffect(() => {
     if (firstTimeRunners) {
       firstTimeRunners = false;
       FirstLoad();
     }
-  
+
     if (isLoading) {
-      $('body').addClass("overflow-hidden")
+      $("body").addClass("overflow-hidden");
     }
 
-    let params = (new URL(window.location.href)).searchParams;
+    let params = new URL(window.location.href).searchParams;
     let addresssearch = params.get("s");
-    setInputValue('');
-    getCoordinates(addresssearch); 
-    
+    setInputValue("");
+    getCoordinates(addresssearch);
   }, []);
 
-
   useEffect(() => {
-    
     let locationHub: any = [];
     if (filterValue.length > 0) {
       // setShowFilterEmptyMsg(true);
-        let location: SelectableFilter = {
+      let location: SelectableFilter = {
+        selected: true,
+        fieldId: "c_relatedAdvantages.name",
+        value: filterValue[0],
+        matcher: Matcher.Equals,
+      };
+      locationHub.push(location);
+
+      if (filterValue?.length > 1) {
+        let location2: SelectableFilter = {
           selected: true,
-          fieldId: "c_relatedAdvantages.name",
-          value: filterValue[0],
+          fieldId: "c_glassdriveAdvantages",
+          value: filterValue[1],
           matcher: Matcher.Equals,
         };
-        locationHub.push(location);
-       
-        if(filterValue?.length > 1){
-          let location2: SelectableFilter = {
-            selected: true,
-            fieldId: "c_glassdriveAdvantages",
-            value: filterValue[1],
-            matcher: Matcher.Equals,
-          };
-          locationHub.push(location2);
-        }
+        locationHub.push(location2);
+      }
 
       if (facetData != "") {
         let facet_core: SelectableFilter = {
@@ -436,7 +392,6 @@ if(Search?.length)
         };
         locationHub.push(facet_core);
       }
-      
       searchActions.setStaticFilters(locationHub);
       searchActions.setOffset(0);
       searchActions.executeVerticalQuery();
@@ -445,15 +400,12 @@ if(Search?.length)
       setShowFilterEmptyMsg(false);
     }
     if (filterValue?.length == 0) {
-
       // searchActions.setStaticFilters([]);
       // setFacetData("");
       // searchActions.setOffset(0);
       // searchActions.executeVerticalQuery();
     }
   }, [checkeddata, filterValue]);
-
-
 
   // function getCoordinates(address: string) {
   //   // var str = address;
@@ -496,7 +448,8 @@ if(Search?.length)
     setActive("");
   };
 
-  const [autocomplete, setAutocomplete] = useState<google.maps.places.Autocomplete>();
+  const [autocomplete, setAutocomplete] =
+    useState<google.maps.places.Autocomplete>();
 
   useEffect(() => {
     if (googleLib && typeof google.maps === "object") {
@@ -504,7 +457,9 @@ if(Search?.length)
       let options: any = {
         options: {
           types: ["geocode"],
-          componentRestrictions: { country: {centerLatitude,centerLongitude} },
+          componentRestrictions: {
+            country: { centerLatitude, centerLongitude },
+          },
           strictBounds: false,
           fields: ["address_components", "geometry", "icon", "name"],
         },
@@ -515,7 +470,7 @@ if(Search?.length)
       );
       if (autoComplete) {
         function pacSelectFirst(input: HTMLInputElement) {
-          var _addEventListener = input.addEventListener;
+          var _addEventListener = input?.addEventListener;
 
           function addEventListenerWrapper(type: string, listener: any) {
             if (type == "keydown") {
@@ -542,7 +497,7 @@ if(Search?.length)
             _addEventListener.apply(input, [type, listener]);
           }
 
-          if (input.addEventListener) {
+          if (input?.addEventListener) {
             input.addEventListener = addEventListenerWrapper;
           }
         }
@@ -586,14 +541,9 @@ if(Search?.length)
     };
   }, [googleLib]);
 
-
-
-  
-
   // let userMyLocationBlockMessage = props.userMyLocationBlockMessage;
-  // let userMyLocationBlockMessage = "Please Allow Your Location";
-  let NoLocationsAvailable= props.NoLocationsAvailable;
-
+  let userMyLocationBlockMessage = "Please Allow Your Location";
+  let NoLocationsAvailable = props.NoLocationsAvailable;
 
   // const onClick = () => {
 
@@ -612,17 +562,16 @@ if(Search?.length)
   //     Geocode.setApiKey(googleMapsConfig.googleMapsApiKey);
   //     Geocode.fromLatLng(position.coords.latitude,position.coords.longitude).then(
   //       (response:any) => {
-  //         if (response.results[0]) {           
-  //           setInputValue(response.results[0].formatted_address);   
-          
-            
-  //   document.getElementsByClassName('FilterSearchInput')[0].setAttribute("value", response.results[0].formatted_address);            
-  //           setallowLocation('');             
+  //         if (response.results[0]) {
+  //           setInputValue(response.results[0].formatted_address);
+
+  //   document.getElementsByClassName('FilterSearchInput')[0].setAttribute("value", response.results[0].formatted_address);
+  //           setallowLocation('');
   //           searchActions.setUserLocation({
   //             latitude: position.coords.latitude,
   //             longitude: position.coords.longitude,
   //           });
-  //         }   
+  //         }
   //       },
   //       (error: any) => {
   //         console.error(error);
@@ -631,90 +580,83 @@ if(Search?.length)
   //     );
   //           setCenterLatitude(position.coords.latitude);
   //           setCenterLongitude(position.coords.longitude);
-      
+
   //           searchActions.setUserLocation({latitude: position.coords.latitude,longitude: position.coords.longitude });
   //           searchActions.setVertical(AnswerExperienceConfig.verticalKey);
   //          // searchActions.setQuery(response.results[0].formatted_address);
   //           searchActions.setOffset(0);
   //           searchActions.setVerticalLimit(limit);
-  //           searchActions.executeVerticalQuery();      
+  //           searchActions.executeVerticalQuery();
   //     }, error, {
   //       timeout: 10000,
   //     });
   //   }
   // }
 
-
-
-  
-  let userMyLocationBlockMessage = "Please Allow Your Location";
-
   const onClick = () => {
     setZoomlevel(4);
     if (navigator.geolocation) {
-        const error = (error: any) => {
-            if (error.code == 1) {
-                setallowLocation(userMyLocationBlockMessage);
-                setModelOpen(true);
-            }
-            setUserShareLocation(false);
-        };
-        navigator.geolocation.getCurrentPosition(
-            function (position) {
-                setIsUserLocation(true);
-                Geocode.setApiKey(googleMapsConfig.googleMapsApiKey);
-                Geocode.fromLatLng(
-                    position.coords.latitude,
-                    position.coords.longitude
-                ).then(
-                    (response: any) => {
-                        if (response.results[0]) {
-                            if (inputRef.current) {
-                                inputRef.current.value =
-                                    response.results[0].formatted_address;
-                            }
+      const error = (error: any) => {
+        if (error.code == 1) {
+          setallowLocation(props.allowYourLocationMessage);
+          setModelOpen(true);
+        }
+        setUserShareLocation(false);
+      };
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          setIsUserLocation(true);
+          Geocode.setApiKey(googleMapsConfig.googleMapsApiKey);
+          Geocode.fromLatLng(
+            position.coords.latitude,
+            position.coords.longitude
+          ).then(
+            (response: any) => {
+              if (response.results[0]) {
+                if (inputRef.current) {
+                  inputRef.current.value =
+                    response.results[0].formatted_address;
+                }
 
-                            let pacInput: any = document?.getElementById("pac-input");
-                            if (pacInput) {
-                                pacInput.value = response.results[0].formatted_address;
-                                pacInput.focus();
-                            }
+                let pacInput: any = document?.getElementById("pac-input");
+                if (pacInput) {
+                  pacInput.value = response.results[0].formatted_address;
+                  pacInput.focus();
+                }
 
-                            setallowLocation("");
-                            searchActions.setUserLocation({
-                                latitude: position.coords.latitude,
-                                longitude: position.coords.longitude,
-                            });
-                        }
-                    },
-                    (error: any) => {
-                        console.error(error);
-                        setCheck(false);
-                    }
-                );
+                setallowLocation("");
                 searchActions.setUserLocation({
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude,
+                  latitude: position.coords.latitude,
+                  longitude: position.coords.longitude,
                 });
-                searchActions.setVertical(AnswerExperienceConfig.verticalKey);
-                searchActions.setOffset(0);
-                searchActions.setVerticalLimit(limit);
-                searchActions.executeVerticalQuery();
+              }
             },
-            error,
-            {
-                timeout: 10000,
+            (error: any) => {
+              console.error(error);
+              setCheck(false);
             }
-        );
+          );
+          searchActions.setUserLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+          searchActions.setVertical(AnswerExperienceConfig.verticalKey);
+          searchActions.setOffset(0);
+          searchActions.setVerticalLimit(limit);
+          searchActions.executeVerticalQuery();
+        },
+        error,
+        {
+          timeout: 10000,
+        }
+      );
     }
-};
+  };
 
-
-  
   const getParents = (elem: any) => {
     while (
       elem.parentNode &&
-      elem.parentNode.nodeName.toLowerCase() != 'body'
+      elem.parentNode.nodeName.toLowerCase() != "body"
     ) {
       elem = elem.parentNode;
       if (elem.classList.contains("options")) {
@@ -724,21 +666,17 @@ if(Search?.length)
     return false;
   };
 
-
   const handleInputValue = () => {
-    setInputValue('');
-  }
-  const handleSetUserShareLocation = (value:any, userShareStatus:boolean) => {
+    setInputValue("");
+  };
+  const handleSetUserShareLocation = (value: any, userShareStatus: boolean) => {
     // console.log('handleSetUserShareLocation', value, userShareStatus);
     setInputValue(value);
-    if(!userShareStatus){
+    if (!userShareStatus) {
       setCenterLatitude(googleMapsConfig.centerLatitude);
       setCenterLongitude(googleMapsConfig.centerLongitude);
     }
-  }
-
-  
-
+  };
 
   function getCoordinates(address: String) {
     fetch(
@@ -755,7 +693,7 @@ if(Search?.length)
             let params = { latitude: userlatitude, longitude: userlongitude };
             setCenterLatitude(userlatitude);
             setCenterLongitude(userlongitude);
-         //   searchActions.setUserLocation(params);
+            //   searchActions.setUserLocation(params);
             searchActions.setQuery(address);
             searchActions.executeVerticalQuery();
           });
@@ -769,45 +707,47 @@ if(Search?.length)
         }
       });
   }
-  const noresult =() =>{
-    noresultmessage=("No Location Found")
-    searchActions.setQuery('');
-    searchActions.executeVerticalQuery();
-  }
+  // const noresult =() =>{
+  //   noresultmessage=("No Location Found")
+  //   searchActions.setQuery('');
+  //   searchActions.executeVerticalQuery();
+  // }
 
-
-  const loader = isLoading ? <LoadingSpinner /> : '';
+  const loader = isLoading ? <LoadingSpinner /> : "";
   return (
     <>
- <Wrapper
-      apiKey={googleMapsConfig.googleMapsApiKey}
-      libraries={["places", "geometry"]}
-    >
-    {loader}
-    <div className="locator-full-width place-content-center" style={{height:"unset"}}>
-        
-        <div className="locator-container">
-                <div className="search-block" style={{width:"100%"}}>
-                    {allowlocation?.length > 0 ?
-                    <div className="for-allow">{allowlocation}</div>
-                    : ''}
-                      <div className="location-with-filter">
-                        <h3 className="title">Enter a town or postcode</h3>
-                        {/* Use My Location button */}
-                        <button
-                          className="ghost-button before-icon"
-                          title="Search using your current location!"
-                          id="useLocation"
-                          onClick={onClick}
-                        >               
-                          {svgIcons.useMyLocation}
-                          Use My Location
-                        </button>
-                      </div>
-                      {/* Search Input by name,address  */}
-                      <div className="search-form">
-                        
-                        {/* <FilterSearch
+      <Wrapper
+        apiKey={googleMapsConfig.googleMapsApiKey}
+        libraries={["places", "geometry"]}
+      >
+        {loader}
+        <div
+          className="locator-full-width place-content-center"
+          style={{ height: "unset" }}
+        >
+          <div className="locator-container">
+            <div className="search-block" style={{ width: "100%" }}>
+              {allowlocation?.length > 0 ? (
+                <div className="for-allow">{allowlocation}</div>
+              ) : (
+                ""
+              )}
+              <div className="location-with-filter">
+                <h3 className="title">Enter a town or postcode</h3>
+                {/* Use My Location button */}
+                <button
+                  className="ghost-button before-icon"
+                  title="Search using your current location!"
+                  id="useLocation"
+                  onClick={onClick}
+                >
+                  {svgIcons.useMyLocation}
+                  Use My Location
+                </button>
+              </div>
+              {/* Search Input by name,address  */}
+              <div className="search-form">
+                {/* <FilterSearch
                           customCssClasses={{
                             filterSearchContainer: "mb-0",
                             inputElement: "FilterSearchInput",
@@ -841,132 +781,136 @@ if(Search?.length)
                           handleInputValue={handleInputValue}  
                           handleSetUserShareLocation={handleSetUserShareLocation}
                         /> */}
-                        <input
-                        id="pac-input"
-                        type="text"
-                        ref={inputRef}
-                        placeholder="Enter postal code, city ..."
-                        className="text-sm outline-none h-9 w-full p-2 rounded-md border border-gray-300 focus:border-blue-600 search_input FilterSearchInput pac-target-input"
-                        onChange={() => Findinput2()}
-                        onKeyDown={(evt) => {
-                          if (
-                            evt.key === "Backspace" ||
-                            evt.key === "x" ||
-                            evt.key === "Delete"
-                          ) {
-                            Findinput2();
-                          }
-                        }}
-                      />
-                
-                        {/* Covid Filter  */}
-                        <StandardFacets
-                          customCssClasses={{container: "filter-items" }}
-                          defaultExpanded={true}
-                        ></StandardFacets> 
+                <input
+                  id="pac-input"
+                  type="text"
+                  ref={inputRef}
+                  placeholder="Enter postal code, city ..."
+                  className="text-sm outline-none h-9 w-full p-2 rounded-md border border-gray-300 focus:border-blue-600 search_input FilterSearchInput pac-target-input"
+                  onChange={() => Findinput2()}
+                  onKeyDown={(evt) => {
+                    if (
+                      evt.key === "Backspace" ||
+                      evt.key === "x" ||
+                      evt.key === "Delete"
+                    ) {
+                      Findinput2();
+                    }
+                  }}
+                />
 
-                    {/* Search icon Button  */}
-                        <button
-                          className="button"
-                          aria-label="Search bar icon"
-                          id="search-location-button"
-                          onClick={Findinput}
+                {/* Covid Filter  */}
+                <StandardFacets
+                  customCssClasses={{ container: "filter-items" }}
+                  defaultExpanded={false}
+                ></StandardFacets>
 
-                        >
-                          {svgIcons.Searchbaricon}
-                        </button>
-                      </div>
-                    </div>
+                {/* Search icon Button  */}
+                <button
+                  className="button"
+                  aria-label="Search bar icon"
+                  id="search-location-button"
+                  onClick={Findinput}
+                >
+                  {svgIcons.Searchbaricon}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-      <div className="locator-full-width place-content-center">
-        <div className="locator-container">
-           {/* Map view and List View CTA in mobile responsive  */}
-          <div className="mobile-btns">
-            <a
-              className="button before-icon listBtn"
-              href="javascript:void(0);"
-              onClick={() => {
-                document.body.classList.remove("mapView");
-              }}
-            >
-              {svgIcons.listView} Pharmacy List
-            </a>
-            <a
-              className="button before-icon mapBtn"
-              href="javascript:void(0);"
-              onClick={addClass}
-            >
-              {svgIcons.mapView} Map View
-            </a>
-          </div>
+        <div className="locator-full-width place-content-center">
+          <div className="locator-container">
+            {/* Map view and List View CTA in mobile responsive  */}
+            <div className="mobile-btns">
+              <a
+                className="button before-icon listBtn"
+                href="javascript:void(0);"
+                onClick={() => {
+                  document.body.classList.remove("mapView");
+                }}
+              >
+                {svgIcons.listView} Pharmacy List
+              </a>
+              <a
+                className="button before-icon mapBtn"
+                href="javascript:void(0);"
+                onClick={addClass}
+              >
+                {svgIcons.mapView} Map View
+              </a>
+            </div>
 
-
-          {/* Map Section  */}
-          <div className="map-section">
-            <GoogleMaps
-              apiKey={googleMapsConfig.googleMapsApiKey}
-              centerLatitude={centerLatitude}
-              centerLongitude={centerLongitude}
-              defaultZoom={8}
-              zoomLevel={zoomlevel}
-              setZoomLevel= {setZoomlevel}
-              showEmptyMap={true}
-              check={check}
-            />
-            <ViewMore
-                className={"button view-more before-icon"}
-                idName={"mobile-view-more-button"}     
-                buttonLabel={"Load More"}
-                
+            {/* Map Section  */}
+            <div className="map-section">
+              <GoogleMaps
+                apiKey={googleMapsConfig.googleMapsApiKey}
+                centerLatitude={centerLatitude}
+                centerLongitude={centerLongitude}
+                defaultZoom={8}
+                zoomLevel={zoomlevel}
+                setZoomLevel={setZoomlevel}
+                showEmptyMap={true}
+                check={check}
               />
-          </div>
-          {alternateResult && alternateResult?.length > 0 ? (
-          <p className="pt-2 pb-3 text-lg text-center no-lc-err-msg">{NoLocationsAvailable}</p>
-          ):(
-         <></>
-          )}
+              <ViewMore
+                className={"button view-more before-icon"}
+                idName={"mobile-view-more-button"}
+                buttonLabel={"Load More"}
+              />
+            </div>
+            {alternateResult && alternateResult?.length > 0 ? (
+              <p className="pt-2 pb-3 text-lg text-center no-lc-err-msg">
+                {NoLocationsAvailable}
+              </p>
+            ) : (
+              <></>
+            )}
 
-           {/* Result listing Section  */}
-          <div className="result-listing">
-            <ResultsCount
+            {/* Result listing Section  */}
+            <div className="result-listing">
+              <ResultsCount
               //customCssClasses={{ resultsCountContainer: "result-count" }}
-            />
-            <PerfectScrollbar className="result-list">
-              {locationResults && locationResults?.length > 0 ? (
-                <div className="scrollbar-custom">
-                  <VerticalResults
-                    displayAllOnNoResults={false}
-                    CardComponent={LocationCard}
-                    locationResults={locationResults}
-                  />
-                  
-                </div>
-              ) : ( ""
-               
+              />
+              <PerfectScrollbar className="result-list">
+                {locationResults && locationResults?.length > 0 ? (
+                  <div className="scrollbar-custom">
+                    <VerticalResults
+                      displayAllOnNoResults={false}
+                      CardComponent={LocationCard}
+                      locationResults={locationResults}
+                    />
+                  </div>
+                ) : (""
                   // <div className="scrollbar-custom no-data-list">
                   //   <VerticalResults
                   //     displayAllOnNoResults={false}
                   //     CardComponent={LocationCard}
-                  //     locationResults={alternateResult}      
+                  //     locationResults={alternateResult}
                   //   />
                   // </div>
-               
-              )}
-                {locationResults && locationResults?.length > 0 ?
-            <ViewMore className={"button view-more before-icon"} idName={"listing-view-more-button"} buttonLabel={"Load More"} setZoomLevel={setZoomlevel}/>
-            :
-            <Alternateviewmore className={"button view-more before-icon"} idName={"alternate-view-more-button"} buttonLabel={"Load More"}/>
-            }
-            </PerfectScrollbar>
+                )}
+                {locationResults && locationResults?.length > 0 ? (
+                  <ViewMore
+                    className={"button view-more before-icon"}
+                    idName={"listing-view-more-button"}
+                    buttonLabel={"Load More"}
+                    setZoomLevel={setZoomlevel}
+                  />
+                ) : (
+                  <Alternateviewmore
+                    className={"button view-more before-icon"}
+                    idName={"alternate-view-more-button"}
+                    buttonLabel={"Load More"}
+                  />
+                )}
+              </PerfectScrollbar>
+            </div>
           </div>
         </div>
-      </div>
-      {/* <script async  src={"https://maps.googleapis.com/maps/api/js?key="+googleMapsConfig.googleMapsApiKey+"&libraries=places&callback=initMap"}></script> */}
+        {/* <script async  src={"https://maps.googleapis.com/maps/api/js?key="+googleMapsConfig.googleMapsApiKey+"&libraries=places&callback=initMap"}></script> */}
       </Wrapper>
     </>
   );
 };
-
 
 export default SearchLayout;

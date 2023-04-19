@@ -176,6 +176,26 @@ const LocationCard: CardComponent<Location> = ({ result}) => {
   /**
    * LocationCard component which returns the HTML of Locator Page Listing.
    */
+  var els = document.querySelectorAll('.countresultver');
+
+  for(var i=0; i < els.length; i++) {
+    
+    els[i].index = i;
+
+    // console.log("testconsole",els); 
+
+    els[i].innerHTML = i+1; 
+
+    // els[i].addEventListener('mouseover', function(e) {
+
+    //   console.log("dfdsfdsfdsfds");
+    
+    //   e.target.innerHTML = e.target.index;
+  
+    // }, false);
+
+
+  }
 
   return ( 
    
@@ -185,7 +205,7 @@ const LocationCard: CardComponent<Location> = ({ result}) => {
     >
       <div className="miles-with-title">
         <h3 className="onhighLight">
-         <span className="countresultver">{result.index}</span> <Link href={`${url}`}>{result.rawData.name} </Link>
+         <span className="countresultver"></span> <Link href={`${url}`}>{result.rawData.name} </Link>
         </h3>
         <p className="miles">{metersToMiles(result.distance ?? 0)} km</p>
       </div>
