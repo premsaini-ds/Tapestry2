@@ -74,6 +74,7 @@ const SearchLayout = (props: any): JSX.Element => {
   const [isUserLocation, setIsUserLocation] = React.useState<boolean>(false);
   const [showFilterEmptyMsg, setShowFilterEmptyMsg] = React.useState(false);
   var firstTimeRunners = true;
+  const [inputval, setInput] = useState("");
 
   const [optiontext, setOptiontext] = useState("");
   const [offset, setOffset] = React.useState(0);
@@ -157,7 +158,10 @@ const SearchLayout = (props: any): JSX.Element => {
   //   }, 3100);
   // };
 
+ 
+
   const FirstLoad = () => {
+  
     setCheck(true);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -348,20 +352,34 @@ const SearchLayout = (props: any): JSX.Element => {
   };
 
   useEffect(() => {
-    if (firstTimeRunners) {
-      firstTimeRunners = false;
-      FirstLoad();
-    }
+        if (firstTimeRunners) {
+            firstTimeRunners = false;
+            FirstLoad();
+        }
 
     if (isLoading) {
-      $("body").addClass("overflow-hidden");
+             $("body").addClass("overflow-hidden");
     }
-
-    let params = new URL(window.location.href).searchParams;
-    let addresssearch = params.get("s");
-    setInputValue("");
-    getCoordinates(addresssearch);
+    
+    // let params = new URL(window.location.href).searchParams;
+    // let addresssearch = params.get("s");
+    // if(addresssearch != null ){
+    //     getCoordinates(addresssearch);
+    //  }
+    // function updateVal() {
+    //   if(addresssearch != null ){
+    //     document.getElementById("pac-input")?.setAttribute("value", addresssearch);
+    //   }
+    // }
+    // setTimeout(updateVal, 1000)
+    
+ 
   }, []);
+ 
+
+ 
+
+
 
   useEffect(() => {
     let locationHub: any = [];
@@ -454,6 +472,15 @@ const SearchLayout = (props: any): JSX.Element => {
     useState<google.maps.places.Autocomplete>();
 
   useEffect(() => {
+
+    let params = new URL(window.location.href).searchParams;
+    let addresssearch = params.get("s");
+    if(addresssearch != null ){
+        getCoordinates(addresssearch);
+        document.getElementById("pac-input")?.setAttribute("value", addresssearch);
+     }
+
+
     if (googleLib && typeof google.maps === "object") {
       let pacInput: any = document?.getElementById("pac-input");
       let options: any = {
@@ -714,6 +741,9 @@ const SearchLayout = (props: any): JSX.Element => {
   //   searchActions.setQuery('');
   //   searchActions.executeVerticalQuery();
   // }
+
+
+  
 
   const loader = isLoading ? <LoadingSpinner /> : "";
   return (
