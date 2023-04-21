@@ -623,11 +623,12 @@ const SearchLayout = (props: any): JSX.Element => {
   // }
 
   const onClick = () => {
+    getCoordinates("");
     setZoomlevel(4);
     if (navigator.geolocation) {
       const error = (error: any) => {
         if (error.code == 1) {
-          setallowLocation(props.allowYourLocationMessage);
+          setallowLocation(userMyLocationBlockMessage);
           setModelOpen(true);
         }
         setUserShareLocation(false);
@@ -680,6 +681,17 @@ const SearchLayout = (props: any): JSX.Element => {
         }
       );
     }
+
+  
+    // let searchKey = document.getElementsByClassName("FilterSearchInput");
+    // let Search = searchKey[0].value;
+    // searchActions.setOffset(0);
+    // if (Search?.length) {
+    //   setInputValue("");
+    //   getCoordinates("");
+    // }
+
+
   };
 
   const getParents = (elem: any) => {
@@ -792,7 +804,7 @@ const SearchLayout = (props: any): JSX.Element => {
                             {
                               entityType: "location",
                               fieldApiName: "name",
-                            },
+                            }, 
                             {
                               entityType: "location",
                               fieldApiName: "address.line1",

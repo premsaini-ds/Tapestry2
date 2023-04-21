@@ -101,7 +101,21 @@ function sortByDay(week: Week): Week {
  *  creates a renderHours Constant
  * @param week
  * @returns html elememt (day)
+ * 
+ * 
  */
+
+const weekDays: any = {
+  // "sunday": 0, // << if sunday is first day of week
+  monday: 1,
+  tuesday: 2,
+  wednesday: 3,
+  thursday: 4,
+  friday: 5,
+  saturday: 6,
+  sunday: 7,
+};
+
 const renderHours = (week: Week) => {
   const dayDom: JSX.Element[] = [];
   var i = 0;
@@ -146,6 +160,15 @@ const renderHours = (week: Week) => {
     );
     i++;
   }
+
+dayDom.sort(function sortByDay(a: any, b: any) {
+    const day1 = a.key?.toLowerCase();
+    const day2 = b.key?.toLowerCase();
+    return weekDays[day1] - weekDays[day2];
+  });
+
+
+
   return <tbody className="font-normal">{dayDom}</tbody>;
 };
 

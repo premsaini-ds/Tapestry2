@@ -56,7 +56,7 @@ export default function FilterSearch ({
   const searchAction = useSearchActions();
   const [input, setInput] = useState(searchInputValue);
   const selectedFilterOptionRef = useRef<Filter|null>(null);
-  const searchParamFields = searchFields.map((searchField) => {
+  const searchParamFields = searchFields?.map((searchField) => {
     return { ...searchField, fetchEntities: false }
   });
 
