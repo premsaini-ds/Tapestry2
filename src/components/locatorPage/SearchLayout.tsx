@@ -29,14 +29,13 @@ import { svgIcons } from "../../svg icons/svgIcon";
 import LoadingSpinner from "../commons/LoadingSpinner";
 import FilterSearch from "./FilterSearch";
 import Alternateviewmore from "./Alternateviewmore";
-import TileFacet from "./TileFacet";
 import Usemymodel from "./Usemymodel";
 import { StandardFacets } from "@yext/search-ui-react";
 import CustomRadioButton from "./CustomRadioButton";
 import { Wrapper } from "@googlemaps/react-wrapper";
 import AlternateResultsCount from "./AlternateResultCount";
 import { clearStorage } from "mapbox-gl";
-
+import TileFacet from "../TileFacet";
 var mapzoom = 8;
 const SearchLayout = (props: any): JSX.Element => {
   const [isLoading, setIsloading] = React.useState(true);
@@ -79,6 +78,10 @@ const SearchLayout = (props: any): JSX.Element => {
   const [optiontext, setOptiontext] = useState("");
   const [offset, setOffset] = React.useState(0);
   const [optionclick, setOptionClick] = useState(true);
+
+
+
+
   var searchKey: any;
   var firstTimeRunners = true;
   const [newparam, SetNewparam] = React.useState({
@@ -790,6 +793,10 @@ const SearchLayout = (props: any): JSX.Element => {
                 </button>
               </div>
               {/* Search Input by name,address  */}
+
+               {/* <TileFacet fieldId="name" displayName="Name" />
+               <TileFacet fieldId="services" displayName="Services" /> */}
+
               <div className="search-form">
                 {/* <FilterSearch
                           customCssClasses={{
@@ -825,25 +832,28 @@ const SearchLayout = (props: any): JSX.Element => {
                           handleInputValue={handleInputValue}  
                           handleSetUserShareLocation={handleSetUserShareLocation}
                         /> */}
-                <input
-                  id="pac-input"
-                  type="text"
-                  ref={inputRef}
-                  placeholder="Enter postal code, city ..."
-                  className="text-sm outline-none h-9 w-full p-2 rounded-md border border-gray-300 focus:border-blue-600 search_input FilterSearchInput pac-target-input"
-                  onChange={() => Findinput2()}
-                  onKeyDown={(evt) => {
-                    if (
-                      evt.key === "Backspace" ||
-                      evt.key === "x" ||
-                      evt.key === "Delete"
-                    ) {
-                      Findinput2();
-                    }
-                  }}
-                />
+                      <input
+                        id="pac-input"
+                        type="text"
+                        ref={inputRef}
+                        placeholder="Enter postal code, city ..."
+                        className="text-sm outline-none h-9 w-full p-2 rounded-md border border-gray-300 focus:border-blue-600 search_input FilterSearchInput pac-target-input"
+                        onChange={() => Findinput2()}
+                        onKeyDown={(evt) => {
+                          if (
+                            evt.key === "Backspace" ||
+                            evt.key === "x" ||
+                            evt.key === "Delete"
+                          ) {
+                            Findinput2();
+                          }
+                        }}
+                      />
 
                 {/* Covid Filter  */}
+
+                
+
                 <StandardFacets
                   customCssClasses={{ container: "filter-items" }}
                   defaultExpanded={false}
@@ -862,6 +872,7 @@ const SearchLayout = (props: any): JSX.Element => {
             </div>
           </div>
         </div>
+        
         <div className="locator-full-width place-content-center">
           <div className="locator-container">
             {/* Map view and List View CTA in mobile responsive  */}
@@ -894,13 +905,11 @@ const SearchLayout = (props: any): JSX.Element => {
                 zoomLevel={zoomlevel}
                 setZoomLevel={setZoomlevel}
                 showEmptyMap={true}
-                check={check}
-              />
+                check={check} refLcation={undefined}              />
               <ViewMore
                 className={"button view-more before-icon"}
                 idName={"mobile-view-more-button"}
-                buttonLabel={"Load More"}
-              />
+                buttonLabel={"Load More"} zoomLevel={0} setZoomLevel={undefined}              />
             </div>
             {alternateResult && alternateResult?.length > 0 ? (
               <p className="pt-2 pb-3 text-lg text-center no-lc-err-msg">
@@ -941,8 +950,7 @@ const SearchLayout = (props: any): JSX.Element => {
                     className={"button view-more before-icon"}
                     idName={"listing-view-more-button"}
                     buttonLabel={"Load More"}
-                    setZoomLevel={setZoomlevel}
-                  />
+                    setZoomLevel={setZoomlevel} zoomLevel={0}                  />
                 ) : (
                   ""
                 )}

@@ -1982,3 +1982,26 @@ img.demolightbox.cursorlightbimg.lightboximg {
   padding-right: 1.25rem;
   overflow: overlay !important;
 }
+
+
+
+.mb-4.customfacets.off{
+ 
+  transition: all .35s ease-in-out;
+  transition-delay: .2s;
+  height: 0;
+  visibility: hidden;
+}
+
+.mb-4.customfacets.on{
+  height: auto;
+  visibility: visible;
+  transition: all 1s ease-in-out;
+  transition-delay: .2s;
+}
+/* .mb-4.customfacets{
+  transition: opacity 1s ease-out;
+  opacity: 1;
+  height: auto;
+  overflow: visible;
+} */
