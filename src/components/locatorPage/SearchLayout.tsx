@@ -30,7 +30,7 @@ import LoadingSpinner from "../commons/LoadingSpinner";
 import FilterSearch from "./FilterSearch";
 import Alternateviewmore from "./Alternateviewmore";
 import Usemymodel from "./Usemymodel";
-import { StandardFacets } from "@yext/search-ui-react";
+import { Pagination, StandardFacets } from "@yext/search-ui-react";
 import CustomRadioButton from "./CustomRadioButton";
 import { Wrapper } from "@googlemaps/react-wrapper";
 import AlternateResultsCount from "./AlternateResultCount";
@@ -945,7 +945,7 @@ const SearchLayout = (props: any): JSX.Element => {
                   //   />
                   // </div>
                 )}
-                {locationResults && locationResults?.length > 0 ? (
+                {/* {locationResults && locationResults?.length > 0 ? (
                   <ViewMore
                     className={"button view-more before-icon"}
                     idName={"listing-view-more-button"}
@@ -953,10 +953,14 @@ const SearchLayout = (props: any): JSX.Element => {
                     setZoomLevel={setZoomlevel} zoomLevel={0}                  />
                 ) : (
                   ""
-                )}
+                )} */}
+               
               </PerfectScrollbar>
+              <Pagination/>
             </div>
+           
           </div>
+         
         </div>
         {/* <script async  src={"https://maps.googleapis.com/maps/api/js?key="+googleMapsConfig.googleMapsApiKey+"&libraries=places&callback=initMap"}></script> */}
       </Wrapper>
