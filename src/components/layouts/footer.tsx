@@ -144,7 +144,7 @@ const Footer = (props: any) => {
             marginLeft: "100px",
           }}
         >
-          <div className="text-xl font-bold pb-1 testclassforbranch">{cookieHeading}</div>
+          <div className="text-xl font-bold pb-1 testclassforbranch bajrangbranch">{cookieHeading}</div>
 
 
           <div
