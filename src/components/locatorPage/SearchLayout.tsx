@@ -491,6 +491,7 @@ const SearchLayout = (props: any): JSX.Element => {
           types: ["geocode"],
           componentRestrictions: {
             country: { centerLatitude, centerLongitude },
+            // country: 'us',
           },
           strictBounds: false,
           fields: ["address_components", "geometry", "icon", "name"],
